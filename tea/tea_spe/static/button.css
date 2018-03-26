@@ -1,0 +1,43 @@
+.btn-hui button{
+    background-image: url(./images/button/huibutton.png);
+    background-size: 100% 100%;
+    min-width:105px;
+    min-height: 40px;
+    padding:5px 10px;
+    color:#fff;
+    margin: 5px;
+    border-radius: 5px;
+  }
+.btn-hui button:hover{
+    background-image: url(./images/button/huiactive.png);
+    background-size: 100% 100%;
+  }
+.btn-lv button{
+    background-image: url(./images/button/greenbutton.png);
+    background-size: 100% 100%;
+    min-width:90px;
+    min-height: 35px;
+    padding:5px 10px;
+    color:#fff;
+    margin: 5px;
+    border-radius: 5px;
+  }
+.btn-lv button:hover{
+    background-image: url(./images/button/greenactive.png);
+    background-size: 100% 100%;
+  }
+.btn-lan button{
+    background-image: url(./images/button/bluebutton.png);
+    background-size: 100% 100%;
+    min-width: 95px;
+    min-height: 40px;
+    padding:5px 10px;
+    color:#fff;
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+.btn-lan button:hover{
+    background-image: url(./images/button/blueactive.png);
+    background-size: 100% 100%;
+  }
