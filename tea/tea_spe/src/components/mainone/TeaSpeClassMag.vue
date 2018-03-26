@@ -40,8 +40,8 @@
                     <td>class01</td>
                     <td>2017级商务日语一班</td>
                     <td class="btn-lv">
-                        <button class="edit">修改</button>
-                        <button class="check">查看</button>
+                        <button class="edit" @click="isXiugai=true">修改</button>
+                        <button class="check" @click="isChaxun=true">查看</button>
                     </td>
                 </tr>
                 <tr>
@@ -55,12 +55,12 @@
                     <td>2017级商务日语一班</td>
                     <td class="btn-lv">
                         <button class="edit" @click="isXiugai=true">修改</button>
-                        <button class="check">查看</button>
+                        <button class="check" @click="isChaxun=true">查看</button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <el-dialog title="班级详细信息" :visible.sync="isXiugai">
+        <el-dialog title="班级详细信息" :visible.sync="isChaxun">
 
             <div class="tanchu2">
                 <table class="table1">
@@ -87,7 +87,40 @@
                 </table>
             </div>
             <div class="btn-hui tanchu3">
-                <button>关闭</button>
+                <button @click="isChaxun=false">关闭</button>
+            </div>
+        </el-dialog>
+        <el-dialog title="班级修改" :visible.sync="isXiugai">
+
+            <div class="tanchu4">
+                <table>
+                    <tr>
+                        <td>
+                            <span>班级名称</span>
+                            <span class="danger">*</span>
+                        </td>
+                        <td>
+                            <el-input placeholder="请输入班级名称"></el-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>备注</span>
+                        </td>
+                        <td>
+                            <el-input style="min-height:50px;" type="textarea" autosize></el-input>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class=" tanchu3 flex-center">
+                <div class="btn-lan">
+                    <button @click="isXiugai=false">保存</button>
+                </div>
+                <div class="btn-hui">
+                    <button @click="isXiugai=false">关闭</button>
+                </div>
+
             </div>
         </el-dialog>
     </div>
@@ -98,7 +131,8 @@ export default {
     name: "TeaSpeClassMag",
     data() {
         return {
-            isXiugai: false
+            isXiugai: false,
+            isChaxun: false
         };
     }
 };
@@ -114,8 +148,9 @@ export default {
 .left > div {
     margin: 5px;
 }
-.tanchu2 {
-    padding: 10px 20px;
+.tanchu2,
+.tanchu4 {
+    padding: 20px;
 }
 
 .tanchu2 td {
@@ -125,8 +160,25 @@ export default {
 .tanchu2 tr > td:first-child {
     text-align: center;
 }
-.tanchu3 button{
-    margin: 20px;
+.tanchu3 {
+    border-top: 1px solid #e3e3e3;
+}
+.tanchu3 button {
+    margin: 20px 10px;
+}
+.tanchu4 table {
+    width: 100%;
+    border: none;
+}
+.tanchu4 tr > td:first-child {
+    text-align: center;
+}
+.tanchu4 td {
+    border: none;
+    padding: 10px 0;
+}
+.danger {
+    color: #f56c6c;
 }
 </style>
 
