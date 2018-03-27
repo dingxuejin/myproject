@@ -37,6 +37,7 @@
             <th>标题</th>
             <th>内容</th>
             <th>使用标识</th>
+            <th>使用标识</th>
             <th>操作</th>
           </tr>
         </thead>

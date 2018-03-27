@@ -5,7 +5,7 @@
       <div class="flex-start rv1">
         <div class="flex-start">
           <div>
-            <span>班级名称</span>
+            <span class="nowrap">班级名称</span>
           </div>
           <div>
             <el-select></el-select>
@@ -13,7 +13,7 @@
         </div>
         <div class="flex-start">
           <div>
-            <span>说一说</span>
+            <span class="nowrap">说一说</span>
           </div>
           <div>
             <el-select></el-select>
@@ -21,7 +21,7 @@
         </div>
         <div class="flex-start">
           <div>
-            <span>场景</span>
+            <span class="nowrap">场景</span>
           </div>
           <div>
             <el-select></el-select>
@@ -29,7 +29,7 @@
         </div>
 
       </div>
-      <div class="btn-lan">
+      <div class="btn-lan nowrap">
         <button>删除</button>
         <button>音频重置</button>
       </div>

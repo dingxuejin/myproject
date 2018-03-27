@@ -8,9 +8,13 @@ import '../theme/index.css';
 import '../static/normalize.css';
 import '../static/table.css';
 import '../static/button.css';
+import echarts from 'echarts'
+
+
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
+Vue.prototype.$echarts = echarts
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,11 +1,11 @@
 <template>
   <div>
-      <!-- 音频管理页面 -->
-        <div class="flex-between">
+    <!-- 音频管理页面 -->
+    <div class="flex-between">
       <div class="flex-start rv1">
         <div class="flex-start">
           <div>
-            <span>班级</span>
+            <span class="nowrap">班级</span>
           </div>
           <div>
             <el-select></el-select>
@@ -13,7 +13,7 @@
         </div>
         <div class="flex-start">
           <div>
-            <span>说一说</span>
+            <span class="nowrap">说一说</span>
           </div>
           <div>
             <el-select></el-select>
@@ -21,7 +21,7 @@
         </div>
         <div class="flex-start">
           <div>
-            <span>场景</span>
+            <span class="nowrap">场景</span>
           </div>
           <div>
             <el-select></el-select>
@@ -29,7 +29,7 @@
         </div>
 
       </div>
-      <div class="btn-lan">
+      <div class="btn-lan nowrap">
         <button>删除</button>
         <button>音频重置</button>
       </div>
@@ -45,11 +45,12 @@
             <th>关卡名称</th>
             <th>备注</th>
             <th>音频</th>
+            <th>示范音频</th>
             <th>字幕查看</th>
           </tr>
         </thead>
         <tbody>
-         
+
           <tr>
             <td>
               <el-checkbox></el-checkbox>
@@ -145,8 +146,8 @@
 </template>
 <script>
 export default {
-  name:'TeaSpeRadio'
-}
+  name: "TeaSpeRadio"
+};
 </script>
 <style scoped>
 .rv1 > div,
