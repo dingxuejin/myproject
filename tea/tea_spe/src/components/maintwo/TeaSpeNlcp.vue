@@ -19,7 +19,7 @@
           <button>查询</button>
         </div>
       </div>
-      <div>
+      <div style="marginTop:10px;">
         <table class="table1">
           <thead>
             <tr>
@@ -155,6 +155,7 @@ export default {
         return {
             testProp: "开启考试",
             isStartTest: false,
+            isReset: false,
             radio1: "1",
             radio2: "1",
             dialogVisible: false,
@@ -180,16 +181,22 @@ export default {
         },
         reset() {
             this.dialogVisible = true;
+            this.isReset = true;
             this.tiShi = "你要清空本场考试吗？";
-             this.testProp= "开启考试";
         },
         startTest() {
             this.isStartTest = false;
             this.testProp = "结束";
         },
         toNext() {
-            this.dialogVisible = false;
-            this.testProp = "已结束";
+            if (this.isReset) {
+                this.testProp = "开启考试";
+                this.isReset = false;
+                this.dialogVisible = false;
+            } else {
+                this.dialogVisible = false;
+                this.testProp = "已结束";
+            }
         }
     }
 };

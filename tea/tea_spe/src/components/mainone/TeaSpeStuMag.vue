@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <table class="table1">
+        <table class="table1" style="marginTop:10px;">
             <thead>
                 <tr>
                     <th style="width: 10%"></th>

@@ -15,7 +15,7 @@
           <button>全部课程重置</button>
         </div>
       </div>
-      <div class="cjqz">
+      <div class="cjqz" style="marginTop:10px;">
         <table>
           <tr>
             <td rowspan="14" style="width:15%;"></td>

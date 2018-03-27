@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <table class="table1">
+        <table class="table1" style="marginTop:10px;">
             <thead>
                 <tr>
                     <th></th>
