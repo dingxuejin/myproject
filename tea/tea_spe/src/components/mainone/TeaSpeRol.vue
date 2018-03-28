@@ -105,13 +105,25 @@
 </template>
 <script>
 export default {
-    name: "TeaSpeRol"
+  name: "TeaSpeRol",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "角色扮演", to: "" }
+      ]
+    };
+  },
+  mounted(){
+      this.$emit('getData',this.breadcrumb)
+  }
 };
 </script>
 <style scoped>
 .rol1 > div,
 .rol1 > div > div {
-    margin: 5px;
+  margin: 5px;
 }
 </style>
 

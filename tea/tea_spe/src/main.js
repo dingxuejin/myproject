@@ -6,7 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui';
 import '../theme/index.css';
 import '../static/normalize.css';
-import '../static/table.css';
+import '../static/teaspetable.css';
 import '../static/button.css';
 import echarts from 'echarts'
 

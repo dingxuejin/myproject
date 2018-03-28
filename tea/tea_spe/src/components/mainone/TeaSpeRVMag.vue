@@ -50,7 +50,7 @@
           </tr>
         </thead>
         <tbody>
-        
+
           <tr>
             <td>
               <el-checkbox></el-checkbox>
@@ -149,7 +149,16 @@
 export default {
   name: "TeaSpeRVMag",
   data() {
-    return {};
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "配音视频管理", to: "" }
+      ]
+    };
+  },
+  mounted() {
+    this.$emit("getData", this.breadcrumb);
   }
 };
 </script>

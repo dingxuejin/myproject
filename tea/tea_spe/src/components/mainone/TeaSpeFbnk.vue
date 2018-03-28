@@ -1,4 +1,5 @@
 <template>
+<!-- 课内习题添加 -->
     <div>
         <div class="flex-between ">
             <div class="flex-start fbnk1">
@@ -81,7 +82,19 @@
 </template>
 <script>
 export default {
-    name: "TeaSpeFbnk"
+    name: "TeaSpeFbnk",
+    data(){
+        return{
+               breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "课内习题添加", to: "" }
+      ]
+        }
+    },
+    mounted(){
+         this.$emit("getData", this.breadcrumb);
+    }
 };
 </script>
 <style scoped>

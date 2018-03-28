@@ -146,15 +146,32 @@
 </template>
 <script>
 export default {
-    name: "TeaSpeCjqz",
-    data() {
-        return {};
-    }
+  name: "TeaSpeCjqz",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "成绩权重设置", to: "" }
+      ],
+      tabs: [
+        {name:"听一听",to:'/teaspeting'},
+        {name:"说一说",to:'/teaspeshuo'},
+        {name:"能力测评设置",to:'/teaspenlcp'},
+        {name:"成绩权重设置",to:'/teaspecjqz'}
+       ]
+    };
+  },
+  mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    this.$emit("getData", { tabs, breadcrumb });
+  }
 };
 </script>
 <style scoped>
 .cjqz td {
-    padding: 5px 10px;
+  padding: 5px 10px;
 }
 </style>
 

@@ -150,86 +150,102 @@
 </template>
 <script>
 export default {
-    name: "TeaSpeNlcp",
-    data() {
-        return {
-            testProp: "开启考试",
-            isStartTest: false,
-            isReset: false,
-            radio1: "1",
-            radio2: "1",
-            dialogVisible: false,
-            tiShi: "你要开启本场考试吗？",
-            html: ""
-        };
+  name: "TeaSpeNlcp",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "能力测评设置", to: "" }
+      ],
+      tabs: [
+        { name: "听一听", to: "/teaspeting" },
+        { name: "说一说", to: "/teaspeshuo" },
+        { name: "能力测评设置", to: "/teaspenlcp" },
+        { name: "成绩权重设置", to: "/teaspecjqz" }
+      ],
+      testProp: "开启考试",
+      isStartTest: false,
+      isReset: false,
+      radio1: "1",
+      radio2: "1",
+      dialogVisible: false,
+      tiShi: "你要开启本场考试吗？",
+      html: ""
+    };
+  },
+  mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    this.$emit("getData", { tabs, breadcrumb });
+  },
+  methods: {
+    test() {
+      let testProp = this.testProp;
+      if (testProp === "开启考试") {
+        this.isStartTest = true;
+      } else if (testProp === "结束") {
+        this.dialogVisible = true;
+        this.tiShi = "你要结束本场考试吗？";
+      } else if (testProp === "") {
+        this.dialogVisible = true;
+        this.tiShi = "你要结束本场考试吗？";
+      } else {
+        this.dialogVisible = true;
+        this.tiShi = "本场考试已结束";
+      }
     },
-    methods: {
-        test() {
-            let testProp = this.testProp;
-            if (testProp === "开启考试") {
-                this.isStartTest = true;
-            } else if (testProp === "结束") {
-                this.dialogVisible = true;
-                this.tiShi = "你要结束本场考试吗？";
-            } else if (testProp === "") {
-                this.dialogVisible = true;
-                this.tiShi = "你要结束本场考试吗？";
-            } else {
-                this.dialogVisible = true;
-                this.tiShi = "本场考试已结束";
-            }
-        },
-        reset() {
-            this.dialogVisible = true;
-            this.isReset = true;
-            this.tiShi = "你要清空本场考试吗？";
-        },
-        startTest() {
-            this.isStartTest = false;
-            this.testProp = "结束";
-        },
-        toNext() {
-            if (this.isReset) {
-                this.testProp = "开启考试";
-                this.isReset = false;
-                this.dialogVisible = false;
-            } else {
-                this.dialogVisible = false;
-                this.testProp = "已结束";
-            }
-        }
+    reset() {
+      this.dialogVisible = true;
+      this.isReset = true;
+      this.tiShi = "你要清空本场考试吗？";
+    },
+    startTest() {
+      this.isStartTest = false;
+      this.testProp = "结束";
+    },
+    toNext() {
+      if (this.isReset) {
+        this.testProp = "开启考试";
+        this.isReset = false;
+        this.dialogVisible = false;
+      } else {
+        this.dialogVisible = false;
+        this.testProp = "已结束";
+      }
     }
+  }
 };
 </script>
 <style scoped>
 .tanchu1 {
-    border-top: 1px solid #e3e3e3;
+  border-top: 1px solid #e3e3e3;
 }
 .tanchu2 {
-    padding: 20px;
+  padding: 20px;
 }
 .tanchu3 {
-    padding: 20px 40px;
+  padding: 20px 40px;
 }
 .tanchu3 tr > td:first-child {
-    text-align: right;
+  text-align: right;
 }
 .tanchu3 tr > td:first-child > span:last-child {
-    color: #f00;
+  color: #f00;
 }
 .tanchu3 > table {
-    width: 100%;
-    border: none;
+  width: 100%;
+  border: none;
 }
 .tanchu3 > table td {
-    border: none;
-    padding: 5px 10px;
+  border: none;
+  padding: 5px 10px;
 }
 .tanchu3 .tanchu4 {
-    width: 230px;
+  width: 230px;
 }
 .tanchu5 {
-    border-top: 1px solid #e3e3e3;
-    padding: 10px 0;
+  border-top: 1px solid #e3e3e3;
+  padding: 10px 0;
 }
 </style>

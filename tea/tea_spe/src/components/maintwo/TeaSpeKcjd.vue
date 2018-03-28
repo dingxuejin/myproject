@@ -62,7 +62,7 @@
             </td>
             <td>50</td>
             <td class="btn-lv">
-              <button>查看明细</button>
+              <button @click="toMingxi()">查看明细</button>
             </td>
           </tr>
         </tbody>
@@ -79,6 +79,13 @@ export default {
     // document.querySelectorAll('.el-progress-bar__innerText').innerHTML=val.replace('%',"");
 
     // console.log(val);
+  },
+  methods:{
+    toMingxi(){
+      this.$router.push({
+        name:'TeaSpeKcjdMx'
+      })
+    }
   }
 };
 </script>

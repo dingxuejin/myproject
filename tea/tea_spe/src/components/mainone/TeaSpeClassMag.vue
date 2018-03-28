@@ -128,57 +128,68 @@
 
 <script>
 export default {
-    name: "TeaSpeClassMag",
-    data() {
-        return {
-            isXiugai: false,
-            isChaxun: false
-        };
-    }
+  name: "TeaSpeClassMag",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "教学管理", to: "" }
+      ],
+      isXiugai: false,
+      isChaxun: false
+    };
+  },
+  updated() {
+   
+  },
+  mounted() {
+    this.$emit("getData", this.breadcrumb);
+  }
 };
 </script>
 <style scoped>
 .containerClass {
-    min-width: 670px;
+  min-width: 670px;
 }
 .maincm {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .left > div {
-    margin: 5px;
+  margin: 5px;
 }
 .tanchu2,
 .tanchu4 {
-    padding: 20px;
+  padding: 20px;
 }
 
 .tanchu2 td {
-    padding: 0 10px;
-    text-align: left;
+  padding: 0 10px;
+  text-align: left;
 }
 .tanchu2 tr > td:first-child {
-    text-align: center;
+  text-align: center;
 }
 .tanchu3 {
-    border-top: 1px solid #e3e3e3;
+  border-top: 1px solid #e3e3e3;
 }
 .tanchu3 button {
-    margin: 20px 10px;
+  margin: 20px 10px;
 }
 .tanchu4 table {
-    width: 100%;
-    border: none;
+  width: 100%;
+  border: none;
 }
 .tanchu4 tr > td:first-child {
-    text-align: center;
+  text-align: center;
 }
 .tanchu4 td {
-    border: none;
-    padding: 10px 0;
+  border: none;
+  padding: 10px 0;
 }
 .danger {
-    color: #f56c6c;
+  color: #f56c6c;
 }
 </style>
 

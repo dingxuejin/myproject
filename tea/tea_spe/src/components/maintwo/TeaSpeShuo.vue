@@ -108,7 +108,7 @@
           </tr>
           <tr>
             <td>1</td>
-         
+
             <td colspan="2">
               <div>
                 <el-checkbox></el-checkbox>
@@ -147,8 +147,7 @@
           </tr>
           <tr>
             <td>2</td>
-    
-         
+
             <td colspan="2">
               <div>
                 <el-checkbox></el-checkbox>
@@ -187,12 +186,12 @@
           </tr>
           <tr>
             <td>3</td>
-     
+
             <td rowspan="2">交通</td>
             <td colspan="2">
               <div>
                 <el-checkbox></el-checkbox>
-                 <span>电车出行</span>
+                <span>电车出行</span>
               </div>
             </td>
             <td>
@@ -227,12 +226,11 @@
           </tr>
           <tr>
             <td>4</td>
-  
-          
+
             <td colspan="2">
               <div>
                 <el-checkbox></el-checkbox>
-                 <span>新干线出行</span>
+                <span>新干线出行</span>
               </div>
             </td>
             <td>
@@ -267,7 +265,7 @@
           </tr>
           <tr>
             <td>5</td>
-     
+
             <td rowspan="3">酒店</td>
             <td colspan="2">
               <div>
@@ -307,12 +305,11 @@
           </tr>
           <tr>
             <td>6</td>
-    
-          
+
             <td colspan="2">
               <div>
                 <el-checkbox></el-checkbox>
-                 <span>入住</span>
+                <span>入住</span>
               </div>
             </td>
             <td>
@@ -392,7 +389,27 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeShuo"
+  name: "TeaSpeShuo",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "说一说", to: "" }
+      ],
+      tabs: [
+        { name: "听一听", to: "/teaspeting" },
+        { name: "说一说", to: "/teaspeshuo" },
+        { name: "能力测评设置", to: "/teaspenlcp" },
+        { name: "成绩权重设置", to: "/teaspecjqz" }
+      ]
+    };
+  },
+  mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    this.$emit("getData", { tabs, breadcrumb });
+  }
 };
 </script>
 <style scoped>

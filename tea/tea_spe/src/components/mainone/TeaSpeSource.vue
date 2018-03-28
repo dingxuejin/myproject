@@ -33,7 +33,7 @@
             <tbody>
                 <tr>
                     <td>
-                      <el-checkbox></el-checkbox>
+                        <el-checkbox></el-checkbox>
                     </td>
                     <td>1</td>
                     <td>商务日语资源一</td>
@@ -52,7 +52,7 @@
                 </tr>
                 <tr>
                     <td>
-                       <el-checkbox></el-checkbox>
+                        <el-checkbox></el-checkbox>
                     </td>
                     <td>2</td>
                     <td>商务日语资源二</td>
@@ -75,12 +75,25 @@
 </template>
 <script>
 export default {
-    name: "TeaSpeSource"
+  name: "TeaSpeSource",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "教学资源", to: "" }
+      ]
+    };
+  },
+    mounted() {
+    this.$emit("getData", this.breadcrumb);
+  }
 };
 </script>
 <style scoped>
-.source1>div,.source1>div>div{
-margin: 5px;
+.source1 > div,
+.source1 > div > div {
+  margin: 5px;
 }
 </style>
 

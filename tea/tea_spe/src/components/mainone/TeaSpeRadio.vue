@@ -146,7 +146,19 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeRadio"
+  name: "TeaSpeRadio",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "音频管理", to: "" }
+      ]
+    };
+  },
+  mounted() {
+    this.$emit("getData", this.breadcrumb);
+  }
 };
 </script>
 <style scoped>

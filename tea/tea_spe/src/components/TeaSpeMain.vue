@@ -47,67 +47,171 @@
         <div class="main3">
             <img src="../assets/main/liucheng.png" alt="">
         </div>
+        <el-dialog :visible.sync="isTing">
+            <div style="margin:20px;">
+                <table class="table1">
+                    <thead>
+                        <tr>
+                            <th>场景</th>
+                            <th>关卡名称</th>
+                            <th>内容预览</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>机场</td>
+                            <td>入国手续</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>安检与登机</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>免税店</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>电车出行</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>新干线出行</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>入国手续</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>入国手续</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>入国手续</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>入国手续</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>入国手续</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>入国手续</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>入国手续</td>
+                            <td class="btn-lv">
+                                <button>预览</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </el-dialog>
     </div>
 </template>
 <script>
 export default {
-    name: "TeaSpeMain"
+  name: "TeaSpeMain",
+  data(){
+      return{
+          isTing:true
+      }
+  }
 };
 </script>
 <style scoped>
 #mainOne1 {
-    height: 930px;
-    min-width: 800px;
+  height: 930px;
+  min-width: 800px;
 }
 .mainOne2 {
-    height: 50px;
-    min-width: 500px;
+  height: 50px;
+  min-width: 500px;
 }
 .main0 {
-    height: 150px;
-    margin-top: 50px;
+  height: 150px;
+  margin-top: 50px;
 }
 .main0 > div {
-    margin: 10px auto;
+  margin: 10px auto;
 }
 .main1 {
-    margin: 10px;
-    width: 260px;
-    height: 305px;
-    position: relative;
+  margin: 10px;
+  width: 260px;
+  height: 305px;
+  position: relative;
 }
 .main1 > img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 .main2 {
-    margin: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
 }
 .main3 {
-    width: 1080px;
-    height: 140px;
-    margin: 100px auto 0;
+  width: 1080px;
+  height: 140px;
+  margin: 100px auto 0;
 }
 .main3 > img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 .main4 {
-    font-size: 26px;
-    color: #fff;
-    width: 100%;
-    line-height: 35px;
+  font-size: 26px;
+  color: #fff;
+  width: 100%;
+  line-height: 35px;
 }
 .main5 {
-    font-size: 10px;
-    color: #fff;
-    width: 100%;
-    line-height: 16px;
+  font-size: 10px;
+  color: #fff;
+  width: 100%;
+  line-height: 16px;
 }
 </style>
 

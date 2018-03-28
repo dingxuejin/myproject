@@ -71,59 +71,58 @@
                             <el-input></el-input>
                             <span>*</span>
                         </td>
-                       
+
                     </tr>
                     <tr>
                         <td>真实姓名:</td>
                         <td>
                             <el-input></el-input>
-                              <span>*</span>
+                            <span>*</span>
                         </td>
-                        
+
                     </tr>
                     <tr>
                         <td>英文姓名:</td>
                         <td>
                             <el-input></el-input>
                         </td>
-                      
+
                     </tr>
                     <tr>
                         <td>所属班级:</td>
                         <td>
                             <el-select></el-select>
-                              <span>*</span>
+                            <span>*</span>
                         </td>
-                      
-                      
+
                     </tr>
                     <tr>
                         <td>性别:</td>
                         <td>
                             <el-select></el-select>
                         </td>
-                      
+
                     </tr>
                     <tr>
                         <td>手机号码:</td>
                         <td>
                             <el-input></el-input>
                         </td>
-                      
+
                     </tr>
                     <tr>
                         <td>电子邮箱:</td>
                         <td>
                             <el-input></el-input>
                         </td>
-                      
+
                     </tr>
                     <tr>
                         <td>备注:</td>
                         <td>
                             <el-input style="min-height:80px;" type='textarea' autosize></el-input>
                         </td>
-                      
+
                     </tr>
                 </table>
             </div>
@@ -141,44 +140,52 @@
 </template>
 <script>
 export default {
-    name: "TeaSpeStuMag",
-    data() {
-        return {
-            isXiugai: false
-        };
-    }
+  name: "TeaSpeStuMag",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "学生管理", to: "" }
+      ],
+      isXiugai: false
+    };
+  },
+   mounted() {
+    this.$emit("getData", this.breadcrumb);
+  }
 };
 </script>
 <style scoped>
 .containersm {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 .left > div {
-    margin: 0 5px;
+  margin: 0 5px;
 }
-.tanchu1{
-    padding:20px;
+.tanchu1 {
+  padding: 20px;
 }
 .tanchu3 {
-    border-top: 1px solid #e3e3e3;
+  border-top: 1px solid #e3e3e3;
 }
 .tanchu3 button {
-    margin: 20px 10px;
+  margin: 20px 10px;
 }
-.tanchu1>table{
-    width:100%;
-    border:none;
+.tanchu1 > table {
+  width: 100%;
+  border: none;
 }
-.tanchu1 td{
-    border:none;
-    padding:10px;
-    white-space: nowrap;
+.tanchu1 td {
+  border: none;
+  padding: 10px;
+  white-space: nowrap;
 }
-.tanchu1 td:last-child>span{
-    color:red;
+.tanchu1 td:last-child > span {
+  color: red;
 }
-.tanchu1 tr>td:last-child{
-    text-align: left;
+.tanchu1 tr > td:last-child {
+  text-align: left;
 }
 </style>
 

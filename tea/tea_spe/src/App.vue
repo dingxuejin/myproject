@@ -48,14 +48,14 @@ export default {
 .el-main {
   color: #333;
   text-align: center;
-  height: 985px;
+  min-height: 985px;
  
 }
 .aside1{
   position: relative;
   border: #4affff solid 1px;
   box-sizing: border-box;
-  height: 930px;
+  height: 100%;
   border-radius: 10px;
   background: #fff;
 }
