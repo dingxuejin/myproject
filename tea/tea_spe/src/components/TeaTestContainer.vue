@@ -80,25 +80,25 @@ export default {
             {
               liName: "练考赛进度查询",
               goto: {
-                name: "TeaSpeKcjd"
+                name: "TeaTestJindu"
               }
             },
             {
               liName: "练考赛成绩查询",
               goto: {
-                name: "TeaSpeKccj"
+                name: "TeaTestChengji"
               }
             },
             {
               liName: "练考赛成绩统计",
               goto: {
-                name: "TeaSpeKcjg"
+                name: "TeaTestChengjitongji"
               }
             },
             {
               liName: "成绩结果分析",
               goto: {
-                name: "TeaSpeKcjg"
+                name: "TeaTestChengjijieguo"
               }
             }
           ]

@@ -3,7 +3,7 @@
     <div v-for='(item1,index1)  in  nav' :key='index1'>
       <div class='flex-between nav1' v-on:click='toggleUl(index1)'>
         <div class='flex-start'>
-          <img :src='item1.navIcon' alt=''>
+          <img :src='item1.navIcon' alt='' class="icon">
           <span>{{item1.navTitle}}</span>
         </div>
         <div>
@@ -35,6 +35,10 @@
     padding: 10px;
     opacity: 1;
   }
+}
+.icon{
+  width:22px;
+  height:22px;
 }
 .nav {
   border-radius: 10px;
