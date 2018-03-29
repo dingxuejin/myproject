@@ -56,6 +56,7 @@ export default {
     getData(data) {
       this.tabs = data.tabs;
       this.breadcrumb = data.breadcrumb;
+      this.isActive=data.n;
     },
 
     toTab(n) {

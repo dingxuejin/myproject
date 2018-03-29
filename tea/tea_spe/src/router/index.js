@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+import TeaSpeContainer from '@/components/TeaSpeContainer'
 import TeaSpeHeader from '@/components/TeaSpeHeader'
 import TeaSpeMain from '@/components/TeaSpeMain'
 import TeaSpeMainOne from '@/components/TeaSpeMainOne'
@@ -30,37 +32,42 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/header', name: 'TeaSpeHeader', component: TeaSpeHeader },
-    { path: '/teaspe', name: 'TeaSpeMain', component: TeaSpeMain },
     {
-      path: '/mainone', name: 'TeaSpeMainOne', component: TeaSpeMainOne, children: [
-        { path: '/teaspeclassmag', name: 'TeaSpeClassMag', component: TeaSpeClassMag },
-        { path: '/teaspeaddknle', name: 'TeaSpeAddKnle', component: TeaSpeAddKnle },
-        { path: '/teaspefbnk', name: 'TeaSpeFbnk', component: TeaSpeFbnk },
-        { path: '/teasperol', name: 'TeaSpeRol', component: TeaSpeRol },
-        { path: '/teaspesource', name: 'TeaSpeSource', component: TeaSpeSource },
-        { path: '/teaspestumag', name: 'TeaSpeStuMag', component: TeaSpeStuMag },
-        { path: '/teasperadio', name: 'TeaSpeRadio', component: TeaSpeRadio },
-        { path: '/teaspervmag', name: 'TeaSpeRVMag', component: TeaSpeRVMag }
+      path: '/teaspecontainer', name: 'TeaSpeContainer', component: TeaSpeContainer, children: [
+        { path: '/teaspe', name: 'TeaSpeMain', component: TeaSpeMain },
+        {
+          path: '/mainone', name: 'TeaSpeMainOne', component: TeaSpeMainOne, children: [
+            { path: '/teaspeclassmag', name: 'TeaSpeClassMag', component: TeaSpeClassMag },
+            { path: '/teaspeaddknle', name: 'TeaSpeAddKnle', component: TeaSpeAddKnle },
+            { path: '/teaspefbnk', name: 'TeaSpeFbnk', component: TeaSpeFbnk },
+            { path: '/teasperol', name: 'TeaSpeRol', component: TeaSpeRol },
+            { path: '/teaspesource', name: 'TeaSpeSource', component: TeaSpeSource },
+            { path: '/teaspestumag', name: 'TeaSpeStuMag', component: TeaSpeStuMag },
+            { path: '/teasperadio', name: 'TeaSpeRadio', component: TeaSpeRadio },
+            { path: '/teaspervmag', name: 'TeaSpeRVMag', component: TeaSpeRVMag }
+          ]
+        },
+        {
+          path: '/maintwo', name: 'TeaSpeMainTwo', component: TeaSpeMainTwo, children: [
+            { path: '/teaspeting', name: 'TeaSpeTing', component: TeaSpeTing },
+            { path: '/teaspeshuo', name: 'TeaSpeShuo', component: TeaSpeShuo },
+            { path: '/teaspenlcp', name: 'TeaSpeNlcp', component: TeaSpeNlcp },
+            { path: '/teaspecjqz', name: 'TeaSpeCjqz', component: TeaSpeCjqz },
+            { path: '/teaspekcjd', name: 'TeaSpeKcjd', component: TeaSpeKcjd },
+            { path: '/teaspekcjdmx', name: 'TeaSpeKcjdMx', component: TeaSpeKcjdMx },
+            { path: '/teaspekccj', name: 'TeaSpeKccj', component: TeaSpeKccj },
+            { path: '/teaspekcjg', name: 'TeaSpeKcjg', component: TeaSpeKcjg },
+            { path: '/teaspetongzhi', name: 'TeaSpeTongzhi', component: TeaSpeTongzhi },
+            { path: '/teaspeliuyan', name: 'TeaSpeLiuyan', component: TeaSpeLiuyan },
+            { path: '/teaspeshixun', name: 'TeaSpeShixun', component: TeaSpeShixun },
+            { path: '/teaspestushixun', name: 'TeaSpeStushixun', component: TeaSpeStushixun },
+            { path: '/teaspeyou', name: 'TeaSpeYou', component: TeaSpeYou }
+
+          ]
+        }
       ]
     },
-    {
-      path: '/maintwo', name: 'TeaSpeMainTwo', component: TeaSpeMainTwo, children: [
-        { path: '/teaspeting', name: 'TeaSpeTing', component: TeaSpeTing },
-        { path: '/teaspeshuo', name: 'TeaSpeShuo', component: TeaSpeShuo },
-        { path: '/teaspenlcp', name: 'TeaSpeNlcp', component: TeaSpeNlcp },
-        { path: '/teaspecjqz', name: 'TeaSpeCjqz', component: TeaSpeCjqz },
-        { path: '/teaspekcjd', name: 'TeaSpeKcjd', component: TeaSpeKcjd },
-        { path: '/teaspekcjdmx', name: 'TeaSpeKcjdMx', component: TeaSpeKcjdMx },
-        { path: '/teaspekccj', name: 'TeaSpeKccj', component: TeaSpeKccj },
-        { path: '/teaspekcjg', name: 'TeaSpeKcjg', component: TeaSpeKcjg },
-        { path: '/teaspetongzhi', name: 'TeaSpeTongzhi', component: TeaSpeTongzhi },
-        { path: '/teaspeliuyan', name: 'TeaSpeLiuyan', component: TeaSpeLiuyan },
-        { path: '/teaspeshixun', name: 'TeaSpeShixun', component: TeaSpeShixun },
-        { path: '/teaspestushixun', name: 'TeaSpeStushixun', component: TeaSpeStushixun },
-        { path: '/teaspeyou', name: 'TeaSpeYou', component: TeaSpeYou }
+   
 
-      ]
-    }
   ]
 })

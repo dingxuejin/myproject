@@ -250,10 +250,25 @@ export default {
       dialogVisible: false,
       isEl: null,
       classVal: "",
-      option: [1, 2, 3]
+      option: [1, 2, 3],
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "课程结果分析", to: "" }
+      ],
+      tabs: [
+        { name: "课程进度查询", to: "/teaspekcjd" },
+        { name: "课程成绩查询", to: "/teaspekccj" },
+        { name: "课程结果分析", to: "/teaspekcjg" }
+      ]
     };
   },
-  mounted() {},
+  mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    let n = 2;
+    this.$emit("getData", { tabs, breadcrumb, n });
+  },
   watch: {},
   methods: {
     isDialog() {
@@ -366,16 +381,15 @@ export default {
 .rv1 > div > div {
   margin: 0 5px;
 }
-.canvas1{
-  width:900px;
+.canvas1 {
+  width: 900px;
 
-  border:1px solid #E5EDF3;
+  border: 1px solid #e5edf3;
   margin: 30px auto;
 }
-.canvas2{
- align-self: flex-start;
- margin: 10px;
-
+.canvas2 {
+  align-self: flex-start;
+  margin: 10px;
 }
 </style>
 

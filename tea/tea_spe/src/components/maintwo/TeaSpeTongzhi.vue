@@ -5,7 +5,7 @@
       <div class="flex-start rv1">
         <div class="flex-start">
           <div>
-            <span  class="nowrap">班级</span>
+            <span class="nowrap">班级</span>
           </div>
           <div>
             <el-select></el-select>
@@ -51,9 +51,9 @@
             <td>class01</td>
             <td>调课</td>
             <td>周三日语调课</td>
-        
+
             <td>
-             启用
+              启用
             </td>
 
             <td class="btn-lv">
@@ -70,7 +70,26 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeTongzhi"
+  name: "TeaSpeTongzhi",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "通知公告", to: "" }
+      ],
+      tabs: [
+        { name: "通知公告", to: "/teaspetongzhi" },
+        { name: "留言管理", to: "/teaspeliuyan" }
+      ]
+    };
+  },
+  mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    let n = 0;
+    this.$emit("getData", { tabs, breadcrumb, n });
+  }
 };
 </script>
 <style scoped>

@@ -67,7 +67,7 @@
             <td>30</td>
             <td>5</td>
             <td>
-             5
+              5
 
             </td>
             <td>
@@ -88,7 +88,27 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeKccj"
+  name: "TeaSpeKccj",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "课程成绩查询", to: "" }
+      ],
+      tabs: [
+        { name: "课程进度查询", to: "/teaspekcjd" },
+        { name: "课程成绩查询", to: "/teaspekccj" },
+        { name: "课程结果分析", to: "/teaspekcjg" }
+      ]
+    };
+  },
+  mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    let n = 1;
+    this.$emit("getData", { tabs, breadcrumb, n });
+  }
 };
 </script>
 <style scoped>

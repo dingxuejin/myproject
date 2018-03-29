@@ -58,7 +58,7 @@
             <td>1234567</td>
             <td>张三</td>
             <td>知识点回复</td>
-            <td  class="liuyan1">
+            <td class="liuyan1">
               <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae labore dolore modi laudantium aliquid sint ut accusamus ratione, tenetur dolor repudiandae velit inventore, consequuntur eveniet, veniam temporibus perferendis dolores id?</span>
             </td>
             <td>
@@ -79,7 +79,7 @@
             <td>1234567</td>
             <td>张三</td>
             <td>知识点回复</td>
-            <td  class="liuyan1">
+            <td class="liuyan1">
               <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae labore dolore modi laudantium aliquid sint ut accusamus ratione, tenetur dolor repudiandae velit inventore, consequuntur eveniet, veniam temporibus perferendis dolores id?</span>
             </td>
             <td>
@@ -100,7 +100,7 @@
             <td>1234567</td>
             <td>张三</td>
             <td>知识点回复</td>
-            <td  class="liuyan1">
+            <td class="liuyan1">
               <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae labore dolore modi laudantium aliquid sint ut accusamus ratione, tenetur dolor repudiandae velit inventore, consequuntur eveniet, veniam temporibus perferendis dolores id?</span>
             </td>
             <td>
@@ -120,7 +120,26 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeLiuyan"
+  name: "TeaSpeLiuyan",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "留言管理", to: "" }
+      ],
+      tabs: [
+        { name: "通知公告", to: "/teaspetongzhi" },
+        { name: "留言管理", to: "/teaspeliuyan" }
+      ]
+    };
+  },
+  mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    let n = 1;
+    this.$emit("getData", { tabs, breadcrumb, n });
+  }
 };
 </script>
 
@@ -129,8 +148,8 @@ export default {
 .rv1 > div > div {
   margin: 0 5px;
 }
-.liuyan1{
-  max-width:200px;
+.liuyan1 {
+  max-width: 200px;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   -o-text-overflow: ellipsis;

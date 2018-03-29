@@ -53,7 +53,6 @@
               <el-checkbox></el-checkbox>
             </td>
 
-     
             <td>日语一班</td>
             <td>实训报告1</td>
             <td>
@@ -75,7 +74,27 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeShixun"
+  name: "TeaSpeShixun",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "实训作业", to: "" }
+      ],
+      tabs: [
+        { name: "实训作业", to: "/teaspeshixun" },
+        { name: "学生实训作业", to: "/teaspestushixun" },
+        { name: "最优推送", to: "/teaspeyou" }
+      ]
+    };
+  },
+  mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    let n = 0;
+    this.$emit("getData", { tabs, breadcrumb, n });
+  }
 };
 </script>
 

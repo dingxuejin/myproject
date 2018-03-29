@@ -53,7 +53,7 @@
             <td>
               <el-checkbox></el-checkbox>
             </td>
-         
+
             <td>1</td>
             <td>class02</td>
             <td>张三</td>
@@ -63,7 +63,7 @@
               <span>12:12:32</span>
             </td>
             <td>实训作业.xls</td>
-         
+
             <td class="btn-lv">
               <button>下载</button>
               <button>取消推送</button>
@@ -78,7 +78,27 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeYou"
+  name: "TeaSpeYou",
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "学生实训作业", to: "" }
+      ],
+      tabs: [
+        { name: "实训作业", to: "/teaspeshixun" },
+        { name: "学生实训作业", to: "/teaspestushixun" },
+        { name: "最优推送", to: "/teaspeyou" }
+      ]
+    };
+  },
+  mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    let n = 2;
+    this.$emit("getData", { tabs, breadcrumb, n });
+  }
 };
 </script>
 <style scoped>

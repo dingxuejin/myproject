@@ -74,17 +74,31 @@
 <script>
 export default {
   name: "TeaSpeKcjd",
-  mounted(){
-    // let val=document.querySelector('.el-progress-bar__innerText').innerHTML;
-    // document.querySelectorAll('.el-progress-bar__innerText').innerHTML=val.replace('%',"");
-
-    // console.log(val);
+  data() {
+    return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "课程进度查询", to: "" }
+      ],
+      tabs: [
+        { name: "课程进度查询", to: "/teaspekcjd" },
+        { name: "课程成绩查询", to: "/teaspekccj" },
+        { name: "课程结果分析", to: "/teaspekcjg" }
+      ]
+    };
   },
-  methods:{
-    toMingxi(){
+  mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    let n = 0;
+    this.$emit("getData", { tabs, breadcrumb, n });
+  },
+  methods: {
+    toMingxi() {
       this.$router.push({
-        name:'TeaSpeKcjdMx'
-      })
+        name: "TeaSpeKcjdMx"
+      });
     }
   }
 };

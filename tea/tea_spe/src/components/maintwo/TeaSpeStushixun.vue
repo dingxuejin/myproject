@@ -77,7 +77,27 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeStushixun"
+  name: "TeaSpeStushixun",
+  data(){
+       return {
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "口语平台", to: "/teaspe" },
+        { name: "学生实训作业", to: "" }
+      ],
+      tabs: [
+        { name: "实训作业", to: "/teaspeshixun" },
+        { name: "学生实训作业", to: "/teaspestushixun" },
+        { name: "最优推送", to: "/teaspeyou" }
+      ]
+    };
+  },
+    mounted() {
+    let tabs = this.tabs;
+    let breadcrumb = this.breadcrumb;
+    let n = 1;
+    this.$emit("getData", { tabs, breadcrumb, n });
+  }
 };
 </script>
 

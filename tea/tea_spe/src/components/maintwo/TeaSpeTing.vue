@@ -407,7 +407,8 @@ export default {
   mounted() {
     let tabs = this.tabs;
     let breadcrumb = this.breadcrumb;
-    this.$emit("getData", { tabs, breadcrumb });
+    let n = 0;
+    this.$emit("getData", { tabs, breadcrumb, n });
   }
 };
 </script>
