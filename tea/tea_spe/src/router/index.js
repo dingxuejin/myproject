@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// 公用部分
+import TeaMainOne from '@/components/TeaMainOne'
+import TeaMainTwo from '@/components/TeaMainTwo'
 
+// 口语平台部分
 import TeaSpeContainer from '@/components/TeaSpeContainer'
-import TeaSpeHeader from '@/components/TeaSpeHeader'
 import TeaSpeMain from '@/components/TeaSpeMain'
-import TeaSpeMainOne from '@/components/TeaSpeMainOne'
-import TeaSpeMainTwo from '@/components/TeaSpeMainTwo'
 import TeaSpeClassMag from '@/components/mainone/TeaSpeClassMag'
 import TeaSpeAddKnle from '@/components/mainone/TeaSpeAddKnle'
 import TeaSpeFbnk from '@/components/mainone/TeaSpeFbnk'
@@ -27,16 +28,48 @@ import TeaSpeLiuyan from '@/components/maintwo/TeaSpeLiuyan'
 import TeaSpeShixun from '@/components/maintwo/TeaSpeShixun'
 import TeaSpeStushixun from '@/components/maintwo/TeaSpeStushixun'
 import TeaSpeYou from '@/components/maintwo/TeaSpeYou'
+// 亿测吧部分
+import TeaTestContainer from '@/components/TeaTestContainer'
+import TeaTestClassMag from '@/components/mainone/TeaTestClassMag'
+import TeaTestStuMag from '@/components/mainone/TeaTestStuMag'
+import TeaTestHdxx from '@/components/maintwo/TeaTestHdxx'
+import TeaTestJingsai from '@/components/maintwo/TeaTestJingsai'
+import TeaTestXtyy from '@/components/maintwo/TeaTestXtyy'
+import TeaTestZtyl from '@/components/maintwo/TeaTestZtyl'
+import TeaTestZxnl from '@/components/maintwo/TeaTestZxnl'
+
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+     // 亿测吧部分
+     {
+      path: '/teatestcontainer', name: 'TeaTestContainer', component: TeaTestContainer,children:[
+        {
+          path: '/mainone', name: 'TeaMainOne', component: TeaMainOne, children:[
+            { path: '/teatestclassmag', name: 'TeaTestClassMag', component: TeaTestClassMag },
+            { path: '/teatestxtyy', name: 'TeaTestXtyy', component: TeaTestXtyy },
+            { path: '/teatestztyl', name: 'TeaTestZtyl', component: TeaTestZtyl },
+            { path: '/teatestzxnl', name: 'TeaTestZxnl', component: TeaTestZxnl },
+            { path: '/teateststumag', name: 'TeaTestStuMag', component: TeaTestStuMag }
+          ] 
+        },
+        {
+          path: '/maintwo', name: 'TeaMainTwo', component: TeaMainTwo, children:[
+            { path: '/teatesthdxx', name: 'TeaTestHdxx', component: TeaTestHdxx },
+            { path: '/teatestjingsai', name: 'TeaTestJingsai', component: TeaTestJingsai }
+          ] 
+        }
+      ]
+    },
+    // 口语平台部分
+ 
     {
       path: '/teaspecontainer', name: 'TeaSpeContainer', component: TeaSpeContainer, children: [
         { path: '/teaspe', name: 'TeaSpeMain', component: TeaSpeMain },
         {
-          path: '/mainone', name: 'TeaSpeMainOne', component: TeaSpeMainOne, children: [
+          path: '/mainone', name: 'TeaMainOne', component: TeaMainOne, children: [
             { path: '/teaspeclassmag', name: 'TeaSpeClassMag', component: TeaSpeClassMag },
             { path: '/teaspeaddknle', name: 'TeaSpeAddKnle', component: TeaSpeAddKnle },
             { path: '/teaspefbnk', name: 'TeaSpeFbnk', component: TeaSpeFbnk },
@@ -48,7 +81,7 @@ export default new Router({
           ]
         },
         {
-          path: '/maintwo', name: 'TeaSpeMainTwo', component: TeaSpeMainTwo, children: [
+          path: '/maintwo', name: 'TeaMainTwo', component: TeaMainTwo, children: [
             { path: '/teaspeting', name: 'TeaSpeTing', component: TeaSpeTing },
             { path: '/teaspeshuo', name: 'TeaSpeShuo', component: TeaSpeShuo },
             { path: '/teaspenlcp', name: 'TeaSpeNlcp', component: TeaSpeNlcp },
@@ -66,8 +99,6 @@ export default new Router({
           ]
         }
       ]
-    },
-   
-
+    }
   ]
 })

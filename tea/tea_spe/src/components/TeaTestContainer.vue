@@ -26,7 +26,7 @@
 import TeaHeader from "./TeaHeader.vue";
 import TeaNav from "./TeaNav.vue";
 export default {
-  name: "TeaSpeContainer",
+  name: "TeaTestContainer",
   data() {
     return {
       nav: [
@@ -37,66 +37,66 @@ export default {
             {
               liName: "班级管理",
               goto: {
-                name: "TeaSpeClassMag"
+                name: "TeaTestClassMag"
               }
             },
             {
               liName: "学生管理",
               goto: {
-                name: "TeaSpeStuMag"
+                name: "TeaTestStuMag"
               }
             }
           ]
         },
 
         {
-          navIcon: require("../assets/nav/kechengshezhi.png"),
-          navTitle: "课程设置",
+          navIcon: require("../assets/nav/liankaosai.png"),
+          navTitle: "练考赛设置",
           navArray: [
             {
-              liName: "听一听",
+              liName: "专线能力设置",
               goto: {
-                name: "TeaSpeTing"
+                name: "TeaTestZxnl"
               }
             },
             {
-              liName: "说一说",
+              liName: "真题演练设置",
               goto: {
-                name: "TeaSpeShuo"
+                name: "TeaTestZtyl"
               }
             },
             {
-              liName: "能力测评设置",
+              liName: "竞赛设置",
               goto: {
-                name: "TeaSpeNlcp"
-              }
-            },
-            {
-              liName: "成绩权重设置",
-              goto: {
-                name: "TeaSpeCjqz"
+                name: "TeaTestJingsai"
               }
             }
           ]
         },
         {
-          navIcon: require("../assets/nav/kechengchengji.png"),
-          navTitle: "课程成绩与分析",
+          navIcon: require("../assets/nav/jindu.png"),
+          navTitle: "练考赛进度与成绩",
           navArray: [
             {
-              liName: "课程进度查询",
+              liName: "练考赛进度查询",
               goto: {
                 name: "TeaSpeKcjd"
               }
             },
             {
-              liName: "课程成绩查询",
+              liName: "练考赛成绩查询",
               goto: {
                 name: "TeaSpeKccj"
               }
             },
             {
-              liName: "课程结果分析",
+              liName: "练考赛成绩统计",
+              goto: {
+                name: "TeaSpeKcjg"
+              }
+            },
+            {
+              liName: "成绩结果分析",
               goto: {
                 name: "TeaSpeKcjg"
               }
@@ -104,29 +104,47 @@ export default {
           ]
         },
         {
-          navIcon: require("../assets/nav/yinshipinguanli.png"),
-          navTitle: "音视频管理",
+          navIcon: require("../assets/nav/guanli.png"),
+          navTitle: "管理中心",
           navArray: [
             {
-              liName: "音频管理",
+              liName: "互动信息管理",
               goto: {
-                name: "TeaSpeRadio"
+                name: "TeaTestHdxx"
               }
             },
             {
-              liName: "配音视频管理",
+              liName: "系统语言设置",
               goto: {
-                name: "TeaSpeRVMag"
+                name: "TeaTestXtyy"
               }
             }
           ]
         },
         {
-          navIcon: require("../assets/nav/jiaoxueziyuan.png"),
-          navTitle: "教学资源管理",
+          navIcon: require("../assets/nav/yunxingtiku.png"),
+          navTitle: "运行题库管理",
           navArray: [
             {
-              liName: "教学资源管理",
+              liName: "选择题",
+              goto: {
+                name: "TeaSpeSource"
+              }
+            },
+            {
+              liName: "判断题",
+              goto: {
+                name: "TeaSpeSource"
+              }
+            },
+            {
+              liName: "翻译题",
+              goto: {
+                name: "TeaSpeSource"
+              }
+            },
+            {
+              liName: "填空题",
               goto: {
                 name: "TeaSpeSource"
               }
@@ -134,8 +152,8 @@ export default {
           ]
         },
         {
-          navIcon: require("../assets/nav/keneizhishitianjiao.png"),
-          navTitle: "课内知识添加管理",
+          navIcon: require("../assets/nav/juanzu.png"),
+          navTitle: "组卷管理",
           navArray: [
             {
               liName: "课内资源添加",
@@ -150,49 +168,9 @@ export default {
               }
             }
           ]
-        },
-        {
-          navIcon: require("../assets/nav/hudongxinxi.png"),
-          navTitle: "互动信息管理",
-          navArray: [
-            {
-              liName: "通知公告",
-              goto: {
-                name: "TeaSpeTongzhi"
-              }
-            },
-            {
-              liName: "留言管理",
-              goto: {
-                name: "TeaSpeLiuyan"
-              }
-            }
-          ]
-        },
-        {
-          navIcon: require("../assets/nav/shixunguanli.png"),
-          navTitle: "实训管理",
-          navArray: [
-            {
-              liName: "实训作业",
-              goto: {
-                name: "TeaSpeShixun"
-              }
-            },
-            {
-              liName: "学生实训作业",
-              goto: {
-                name: "TeaSpeStushixun"
-              }
-            },
-            {
-              liName: "最优推送",
-              goto: {
-                name: "TeaSpeYou"
-              }
-            }
-          ]
         }
+     
+       
       ]
     };
   },
