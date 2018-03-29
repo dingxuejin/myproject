@@ -59,13 +59,11 @@ export default new Router({
         {
           path: '/mainone', name: 'TeaMainOne', component: TeaMainOne, children:[
             { path: '/teatestclassmag', name: 'TeaTestClassMag', component: TeaTestClassMag },
-            { path: '/teatestxtyy', name: 'TeaTestXtyy', component: TeaTestXtyy },
-          
+        
             { path: '/teatestfanyi', name: 'TeaTestFanyi', component: TeaTestFanyi },
             { path: '/teatestpanduan', name: 'TeaTestPanduan', component: TeaTestPanduan },
             { path: '/teatesttiankong', name: 'TeaTestTiankong', component: TeaTestTiankong },
             { path: '/teatestxuanze', name: 'TeaTestXuanze', component: TeaTestXuanze },
-           
             { path: '/teatestjuanzu', name: 'TeaTestJuanzu', component: TeaTestJuanzu },
             { path: '/teateststumag', name: 'TeaTestStuMag', component: TeaTestStuMag }
           ] 
@@ -77,6 +75,7 @@ export default new Router({
             { path: '/teatestchengjijieguo', name: 'TeaTestChengjijieguo', component: TeaTestChengjijieguo },
             { path: '/teatestjindu', name: 'TeaTestJindu', component: TeaTestJindu },
             { path: '/teatestchengji', name: 'TeaTestChengji', component: TeaTestChengji },
+            { path: '/teatestxtyy', name: 'TeaTestXtyy', component: TeaTestXtyy },
             { path: '/teatestzxnl', name: 'TeaTestZxnl', component: TeaTestZxnl },
             { path: '/teatestztyl', name: 'TeaTestZtyl', component: TeaTestZtyl },
             { path: '/teatestjingsai', name: 'TeaTestJingsai', component: TeaTestJingsai }

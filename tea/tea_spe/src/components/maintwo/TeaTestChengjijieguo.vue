@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeKcjd",
+  name: "TeaTestChengjijieguo",
   data() {
     return {
       breadcrumb: [
@@ -26,13 +26,6 @@ export default {
     let breadcrumb = this.breadcrumb;
     let n = 3;
     this.$emit("getData", { tabs, breadcrumb, n });
-  },
-  methods: {
-    toMingxi() {
-      this.$router.push({
-        name: "TeaSpeKcjdMx"
-      });
-    }
   }
 };
 </script>

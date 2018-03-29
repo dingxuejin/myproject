@@ -99,7 +99,7 @@ export default {
 #mainOne1 .mainTwo8 {
   z-index: 2;
   position: relative;
-  bottom: -1px;
+  bottom: -2px;
 }
 #mainOne1 .mainTwo8 > div {
   height: 55px;
