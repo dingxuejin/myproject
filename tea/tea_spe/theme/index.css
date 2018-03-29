@@ -3808,8 +3808,8 @@
     margin: 0; }
   .el-dialog__header {
     text-align:left;
-    height:55px;
-    background:#009EFD;
+    /* height:55px;
+    background:#009EFD; */
      }
   .el-dialog__headerbtn {
     position: absolute;
@@ -3821,8 +3821,8 @@
     outline: none;
     cursor: pointer;
     font-size: 32px; }
-    .el-dialog__headerbtn .el-dialog__close {
-      color: #fff; }
+    /* .el-dialog__headerbtn .el-dialog__close {
+      color: #fff; } */
     .el-dialog__headerbtn:focus .el-dialog__close, .el-dialog__headerbtn:hover .el-dialog__close {
       color: #409EFF; }
   .el-dialog__title {

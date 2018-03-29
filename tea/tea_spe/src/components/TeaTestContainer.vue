@@ -1,6 +1,6 @@
 <template>
   <div>
-       <el-container>
+    <el-container>
       <el-header height='90px'>
         <tea-header></tea-header>
       </el-header>
@@ -128,25 +128,25 @@ export default {
             {
               liName: "选择题",
               goto: {
-                name: "TeaSpeSource"
+                name: "TeaTestXuanze"
               }
             },
             {
               liName: "判断题",
               goto: {
-                name: "TeaSpeSource"
+                name: "TeaTestPanduan"
               }
             },
             {
               liName: "翻译题",
               goto: {
-                name: "TeaSpeSource"
+                name: "TeaTestFanyi"
               }
             },
             {
               liName: "填空题",
               goto: {
-                name: "TeaSpeSource"
+                name: "TeaTestTiankong"
               }
             }
           ]
@@ -156,21 +156,13 @@ export default {
           navTitle: "组卷管理",
           navArray: [
             {
-              liName: "课内资源添加",
+              liName: "卷组管理",
               goto: {
-                name: "TeaSpeAddKnle"
-              }
-            },
-            {
-              liName: "课内习题添加",
-              goto: {
-                name: "TeaSpeFbnk"
+                name: "TeaTestJuanzu"
               }
             }
           ]
         }
-     
-       
       ]
     };
   },
@@ -178,9 +170,13 @@ export default {
 };
 </script>
 <style>
-.el-dialog__header{
+.el-dialog__header {
   background-image: url(../assets/header/pg.png);
   background-size: 100% 100%;
+  height: 55px;
+}
+.el-dialog__headerbtn .el-dialog__close {
+  color: #fff;
 }
 .el-container {
   background: url(../assets/rongqi/bg.png);

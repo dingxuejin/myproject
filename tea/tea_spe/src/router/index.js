@@ -32,6 +32,11 @@ import TeaSpeYou from '@/components/maintwo/TeaSpeYou'
 import TeaTestContainer from '@/components/TeaTestContainer'
 import TeaTestClassMag from '@/components/mainone/TeaTestClassMag'
 import TeaTestStuMag from '@/components/mainone/TeaTestStuMag'
+import TeaTestFanyi from '@/components/mainone/TeaTestFanyi'
+import TeaTestPanduan from '@/components/mainone/TeaTestPanduan'
+import TeaTestTiankong from '@/components/mainone/TeaTestTiankong'
+import TeaTestXuanze from '@/components/mainone/TeaTestXuanze'
+import TeaTestJuanzu from '@/components/mainone/TeaTestJuanzu'
 import TeaTestHdxx from '@/components/maintwo/TeaTestHdxx'
 import TeaTestJingsai from '@/components/maintwo/TeaTestJingsai'
 import TeaTestXtyy from '@/components/maintwo/TeaTestXtyy'
@@ -51,7 +56,12 @@ export default new Router({
             { path: '/teatestclassmag', name: 'TeaTestClassMag', component: TeaTestClassMag },
             { path: '/teatestxtyy', name: 'TeaTestXtyy', component: TeaTestXtyy },
             { path: '/teatestztyl', name: 'TeaTestZtyl', component: TeaTestZtyl },
+            { path: '/teatestfanyi', name: 'TeaTestFanyi', component: TeaTestFanyi },
+            { path: '/teatestpanduan', name: 'TeaTestPanduan', component: TeaTestPanduan },
+            { path: '/teatesttiankong', name: 'TeaTestTiankong', component: TeaTestTiankong },
+            { path: '/teatestxuanze', name: 'TeaTestXuanze', component: TeaTestXuanze },
             { path: '/teatestzxnl', name: 'TeaTestZxnl', component: TeaTestZxnl },
+            { path: '/teatestjuanzu', name: 'TeaTestJuanzu', component: TeaTestJuanzu },
             { path: '/teateststumag', name: 'TeaTestStuMag', component: TeaTestStuMag }
           ] 
         },

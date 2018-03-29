@@ -200,9 +200,13 @@ export default {
 };
 </script>
 <style>
-.el-dialog__header{
+.el-dialog__header {
   background-image: url(../assets/header/pg.png);
   background-size: 100% 100%;
+  height: 55px;
+}
+.el-dialog__headerbtn .el-dialog__close {
+  color: #fff;
 }
 .el-container {
   background: url(../assets/rongqi/bg.png);

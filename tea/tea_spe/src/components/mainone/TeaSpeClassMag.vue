@@ -140,9 +140,7 @@ export default {
       isChaxun: false
     };
   },
-  updated() {
-   
-  },
+  updated() {},
   mounted() {
     this.$emit("getData", this.breadcrumb);
   }
