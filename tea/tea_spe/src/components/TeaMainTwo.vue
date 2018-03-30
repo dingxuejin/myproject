@@ -8,7 +8,7 @@
     </div>
     <div class="mainTwo8 flex-start">
       <div :class='{active:index===isActive}' v-for="(item,index) in tabs" :key="index" @click="toTab(index)">
-        <span> {{item.name}}</span>
+        <span class="nowrap"> {{item.name}}</span>
       </div>
 
     </div>

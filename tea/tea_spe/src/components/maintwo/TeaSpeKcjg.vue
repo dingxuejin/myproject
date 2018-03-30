@@ -234,7 +234,7 @@
         <div id="container" style="width:800px;height:400px;">
         </div>
         <div class="canvas2">
-          <img src="../../assets/teaspe/teaspeqiehuan.png" alt="">
+          <img src="../../assets/teaspe/teaspeqiehuan.png" alt="" @click=" qiehuan(isQiehuan)">
         </div>
       </div>
 
@@ -249,6 +249,7 @@ export default {
     return {
       dialogVisible: false,
       isEl: null,
+      isQiehuan: false,
       classVal: "",
       option: [1, 2, 3],
       breadcrumb: [
@@ -284,10 +285,111 @@ export default {
         }
       }, 300);
     },
+    qiehuan(e) {
+      if (e) {
+        this.drawbar();
+      } else {
+         this.drawLine();
+      }
+      this.isQiehuan=!e;
+    },
+    drawbar() {
+      let el = this.isEl;
+      if (el) {
+        let myChart = this.$echarts.init(el);
+        var app = {},
+          option = null;
+        option = {
+             color: [
+            "#119CFC",
+            "#FEDE00",
+            "#FF9701",
+            "#F9003B",
+            "#00D06C",
+            "#FFE680"
+          ],
+          title: {
+            left:'50%',
+            text: "班级前十成绩统计表"
+          },
+          tooltip: {
+            trigger: "axis"
+          },
+          // legend: {
+          //   data: ["孙洪江班"]
+          // },
+          toolbox: {
+            show: true,
+            feature: {
+              dataView: { show: true, readOnly: false },
+              magicType: { show: true, type: ["line", "bar"] },
+              restore: { show: true },
+              saveAsImage: { show: true }
+            }
+          },
+          calculable: true,
+          xAxis: [
+         
+            {
+              type: "category",
+              data: [
+                "洪江安抚",
+                "洪江撒地",
+                "洪江撒地",
+                "洪江啊啊",
+                "洪江05",
+                "洪江06",
+                "洪江07",
+                "洪江08",
+                "洪江09",
+                "洪江10"
+              ]
+            }
+          ],
+          yAxis: [
+            {
+              type: "value"
+            }
+          ],
+          series: [
+            {
+              barCategoryGap:'35%',
+              name: "孙洪江班",
+              type: "bar",
+              data: [
+               100,
+                90,
+                80,
+                70,
+                60,
+                50,
+                40,
+                30,
+                20,
+                10
+              ],
+              markPoint: {
+                data: [
+                  { type: "max", name: "最大值" },
+                  { type: "min", name: "最小值" }
+                ]
+              },
+              markLine: {
+                data: [{ type: "average", name: "平均值" }]
+              }
+            }
+          ]
+        };
+        if (option && typeof option === "object") {
+          myChart.setOption(option, true);
+        }
+      }
+    },
     drawLine() {
       // 基于准备好的dom，初始化echarts实例
       let el = this.isEl;
       if (el) {
+        this.isQiehuan = true;
         let myChart = this.$echarts.init(el);
         // 绘制图表
         var app = {};

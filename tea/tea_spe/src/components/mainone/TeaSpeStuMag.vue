@@ -120,7 +120,7 @@
                     <tr>
                         <td>备注:</td>
                         <td>
-                            <el-input style="min-height:80px;" type='textarea' autosize></el-input>
+                            <el-input  type="textarea" rows="4" autosize='{ minRows:4, maxRows: 6 }'></el-input>
                         </td>
 
                     </tr>

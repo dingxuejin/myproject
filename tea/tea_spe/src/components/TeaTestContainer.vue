@@ -179,7 +179,7 @@ export default {
   color: #fff;
 }
 .el-container {
-  background: url(../assets/rongqi/bg.png);
+  background: url(../assets/rongqi/teatestbg.png);
   background-size: 100% 100%;
 }
 .el-aside {
