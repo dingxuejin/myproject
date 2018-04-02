@@ -84,7 +84,7 @@ export default {
       breadcrumb: [
         { name: "首页", to: "/" },
         { name: "口语平台", to: "/teaspe" },
-        { name: "学生实训作业", to: "" }
+        { name: "最优推送", to: "" }
       ],
       tabs: [
         { name: "实训作业", to: "/teaspeshixun" },

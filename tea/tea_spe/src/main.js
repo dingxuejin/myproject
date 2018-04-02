@@ -4,11 +4,27 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
+
+import echarts from 'echarts';
+import 'vue-weui-ueditor/dist/vue-weui-ueditor.min.css';
 import '../theme/index.css';
 import '../static/normalize.css';
+import '../static/teaspepublic.css';
 import '../static/teaspetable.css';
 import '../static/button.css';
-import echarts from 'echarts'
+
+
+import VueQuillEditor from 'vue-quill-editor'
+ 
+// require styles
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
+Vue.use(VueQuillEditor, /* { default global options } */)
+
+ 
+
 
 
 
@@ -20,6 +36,6 @@ Vue.prototype.$echarts = echarts
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: { App},
   template: '<App/>'
 })

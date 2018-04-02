@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex-between containersm">
+        <div class="flex-between">
             <div class="left flex-start">
                 <div>
                     <span class="nowrap">班级:</span>
@@ -157,9 +157,7 @@ export default {
 };
 </script>
 <style scoped>
-.containersm {
-  margin: 10px 0;
-}
+
 .left > div {
   margin: 0 5px;
 }

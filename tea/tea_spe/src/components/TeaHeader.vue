@@ -39,6 +39,7 @@
     padding: 20px;
     box-sizing: border-box;
     border-bottom: 5px solid #1b62d4;
+    overflow: hidden;
 }
 .header2 {
     width: 350px;

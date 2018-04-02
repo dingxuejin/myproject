@@ -1,6 +1,6 @@
 <template>
   <div>
-       <el-container>
+    <el-container>
       <el-header height='90px'>
         <tea-header></tea-header>
       </el-header>
@@ -199,15 +199,8 @@ export default {
   components: { TeaHeader, TeaNav }
 };
 </script>
-<style>
-.el-dialog__header {
-  background-image: url(../assets/header/pg.png);
-  background-size: 100% 100%;
-  height: 55px;
-}
-.el-dialog__headerbtn .el-dialog__close {
-  color: #fff;
-}
+<style scoped>
+
 .el-container {
   background: url(../assets/rongqi/teaspebg.png);
   background-size: 100% 100%;

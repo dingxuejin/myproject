@@ -38,7 +38,7 @@
 
       </div>
       <div class="btn-lan nowrap">
-        <button>返回</button>
+        <button @click="back()">返回</button>
       </div>
     </div>
     <div style="marginTop:10px;">
@@ -205,7 +205,12 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeKcjdMx"
+  name: "TeaSpeKcjdMx",
+  methods:{
+    back(){
+      this.$router.go(-1);
+    }
+  }
 };
 </script>
 

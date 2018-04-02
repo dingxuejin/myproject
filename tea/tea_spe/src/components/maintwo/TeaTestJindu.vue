@@ -1,6 +1,110 @@
 <template>
   <div>
-      练考赛进度查询
+      <!-- 练考赛进度查询 -->
+        <div class="flex-start zxnl1">
+      <div class="flex-start">
+        <div>
+          <span class="nowrap">学生姓名</span>
+        </div>
+        <div>
+          <el-input></el-input>
+        </div>
+      </div>
+      <div class="flex-start">
+        <div>
+          <span class="nowrap">学生学号</span>
+        </div>
+        <div>
+          <el-input></el-input>
+        </div>
+      </div>
+    </div>
+    <div class="flex-between">
+      <div class="flex-start">
+        <div class="flex-start zxnl1 zxnl2">
+          <div>
+            <span class="nowrap">班级:</span>
+          </div>
+          <div>
+            <el-select></el-select>
+          </div>
+        </div>
+        <div class="flex-start zxnl1 zxnl2">
+          <div>
+            <span class="nowrap">模块选择:</span>
+          </div>
+          <div>
+            <el-select></el-select>
+          </div>
+        </div>
+        <div class="flex-start zxnl1 zxnl2">
+          <div>
+            <span class="nowrap">内容选择:</span>
+          </div>
+          <div>
+            <el-select></el-select>
+          </div>
+        </div>
+        <div class="flex-start zxnl1 zxnl2">
+          <div>
+            <span class="nowrap">快别:</span>
+          </div>
+          <div>
+            <el-select></el-select>
+          </div>
+        </div>
+      </div>
+      <div class="flex-end btn-lan">
+        <button>查询</button>
+      </div>
+    </div>
+    <div>
+      <table class="table1">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>模块名称</th>
+            <th>级别</th>
+            <th>内容模块</th>
+            <th>状态</th>
+            <th>操作</th>
+            <th>答题进度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>101</td>
+            <td>stu01</td>
+            <td>J-test</td>
+            <td>A-D</td>
+            <td>语法</td>
+            <td>已提交</td>
+            <td class="btn-lv">
+              <button>恢复作答</button>
+              <button>查看作答</button>
+            </td>
+            <td>70/100</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>103</td>
+            <td>stu01</td>
+            <td>能力考</td>
+            <td>N1</td>
+            <td>语法</td>
+            <td>已提交</td>
+            <td class="btn-lv">
+              <button>恢复作答</button>
+              <button>查看作答</button>
+            </td>
+            <td>70/100</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 <script>
@@ -29,3 +133,12 @@ export default {
   }
 };
 </script>
+<style scoped>
+.zxnl1 > div,
+.zxnl1 > div > div {
+  margin: 5px;
+}
+.zxnl2 {
+  width: 20%;
+}
+</style>

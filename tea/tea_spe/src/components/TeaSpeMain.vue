@@ -2,7 +2,7 @@
     <div id="mainOne1">
         <div class="mainOne2 flex-start">
             <el-breadcrumb separator='>>'>
-                <el-breadcrumb-item :to="{ path: '/teaspe' }">首页</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item>口语平台</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -16,28 +16,28 @@
         </div>
         <div class="flex-center" >
             <div class="main1" @click="isKan=true">
-                <img src="../assets/main/kan.png" alt="">
+                <img src="../assets/main/teaspekan.png" alt="">
                 <div class="main2">
                     <div class="main4">看一看</div>
                     <div class="main5">40个知识点</div>
                 </div>
             </div>
             <div class="main1" @click="isTing=true">
-                <img src="../assets/main/ting.png" alt="">
+                <img src="../assets/main/teaspeting.png" alt="">
                 <div class="main2">
                     <div class="main4">听一听</div>
                     <div class="main5">40个内容</div>
                 </div>
             </div>
             <div class="main1" @click="isShuo=true">
-                <img src="../assets/main/shuo.png" alt="">
+                <img src="../assets/main/teaspeshuo.png" alt="">
                 <div class="main2">
                     <div class="main4">说一说</div>
                     <div class="main5">26个案例</div>
                 </div>
             </div>
             <div class="main1" @click="isNlcp=true">
-                <img src="../assets/main/ceshi.png" alt="">
+                <img src="../assets/main/teaspeceshi.png" alt="">
                 <div class="main2">
                     <div class="main4">能力测评</div>
                     <div class="main5">3份试卷</div>
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="main3">
-            <img src="../assets/main/liucheng.png" alt="">
+            <img src="../assets/main/teaspeliucheng.png" alt="">
         </div>
         <el-dialog :visible.sync="isTing" title="听一听">
             <div style="margin:20px;">
@@ -637,7 +637,7 @@ export default {
           isTing:false,
           isShuo:false,
           isKan:false,
-          isNlcp:true
+          isNlcp:false
       }
   }
 };

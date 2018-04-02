@@ -1,7 +1,7 @@
 <template>
-    <div class="containerClass">
-        <div class="maincm">
-            <div class="left flex-between">
+    <div>
+        <div class="flex-between">
+            <div class="left flex-start">
                 <div>
                     <span>班级名称:</span>
                 </div>
@@ -134,7 +134,7 @@ export default {
       breadcrumb: [
         { name: "首页", to: "/" },
         { name: "口语平台", to: "/teaspe" },
-        { name: "教学管理", to: "" }
+        { name: "班级管理", to: "" }
       ],
       isXiugai: false,
       isChaxun: false
@@ -147,15 +147,9 @@ export default {
 };
 </script>
 <style scoped>
-.containerClass {
-  min-width: 670px;
-}
-.maincm {
-  display: flex;
-  justify-content: space-between;
-}
+
 .left > div {
-  margin: 5px;
+  margin:0 5px;
 }
 .tanchu2,
 .tanchu4 {
