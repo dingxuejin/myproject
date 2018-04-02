@@ -1,0 +1,77 @@
+.table{
+    padding:0 20px;
+  }
+  table,
+  td,
+  th {
+  border: 1px solid #d4edfc;
+  border-collapse: collapse;
+  height: 50px;
+  }
+  table {
+  width: 100%;
+  }
+  td{
+    font-size: 12px;
+    text-align: center;
+  }
+  th {
+  font-size: 12px;
+  }
+  thead,
+  tr {
+  background: #f6fbfe;
+  }
+  tbody > tr:nth-child(2n + 1) {
+  background: #fff;
+  }
+  /* table tbody tr:hover {
+  background: #d4edfc;
+  } */
+
+  td button{
+    width: 90px;
+    height: 36px;
+    color: #FFF;
+    background-image: url("./images/classmanage/greenbutton.png");
+    background-size: 100% 100%;
+    border: none;
+    box-sizing: border-box;
+  }
+  
+
+
+  table,th,td{
+    border-collapse: collapse;
+    border:1px solid #B2E2FC;
+  }
+  
+  
+  .table1{
+    padding:0 20px;
+  }
+  table1,
+  .table1 td,
+  .table1 th {
+  border: 1px solid #d4edfc;
+  border-collapse: collapse;
+  height: 50px;
+  }
+  .table1 {
+  width: 100%;
+  }
+  .table1 td{
+    font-size: 12px;
+    text-align: center;
+    min-width:100px;
+  }
+  .table1 th {
+  font-size: 12px;
+  }
+  .table1 thead,
+  .table1 tr {
+  background: #f6fbfe;
+  }
+  /* .table1 tbody > tr:nth-child(2n + 1) {
+  background: #fff;
+  } */
