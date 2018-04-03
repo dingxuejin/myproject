@@ -2,6 +2,7 @@
   <div>
     <!-- 课程成绩查询页面 -->
     <div class="flex-between">
+
       <div class="flex-start rv1">
         <div class="flex-start">
           <div>
@@ -11,6 +12,7 @@
             <el-select></el-select>
           </div>
         </div>
+
         <div class="flex-start">
           <div>
             <span class="nowrap">学生姓名</span>
@@ -28,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="btn-lan nowrap">
+      <div class="btn-lan nowrap flex-end">
         <button>查询</button>
         <button>重新计算</button>
         <button>保存</button>
@@ -36,7 +38,9 @@
         <button>导出EXCEL</button>
         <button>查看报表</button>
       </div>
+
     </div>
+
     <div style="marginTop:10px;" class="table0">
       <table class="table1">
         <thead>
@@ -118,6 +122,9 @@ export default {
 .rv1 > div,
 .rv1 > div > div {
   margin: 0 5px;
+}
+.rv1{
+  width:600px;
 }
 </style>
 

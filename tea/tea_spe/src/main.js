@@ -3,18 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import ElementUI from 'element-ui';
+import store from './store'
 
-import echarts from 'echarts';
-import 'vue-weui-ueditor/dist/vue-weui-ueditor.min.css';
-import '../theme/index.css';
-import '../static/normalize.css';
-import '../static/teaspepublic.css';
-import '../static/teaspetable.css';
-import '../static/button.css';
-
-
+import axios from 'axios'
+import i18n from './i18n'
+import ElementUI from 'element-ui'
+import echarts from 'echarts'
+import '../theme/index.css'
+import '../static/normalize.css'
 import VueQuillEditor from 'vue-quill-editor'
+
  
 // require styles
 import 'quill/dist/quill.core.css'
@@ -29,13 +27,23 @@ Vue.use(VueQuillEditor, /* { default global options } */)
 
 
 Vue.config.productionTip = false
-Vue.use(ElementUI);
+Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts
+Vue.prototype.$axios=axios
+axios.defaults.baseURL='http://hh.fruitsshop.cn'
+
+
+
 
 /* eslint-disable no-new */
 new Vue({
+  mounted(){
+    console.log(store.state.locale)
+  },
   el: '#app',
   router,
+  store,
+  i18n,
   components: { App},
   template: '<App/>'
 })

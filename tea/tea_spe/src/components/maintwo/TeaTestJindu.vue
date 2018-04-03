@@ -1,7 +1,7 @@
 <template>
   <div>
-      <!-- 练考赛进度查询 -->
-        <div class="flex-start zxnl1">
+    <!-- 练考赛进度查询 -->
+    <div class="flex-start zxnl1">
       <div class="flex-start">
         <div>
           <span class="nowrap">学生姓名</span>
@@ -83,7 +83,7 @@
             <td>语法</td>
             <td>已提交</td>
             <td class="btn-lv">
-              <button>恢复作答</button>
+              <button @click="isHfzd=true">恢复作答</button>
               <button>查看作答</button>
             </td>
             <td>70/100</td>
@@ -97,13 +97,34 @@
             <td>语法</td>
             <td>已提交</td>
             <td class="btn-lv">
-              <button>恢复作答</button>
+              <button @click="isHfzd=true">恢复作答</button>
               <button>查看作答</button>
             </td>
             <td>70/100</td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div>
+      <el-dialog :visible.sync="isHfzd">
+        <div class="tanchu2">
+          <div>
+            <img src="../../assets/tanchu/tishi.png" alt="">
+          </div>
+          <div>
+            <span>确定要将该学生的已提交状态修改为继续作答吗？</span>
+          </div>
+        </div>
+        <div class="flex-center tanchu1 tanchu2">
+          <div class="btn-lan">
+            <button>确定</button>
+          </div>
+          <div class="btn-hui">
+            <button @click="isHfzd=false">取消</button>
+          </div>
+        </div>
+
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -112,18 +133,25 @@ export default {
   name: "TeaTestJingdu",
   data() {
     return {
-      breadcrumb: [
+      isHfzd: false
+    };
+  },
+  computed: {
+    breadcrumb() {
+     let breadcrumb= [
         { name: "首页", to: "/" },
         { name: "亿测吧", to: "/teaspe" },
         { name: "练考赛进度查询", to: "" }
-      ],
+      ];
+    },
+    tabs() {
       tabs: [
         { name: "练考赛进度查询", to: "/teatestjindu" },
         { name: "练考赛成绩查询", to: "/teatestchengji" },
         { name: "练考赛成绩统计", to: "/teatestchengjitongji" },
         { name: "成绩结果分析", to: "/teatestchengjijieguo" }
-      ]
-    };
+      ];
+    }
   },
   mounted() {
     let tabs = this.tabs;
@@ -140,5 +168,15 @@ export default {
 }
 .zxnl2 {
   width: 20%;
+}
+.tanchu1 {
+  border-top: 1px solid #e3e3e3;
+}
+.tanchu2 {
+  padding: 20px;
+}
+.tanchu1 button {
+  width: 105px;
+  height: 40px;
 }
 </style>

@@ -88,7 +88,7 @@
               <td>
 
                 <div class="flex-between" style="border:1px solid #D9D9D9; width:550px;border-radius:5px;">
-                  <input v-model="daoruVal" placeholder="未选择任何文件" readonly='true' type="text" style="height:90%;margin:0 5px;width:400px;border:none;" >
+                  <input v-model="daoruVal" placeholder="未选择任何文件" readonly='true' type="text" style="height:90%;margin:0 5px;width:400px;border:none;">
                   <el-upload action="https://" :on-change="daoruChange" :auto-upload="false">
                     <el-button slot="trigger" type="primary">选取文件</el-button>
 
@@ -138,7 +138,7 @@
             <button class="xuanzeBtn">下一步</button>
           </div>
           <div class="btn-hui">
-            <button class="xuanzeBtn"  @click="isDaoru=false">关闭</button>
+            <button class="xuanzeBtn" @click="isDaoru=false">关闭</button>
           </div>
         </div>
 
@@ -477,19 +477,19 @@ export default {
     return {
       changeIndex: -1,
       upfile: [
-        { name: "中文音频", value: "val0", ref: "ref0" },
-        { name: "日文音频", value: "val1", ref: "ref1" },
-        { name: "中文视频", value: "val2", ref: "ref2" },
-        { name: "日文视频", value: "val3", ref: "ref3" },
-        { name: "中文视频字幕", value: "val4", ref: "ref4" },
-        { name: "日文视频字幕", value: "val5", ref: "ref5" }
+        { name: "中文音频", value: "未选择文件", ref: "ref0" },
+        { name: "日文音频", value: "未选择文件", ref: "ref1" },
+        { name: "中文视频", value: "未选择文件", ref: "ref2" },
+        { name: "日文视频", value: "未选择文件", ref: "ref3" },
+        { name: "中文视频字幕", value: "未选择文件", ref: "ref4" },
+        { name: "日文视频字幕", value: "未选择文件", ref: "ref5" }
       ],
       editorOption: {
         // some quill options
       },
       content1: "",
       content2: "",
-      daoruVal:'',
+      daoruVal: "",
       isDaoru: false,
       isYulanBtn: false,
       isYulan: false,
@@ -512,8 +512,8 @@ export default {
     submitUpload() {
       this.$refs.upload.submit();
     },
-    daoruChange(file, fileList){
-this.daoruVal=file.name;
+    daoruChange(file, fileList) {
+      this.daoruVal = file.name;
     },
     handleChange(file, fileList) {
       let i = this.changeIndex;

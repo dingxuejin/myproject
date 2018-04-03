@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="teaspe">
     <el-container>
       <el-header height='90px'>
         <tea-header></tea-header>
@@ -199,7 +199,17 @@ export default {
   components: { TeaHeader, TeaNav }
 };
 </script>
-<style scoped>
+<style>
+@import "../../static/teaspetable.css";
+@import "../../static/button.css";
+#teaspe .el-dialog__header {
+  background-image: url(../assets/header/pg.png);
+  background-size: 100% 100%;
+  height: 55px;
+}
+#teaspe .el-dialog__headerbtn .el-dialog__close {
+  color: #fff;
+}
 
 .el-container {
   background: url(../assets/rongqi/teaspebg.png);

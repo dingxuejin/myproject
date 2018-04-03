@@ -57,10 +57,7 @@
 .nowrap{
   white-space: nowrap;
 }
-table,th,td{
-  border-collapse: collapse;
-  border:1px solid #B2E2FC;
-}
+
 
 
 ul{
