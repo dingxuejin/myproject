@@ -15,16 +15,16 @@
             </div>
             <div class="flex-center">
               <div class="xtyy2 flex-center" @click="active=false">
-                <img  v-if='active' src="../../assets/teatestxtyy/teatestzw.png" alt="">
-                <img  v-if='!active' src="../../assets/teatestxtyy/teatestzwactive.png" alt="">
+                <img v-if='active' src="../../assets/teatestxtyy/teatestzw.png" alt="">
+                <img v-else src="../../assets/teatestxtyy/teatestzwactive.png" alt="">
               </div>
               <div class="xtyy2 flex-center" @click="active=true">
-                <img  v-if='!active' src="../../assets/teatestxtyy/teatestrw.png" alt="">
-                <img  v-if='active' src="../../assets/teatestxtyy/teatestrwactive.png" alt="">
+                <img v-if='!active' src="../../assets/teatestxtyy/teatestrw.png" alt="">
+                <img v-else src="../../assets/teatestxtyy/teatestrwactive.png" alt="">
               </div>
             </div>
             <div class="btn-lan">
-              <button>保存</button>
+              <button @click=" setLanage()">保存</button>
             </div>
 
           </div>
@@ -44,13 +44,30 @@ export default {
   name: "TeaTestXtyy",
   data() {
     return {
-      active:false,
+      active: false,
       breadcrumb: [
         { name: "首页", to: "/" },
         { name: "亿测吧", to: "/teaspe" },
         { name: "系统语言设置", to: "" }
       ]
     };
+  },
+  computed: {
+    aaa(){
+      return this.$t('bjgl')
+    }
+  },
+  methods: {
+    setLanage() {
+      if (this.active) {
+        this.$store.commit("setLanage", "ja");
+        this.$i18n.locale = "ja";
+      } else {
+        this.$store.commit("setLanage", "zh");
+        this.$i18n.locale = "zh";
+      }
+      console.log(this.$t());
+    }
   },
   mounted() {}
 };
@@ -95,14 +112,14 @@ export default {
   padding: 20px;
   font-size: 18px;
 }
-.xtyy2{
-  width:200px;
+.xtyy2 {
+  width: 200px;
   height: 200px;
   overflow: hidden;
-  margin:200px 80px 120px;
+  margin: 200px 80px 120px;
 }
-.xtyy2>img{
-  width:100%;
+.xtyy2 > img {
+  width: 100%;
   height: 100%;
 }
 </style>

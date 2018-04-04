@@ -47,7 +47,7 @@
         </div>
         <div class="flex-start zxnl1 zxnl2">
           <div>
-            <span class="nowrap">快别:</span>
+            <span class="nowrap">块别:</span>
           </div>
           <div>
             <el-select></el-select>

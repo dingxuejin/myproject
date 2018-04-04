@@ -29,19 +29,24 @@ export default {
   name: "TeaTestContainer",
   data() {
     return {
-      nav: [
+     
+    };
+  },
+  computed:{
+    nav(){
+      let nav=  [
         {
           navIcon: require("../assets/nav/banjiguanli.png"),
-          navTitle: "班级管理",
+          navTitle:this.$store.getters.getLanage.bjgl,
           navArray: [
             {
-              liName: "班级管理",
+              liName: this.$store.getters.getLanage.bjgl,
               goto: {
                 name: "TeaTestClassMag"
               }
             },
             {
-              liName: "学生管理",
+              liName:this.$store.getters.getLanage.xsgl,
               goto: {
                 name: "TeaTestStuMag"
               }
@@ -51,22 +56,22 @@ export default {
 
         {
           navIcon: require("../assets/nav/liankaosai.png"),
-          navTitle: "练考赛设置",
+          navTitle: this.$store.getters.getLanage.lkssz,
           navArray: [
             {
-              liName: "专线能力设置",
+              liName: this.$store.getters.getLanage.zxnlsz,
               goto: {
                 name: "TeaTestZxnl"
               }
             },
             {
-              liName: "真题演练设置",
+              liName: this.$store.getters.getLanage.ztylsz,
               goto: {
                 name: "TeaTestZtyl"
               }
             },
             {
-              liName: "竞赛设置",
+              liName:this.$store.getters.getLanage.jssz,
               goto: {
                 name: "TeaTestJingsai"
               }
@@ -75,28 +80,28 @@ export default {
         },
         {
           navIcon: require("../assets/nav/jindu.png"),
-          navTitle: "练考赛进度与成绩",
+          navTitle: this.$store.getters.getLanage.lksjdycj,
           navArray: [
             {
-              liName: "练考赛进度查询",
+              liName:this.$store.getters.getLanage.lksjdcx,
               goto: {
                 name: "TeaTestJindu"
               }
             },
             {
-              liName: "练考赛成绩查询",
+              liName: this.$store.getters.getLanage.lkscjcx,
               goto: {
                 name: "TeaTestChengji"
               }
             },
             {
-              liName: "练考赛成绩统计",
+              liName: this.$store.getters.getLanage.lkscjtj,
               goto: {
                 name: "TeaTestChengjitongji"
               }
             },
             {
-              liName: "成绩结果分析",
+              liName: this.$store.getters.getLanage.cjjgfx,
               goto: {
                 name: "TeaTestChengjijieguo"
               }
@@ -105,16 +110,16 @@ export default {
         },
         {
           navIcon: require("../assets/nav/guanli.png"),
-          navTitle: "管理中心",
+          navTitle: this.$store.getters.getLanage.glzx,
           navArray: [
             {
-              liName: "互动信息管理",
+              liName: this.$store.getters.getLanage.hdxxgl,
               goto: {
                 name: "TeaTestHdxx"
               }
             },
             {
-              liName: "系统语言设置",
+              liName:this.$store.getters.getLanage.xtyysz,
               goto: {
                 name: "TeaTestXtyy"
               }
@@ -123,28 +128,28 @@ export default {
         },
         {
           navIcon: require("../assets/nav/yunxingtiku.png"),
-          navTitle: "运行题库管理",
+          navTitle: this.$store.getters.getLanage.yxtkgl,
           navArray: [
             {
-              liName: "选择题",
+              liName: this.$store.getters.getLanage.xzt,
               goto: {
                 name: "TeaTestXuanze"
               }
             },
             {
-              liName: "判断题",
+              liName: this.$store.getters.getLanage.pdt,
               goto: {
                 name: "TeaTestPanduan"
               }
             },
             {
-              liName: "翻译题",
+              liName:this.$store.getters.getLanage.fyt,
               goto: {
                 name: "TeaTestFanyi"
               }
             },
             {
-              liName: "填空题",
+              liName:this.$store.getters.getLanage.tkt,
               goto: {
                 name: "TeaTestTiankong"
               }
@@ -153,10 +158,10 @@ export default {
         },
         {
           navIcon: require("../assets/nav/juanzu.png"),
-          navTitle: "组卷管理",
+          navTitle:this.$store.getters.getLanage.zjgl,
           navArray: [
             {
-              liName: "卷组管理",
+              liName: this.$store.getters.getLanage.zjgl,
               goto: {
                 name: "TeaTestJuanzu"
               }
@@ -164,16 +169,19 @@ export default {
           ]
         }
       ]
-    };
+      return nav
+    }
+  },
+  mounted(){
+    
   },
   components: { TeaHeader, TeaNav }
 };
 </script>
 <style>
-
 @import "../../static/teaspetable.css";
 @import "../../static/button.css";
- #teatest .el-dialog__header {
+#teatest .el-dialog__header {
   background-image: url(../assets/header/pg.png);
   background-size: 100% 100%;
   height: 55px;

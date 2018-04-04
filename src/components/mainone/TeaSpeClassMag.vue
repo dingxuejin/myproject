@@ -108,7 +108,7 @@
                             <span>备注</span>
                         </td>
                         <td>
-                            <el-input style="min-height:50px;" type="textarea" autosize></el-input>
+                            <el-input  type="textarea" rows="6"></el-input>
                         </td>
                     </tr>
                 </table>
