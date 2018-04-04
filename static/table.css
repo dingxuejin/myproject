@@ -1,35 +1,35 @@
-.table{
+#teawrite .table{
     padding:0 20px;
   }
-  table,
-  td,
-  th {
+  #teawrite  table,
+  #teawrite  td,
+  #teawrite  th {
   border: 1px solid #d4edfc;
   border-collapse: collapse;
   height: 50px;
   }
-  table {
+  #teawrite  table {
   width: 100%;
   }
-  td{
+  #teawrite td{
     font-size: 12px;
     text-align: center;
   }
-  th {
+  #teawrite th {
   font-size: 12px;
   }
-  thead,
-  tr {
+  #teawrite thead,
+  #teawrite tr {
   background: #f6fbfe;
   }
-  tbody > tr:nth-child(2n + 1) {
+  #teawrite  tbody > tr:nth-child(2n + 1) {
   background: #fff;
   }
   /* table tbody tr:hover {
   background: #d4edfc;
   } */
 
-  td button{
+  #teawrite td button{
     width: 90px;
     height: 36px;
     color: #FFF;

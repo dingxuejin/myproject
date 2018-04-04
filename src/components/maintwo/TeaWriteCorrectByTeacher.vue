@@ -1,5 +1,5 @@
 <template>
-    <div class="inputTable">
+    <div class="inputTable" id="correctbyteacher">
         <div class="containerClass">
             <div class="maincm">
                 <div class="left">
@@ -75,7 +75,7 @@
             </table>
         </div>
 
-        <el-dialog :visible.sync="dialogVisible" width="60%" :before-close="handleClose">
+        <el-dialog :visible.sync="dialogVisible" width="960px" :before-close="handleClose">
 
             <div class="flex-center">
                 <div style="padding:0px 10px">
@@ -191,19 +191,31 @@
                             </tr>
                             <tr>
                                 <td colspan="4">
-                                    <button class="blue">原做题</button>
-                                    <button class="blue">答案参考</button>
-                                    <button class="blue">批改界面</button>
+                                    <div class="flex-between nowrap1">
+                                        <button class="blue">原做题</button>
+                                        <button class="blue">答案参考</button>
+                                        <button class="blue">批改界面</button>
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="4">互评评语：</td>
+                                <td colspan="4">
+                                    <div>
+                                        互评评语：
+                                    </div>
+
+                                    <div>
+                                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                                    </div>
+
+                                </td>
+
                             </tr>
+
                         </table>
                     </div>
-                    <div>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
-                    </div>
+
                     <div class="save">
                         <button type="text" @click="dialogVisible = false">保存</button>
                     </div>
@@ -216,180 +228,182 @@
 
 <script>
 export default {
-    data() {
-        return {
-            dialogVisible: false,
+  data() {
+    return {
+      dialogVisible: false,
 
-            breadcrumb: [
-                { name: "首页", to: "/" },
-                { name: "写作平台", to: "/teawritemain" },
-                { name: "单句翻译批改", to: "" }
-            ],
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "写作平台", to: "/teawritemain" },
+        { name: "单句翻译批改", to: "" }
+      ],
 
-            tabs: [
-                { name: "单句翻译批改", to: "/teawritecorrectbyteacher" },
-                { name: "写作实践批改", to: "/teawritepracticecorrect" }
-            ],
+      tabs: [
+        { name: "单句翻译批改", to: "/teawritecorrectbyteacher" },
+        { name: "写作实践批改", to: "/teawritepracticecorrect" }
+      ],
 
-            options: [
-                {
-                    value: "选项1",
-                    label: "日语口语"
-                },
-                {
-                    value: "选项2",
-                    label: "日语写作"
-                }
-            ],
-
-            options0: [
-                {
-                    value: "选项1",
-                    label: "A-D"
-                },
-                {
-                    value: "选项2",
-                    label: "E-F"
-                }
-            ],
-
-            value: "",
-            value0: ""
-        };
-    },
-
-    mounted() {
-        let breadcrumb = this.breadcrumb;
-        let tabs = this.tabs;
-        let n = 0;
-
-        this.$emit("getData", { breadcrumb, tabs, n });
-    },
-
-    methods: {
-        handleClose(done) {
-            this.$confirm("确认关闭？")
-                .then(_ => {
-                    done();
-                })
-                .catch(_ => {});
+      options: [
+        {
+          value: "选项1",
+          label: "日语口语"
+        },
+        {
+          value: "选项2",
+          label: "日语写作"
         }
+      ],
+
+      options0: [
+        {
+          value: "选项1",
+          label: "A-D"
+        },
+        {
+          value: "选项2",
+          label: "E-F"
+        }
+      ],
+
+      value: "",
+      value0: ""
+    };
+  },
+
+  mounted() {
+    let breadcrumb = this.breadcrumb;
+    let tabs = this.tabs;
+    let n = 0;
+
+    this.$emit("getData", { breadcrumb, tabs, n });
+  },
+
+  methods: {
+    handleClose(done) {
+      this.$confirm("确认关闭？")
+        .then(_ => {
+          done();
+        })
+        .catch(_ => {});
     }
+  }
 };
 </script>
 
 <style scoped>
-.containerClass {
-    min-width: 670px;
-    margin: 5px 0px;
+#correctbyteacher .containerClass {
+  min-width: 670px;
+  margin: 5px 0px;
 }
 
-.maincm {
-    display: flex;
-    justify-content: space-between;
+#correctbyteacher .maincm {
+  display: flex;
+  justify-content: space-between;
 }
 
-.left input {
-    width: 230px;
-    height: 42px;
-    border-radius: 5px;
-    border: 1px solid #cdcdcd;
+#correctbyteacher .left input {
+  width: 230px;
+  height: 42px;
+  border-radius: 5px;
+  border: 1px solid #cdcdcd;
 }
 
-.right button {
-    width: 120px;
-    height: 42px;
-    color: #fff;
-    background-image: url("../../../static/images/classmanage/bluebutton.png");
-    background-size: 100% 100%;
-    border: none;
-    margin-left: 10px;
+#correctbyteacher .right button {
+  width: 120px;
+  height: 42px;
+  color: #fff;
+  background-image: url("../../../static/images/classmanage/bluebutton.png");
+  background-size: 100% 100%;
+  border: none;
+  margin-left: 10px;
 }
 
-table {
-    border: 1px solid #bbe0fb;
-    width: 100%;
-    margin-top: 20px;
-    background-color: #f7fbfe;
+#correctbyteacher table {
+  border: 1px solid #bbe0fb;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #f7fbfe;
 }
 
-table td {
-    text-align: center;
-    border: 1px solid #bbe0fb;
+#correctbyteacher table td {
+  text-align: center;
+  border: 1px solid #bbe0fb;
 }
 
-span {
-    margin: 0px 10px;
+#correctbyteacher span {
+  margin: 0px 10px;
 }
 
-.table1 .white {
-    background-color: #fff;
+#correctbyteacher .table1 .white {
+  background-color: #fff;
 }
 
-.one {
-    position: relative;
+#correctbyteacher .one {
+  position: relative;
 }
 
-.one p {
-    position: absolute;
-    top: 6px;
-    left: 0px;
-    right: 0px;
-    margin: auto;
+#correctbyteacher .one p {
+  position: absolute;
+  top: 6px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
 }
 
-.one .input1 {
-    position: absolute;
-    bottom: -10px;
+#correctbyteacher .one .input1 {
+  position: absolute;
+  bottom: -10px;
 }
 
-.one .input1 el-input {
-    border: none;
+#correctbyteacher .one .input1 el-input {
+  border: none;
 }
 
-.flex-between {
-    flex-wrap: wrap;
+#correctbyteacher .flex-between {
+  flex-wrap: wrap;
 }
 
-.flex-between div {
-    width: 100%;
-    margin: 10px 0px;
+#correctbyteacher .flex-between div {
+  width: 100%;
+  margin: 10px 0px;
 }
 
-.save button {
-    width: 120px;
-    height: 42px;
-    color: #fff;
-    background-image: url("../../../static/images/classmanage/bluebutton.png");
-    background-size: 100% 100%;
-    border: none;
-    margin-left: 10px;
+#correctbyteacher .save button {
+  width: 120px;
+  height: 42px;
+  color: #fff;
+  background-image: url("../../../static/images/classmanage/bluebutton.png");
+  background-size: 100% 100%;
+  border: none;
+  margin-left: 10px;
 }
 
-textarea {
-    resize: none;
-    width: 64%;
+#correctbyteacher textarea {
+  resize: none;
+  width: 100%;
 }
 
-.correct {
-    text-align: center;
+#correctbyteacher .correct {
+  text-align: center;
 }
 
-.correct table {
-    width: 60%;
-    border: none;
+#correctbyteacher .correct table {
+  width: 300px;
+  border: none;
+}
+#correctbyteacher .nowrap1 {
+  flex-wrap: nowrap;
+}
+#correctbyteacher .correct table td {
+  border: none;
+  background: #fff;
+  text-align: left;
 }
 
-.correct table td {
-    border: none;
-    background: #fff;
-    text-align: left;
-}
-
-.correct .blue {
-    width: 100px;
-    height: 40px;
-    background: #149dfd;
-    border-radius: 10px;
+#correctbyteacher .correct .blue {
+  width: 90px;
+  height: 35px;
+  background: #149dfd;
+  border-radius: 10px;
 }
 </style>

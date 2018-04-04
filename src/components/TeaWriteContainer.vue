@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="teawrite">
         <el-container>
             <el-header height='90px'>
                 <tea-header/>
@@ -192,6 +192,7 @@ export default {
   background-image: url(../assets/header/pg.png);
   background-size: 100% 100%;
 } */
+@import '../../static/table.css';
 .el-container {
     background: url(../assets/rongqi/bg.png);
     background-size: 100% 100%;
