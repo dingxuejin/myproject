@@ -32,7 +32,14 @@ export default {
       nav: [
         {
           navIcon: require("../assets/nav/banjiguanli.png"),
+          navTitle: "首页",
+          to: "/teaspe",
+          navArray: []
+        },
+        {
+          navIcon: require("../assets/nav/banjiguanli.png"),
           navTitle: "班级管理",
+          to: "/teaspeclassmag",
           navArray: [
             {
               liName: "班级管理",
@@ -52,6 +59,7 @@ export default {
         {
           navIcon: require("../assets/nav/kechengshezhi.png"),
           navTitle: "课程设置",
+          to: "/teaspeting",
           navArray: [
             {
               liName: "听一听",
@@ -82,6 +90,7 @@ export default {
         {
           navIcon: require("../assets/nav/kechengchengji.png"),
           navTitle: "课程成绩与分析",
+          to: "/teaspekcjd",
           navArray: [
             {
               liName: "课程进度查询",
@@ -106,6 +115,7 @@ export default {
         {
           navIcon: require("../assets/nav/yinshipinguanli.png"),
           navTitle: "音视频管理",
+          to: "/teasperadio",
           navArray: [
             {
               liName: "音频管理",
@@ -124,6 +134,7 @@ export default {
         {
           navIcon: require("../assets/nav/jiaoxueziyuan.png"),
           navTitle: "教学资源管理",
+          to: "/teaspesource",
           navArray: [
             {
               liName: "教学资源管理",
@@ -136,6 +147,7 @@ export default {
         {
           navIcon: require("../assets/nav/keneizhishitianjiao.png"),
           navTitle: "课内知识添加管理",
+          to: "/teaspeaddKnle",
           navArray: [
             {
               liName: "课内资源添加",
@@ -154,6 +166,7 @@ export default {
         {
           navIcon: require("../assets/nav/hudongxinxi.png"),
           navTitle: "互动信息管理",
+          to: "/teaspetongzhi",
           navArray: [
             {
               liName: "通知公告",
@@ -172,6 +185,7 @@ export default {
         {
           navIcon: require("../assets/nav/shixunguanli.png"),
           navTitle: "实训管理",
+          to: "/teaspeshixun",
           navArray: [
             {
               liName: "实训作业",
