@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// **************
-// **************
+
 // 公用部分
 import TeaMainOne from '@/components/TeaMainOne'
 import TeaMainTwo from '@/components/TeaMainTwo'
