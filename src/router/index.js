@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 // 公用部分
 import TeaMainOne from '@/components/TeaMainOne'
 import TeaMainTwo from '@/components/TeaMainTwo'
@@ -28,7 +29,6 @@ import TeaSpeLiuyan from '@/components/maintwo/TeaSpeLiuyan'
 import TeaSpeShixun from '@/components/maintwo/TeaSpeShixun'
 import TeaSpeStushixun from '@/components/maintwo/TeaSpeStushixun'
 import TeaSpeYou from '@/components/maintwo/TeaSpeYou'
-// 123456
 // 亿测吧部分
 import TeaTestContainer from '@/components/TeaTestContainer'
 import TeaTestMain from '@/components/TeaTestMain'
@@ -89,14 +89,14 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    // 亿测吧部分
-    {
-      path: '/teatestcontainer', name: 'TeaTestContainer', component: TeaTestContainer, children: [
-
+     // 亿测吧部分
+     {
+      path: '/teatestcontainer', name: 'TeaTestContainer', component: TeaTestContainer,children:[
+  
         { path: '/teatest', name: 'TeaTestMain', component: TeaTestMain },
         { path: '/teatestxtyy', name: 'TeaTestXtyy', component: TeaTestXtyy },
         {
-          path: '/mainone', name: 'TeaMainOne', component: TeaMainOne, children: [
+          path: '/mainone', name: 'TeaMainOne', component: TeaMainOne, children:[
             { path: '/teatestclassmag', name: 'TeaTestClassMag', component: TeaTestClassMag },
             { path: '/teatesthdxx', name: 'TeaTestHdxx', component: TeaTestHdxx },
             { path: '/teatestfanyi', name: 'TeaTestFanyi', component: TeaTestFanyi },
@@ -104,27 +104,27 @@ export default new Router({
             { path: '/teatesttiankong', name: 'TeaTestTiankong', component: TeaTestTiankong },
             { path: '/teatestxuanze', name: 'TeaTestXuanze', component: TeaTestXuanze },
             { path: '/teatestjuanzu', name: 'TeaTestJuanzu', component: TeaTestJuanzu },
-
+           
             { path: '/teateststumag', name: 'TeaTestStuMag', component: TeaTestStuMag }
-          ]
+          ] 
         },
         {
-          path: '/maintwo', name: 'TeaMainTwo', component: TeaMainTwo, children: [
-
+          path: '/maintwo', name: 'TeaMainTwo', component: TeaMainTwo, children:[
+          
             { path: '/teatestchengjitongji', name: 'TeaTestChengjitongji', component: TeaTestChengjitongji },
             { path: '/teatestchengjijieguo', name: 'TeaTestChengjijieguo', component: TeaTestChengjijieguo },
             { path: '/teatestjindu', name: 'TeaTestJindu', component: TeaTestJindu },
             { path: '/teatestchengji', name: 'TeaTestChengji', component: TeaTestChengji },
-
+           
             { path: '/teatestzxnl', name: 'TeaTestZxnl', component: TeaTestZxnl },
             { path: '/teatestztyl', name: 'TeaTestZtyl', component: TeaTestZtyl },
             { path: '/teatestjingsai', name: 'TeaTestJingsai', component: TeaTestJingsai }
-          ]
+          ] 
         }
       ]
     },
     // 口语平台部分
-
+ 
     {
       path: '/teaspecontainer', name: 'TeaSpeContainer', component: TeaSpeContainer, children: [
         { path: '/teaspe', name: 'TeaSpeMain', component: TeaSpeMain },
