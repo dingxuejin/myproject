@@ -13,6 +13,7 @@ import '../theme/index.css'
 import '../static/normalize.css'
 import VueQuillEditor from 'vue-quill-editor'
 
+
  
 // require styles
 import 'quill/dist/quill.core.css'
