@@ -36,9 +36,9 @@
     opacity: 1;
   }
 }
-.icon{
-  width:22px;
-  height:22px;
+.icon {
+  width: 22px;
+  height: 22px;
 }
 .nav {
   border-radius: 10px;
@@ -100,6 +100,10 @@ export default {
   methods: {
     toggleUl: function(e) {
       this.active = e;
+      let toLink = this.nav[e].to;
+      if (toLink) {
+        this.$router.push({ path: toLink });
+      }
     },
     toMain(m, n) {
       let arr = this.nav[m].navArray;
