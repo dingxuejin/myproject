@@ -114,7 +114,7 @@
             </td>
             <td class="tanchu4">
               <div>
-                <el-date-picker prefix-icon="el-icon-date" type="datetime" placeholder="选择日期时间">
+                <el-date-picker v-model="startTime" prefix-icon="el-icon-date" type="datetime" placeholder="选择日期时间">
                 </el-date-picker>
               </div>
             </td>
@@ -126,7 +126,7 @@
             </td>
             <td class="tanchu4">
               <div>
-                <el-date-picker prefix-icon="el-icon-date" type="datetime" placeholder="选择日期时间">
+                <el-date-picker v-model=" endTime" prefix-icon="el-icon-date" type="datetime" placeholder="选择日期时间">
                 </el-date-picker>
               </div>
             </td>
@@ -164,6 +164,8 @@ export default {
         { name: "能力测评设置", to: "/teaspenlcp" },
         { name: "成绩权重设置", to: "/teaspecjqz" }
       ],
+      startTime:'',
+      endTime:'',
       testProp: "开启考试",
       isStartTest: false,
       isReset: false,
@@ -252,5 +254,8 @@ export default {
 .tanchu5 {
   border-top: 1px solid #e3e3e3;
   padding: 10px 0;
+}
+.chaxunCj>div{
+  margin:0 10px;
 }
 </style>

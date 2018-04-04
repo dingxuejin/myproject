@@ -1,5 +1,9 @@
 <template>
   <div id="mainOne1">
+    <button @click="aaa()">获取数据</button>
+    <ul>
+      <li v-for='(item,index) in data' :key="index">{{item.xueid}}</li>
+    </ul>
     <div class="mainOne2 flex-start">
       <el-breadcrumb separator='>>'>
         <el-breadcrumb-item :to="item.to" v-for="(item,index) in  breadcrumb" :key="index">{{item.name}}</el-breadcrumb-item>
@@ -32,11 +36,23 @@ export default {
   name: "TeaSpeMainOne",
   data() {
     return {
-      breadcrumb: []
+      breadcrumb: [],
+      data: null
     };
   },
   mounted() {},
   methods: {
+    aaa() {
+      let that = this;
+      console.log(this);
+      this.$axios
+        .get("/busjapedu/busjapspe/tea/module/menu/menuList")
+        .then(function(res) {
+          let data = res.data.results.menus;
+
+          that.data = data;
+        });
+    },
     getData(data) {
       this.breadcrumb = data;
     }

@@ -117,7 +117,7 @@
         </div>
         <div class="flex-center tanchu1 tanchu2">
           <div class="btn-lan">
-            <button >确定</button>
+            <button>确定</button>
           </div>
           <div class="btn-hui">
             <button @click="isHfzd=false">取消</button>
@@ -133,20 +133,21 @@ export default {
   name: "TeaTestJingdu",
   data() {
     return {
-      isHfzd:false,
-      breadcrumb: [
-        { name: "首页", to: "/" },
-        { name: "亿测吧", to: "/teaspe" },
-        { name: "练考赛进度查询", to: "" }
-      ],
-      tabs: [
-        { name: "练考赛进度查询", to: "/teatestjindu" },
-        { name: "练考赛成绩查询", to: "/teatestchengji" },
-        { name: "练考赛成绩统计", to: "/teatestchengjitongji" },
-        { name: "成绩结果分析", to: "/teatestchengjijieguo" }
-      ]
-    };
+      isHfzd: false,
+        breadcrumb :[
+          { name: "首页", to: "/" },
+          { name: "亿测吧", to: "/teaspe" },
+          { name: "练考赛进度查询", to: "" }
+        ] ,
+        tabs: [
+          { name: "练考赛进度查询", to: "/teatestjindu" },
+          { name: "练考赛成绩查询", to: "/teatestchengji" },
+          { name: "练考赛成绩统计", to: "/teatestchengjitongji" },
+          { name: "成绩结果分析", to: "/teatestchengjijieguo" }
+        ]
+    }
   },
+  computed:{},
   mounted() {
     let tabs = this.tabs;
     let breadcrumb = this.breadcrumb;
@@ -169,8 +170,8 @@ export default {
 .tanchu2 {
   padding: 20px;
 }
-.tanchu1 button{
-  width:105px;
+.tanchu1 button {
+  width: 105px;
   height: 40px;
 }
 </style>

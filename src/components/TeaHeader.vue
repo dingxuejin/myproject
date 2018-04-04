@@ -63,7 +63,7 @@
 export default {
     name: "TeaSpeHeader",
     mounted: function() {
-        console.log(this.$route.params);
+      
     }
 };
 </script>

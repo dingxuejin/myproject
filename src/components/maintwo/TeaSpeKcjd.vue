@@ -50,7 +50,7 @@
             <td>1</td>
             <td>2017020301</td>
             <td>sunhongjiang</td>
-            <td style="width:30%;">
+            <td style="width:40%;">
               <div class="flex-center">
                 <div style="margin:5px;">0</div>
                 <div style="width:80%;">
