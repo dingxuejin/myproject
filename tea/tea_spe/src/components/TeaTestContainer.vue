@@ -83,7 +83,7 @@ export default {
           navTitle: this.$store.getters.getLanage.lksjdycj,
           navArray: [
             {
-              liName:this.$t('lksjdcx'),
+              liName:this.$store.getters.getLanage.lksjdcx,
               goto: {
                 name: "TeaTestJindu"
               }
