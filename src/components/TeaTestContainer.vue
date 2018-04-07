@@ -85,13 +85,13 @@ export default {
             {
               liName:this.$store.getters.getLanage.lksjdcx,
               goto: {
-                name: "TeaTestJindu"
+                name: "TeaTestJinduNlcp"
               }
             },
             {
               liName: this.$store.getters.getLanage.lkscjcx,
               goto: {
-                name: "TeaTestChengji"
+                name: "TeaTestChengjiNlcp"
               }
             },
             {
