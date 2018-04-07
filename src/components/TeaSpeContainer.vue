@@ -67,7 +67,6 @@ export default {
                 name: "TeaSpeTing"
               }
             }
-       
           ]
         },
         {
@@ -118,14 +117,7 @@ export default {
           navIcon: require("../assets/nav/jiaoxueziyuan.png"),
           navTitle: "教学资源管理",
           to: "/teaspesource",
-          navArray: [
-            {
-              liName: "教学资源管理",
-              goto: {
-                name: "TeaSpeSource"
-              }
-            }
-          ]
+          navArray: []
         },
         {
           navIcon: require("../assets/nav/keneizhishitianjiao.png"),

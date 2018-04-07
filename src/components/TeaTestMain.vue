@@ -188,7 +188,7 @@
                     </div>
             </div>
         </el-dialog>
-        <el-dialog :visible.sync="isZxnlxl" title="专项能力训练">
+        <el-dialog :visible.sync="isZxnlxl" title="专项能力训练" width="1200px">
             <div style="margin:20px;">
                 <div class="flex-center jinsai1">
                     <div class="flex-center">

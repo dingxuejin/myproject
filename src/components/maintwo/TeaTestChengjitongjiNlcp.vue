@@ -7,15 +7,15 @@
           <div>
             <span class="nowrap">班级:</span>
           </div>
-          <div>
+          <div class="cjtj2">
             <el-select></el-select>
           </div>
         </div>
         <div class="flex-start ">
           <div>
-            <span class="nowrap">模块选择</span>
+            <span class="nowrap">模块选择:</span>
           </div>
-          <div>
+          <div class="cjtj2">
             <el-select></el-select>
           </div>
         </div>
@@ -23,7 +23,7 @@
           <div>
             <span class="nowrap">内容选择:</span>
           </div>
-          <div>
+          <div class="cjtj2">
             <el-select></el-select>
           </div>
         </div>
@@ -31,12 +31,12 @@
           <div>
             <span class="nowrap">级别:</span>
           </div>
-          <div>
+          <div class="cjtj2">
             <el-select></el-select>
           </div>
         </div>
       </div>
-      <div class="btn-lan">
+      <div class="btn-lan nowrap">
         <button>查询</button>
         <button>导出EXCEL</button>
       </div>
@@ -105,26 +105,27 @@
 </template>
 <script>
 export default {
-  name: "TeaTestChengjitongji",
+  name: "TeaTestChengjitongjiNlcp",
   data() {
     return {
       breadcrumb: [
         { name: "首页", to: "/" },
         { name: "亿测吧", to: "/teaspe" },
-        { name: "练考赛成绩统计", to: "" }
+        { name: "练考赛进度与成绩", to: "" },
+        { name: "练考赛成绩统计", to: "" },
+        { name: "专项能力测评", to: "" }
       ],
       tabs: [
-        { name: "练考赛进度查询", to: "/teatestjindu" },
-        { name: "练考赛成绩查询", to: "/teatestchengji" },
-        { name: "练考赛成绩统计", to: "/teatestchengjitongji" },
-        { name: "成绩结果分析", to: "/teatestchengjijieguo" }
+        { name: "专项能力测评", to: "/teatestchengjitongjinlcp" },
+        { name: "真题演练", to: "/teatestchengjitongjiztyl" },
+        { name: "竞赛平台", to: "/teatestchengjitongjijspt" }
       ]
     };
   },
   mounted() {
     let tabs = this.tabs;
     let breadcrumb = this.breadcrumb;
-    let n = 2;
+    let n = 0;
     this.$emit("getData", { tabs, breadcrumb, n });
     this.drawLine();
   },
@@ -230,12 +231,12 @@ export default {
 };
 </script>
 <style scoped>
-.cjtj1 > div {
-  width: 15%;
-}
 .cjtj1 > div,
 .cjtj1 > div > div {
   margin: 5px;
+}
+.cjtj2 {
+  width: 120px;
 }
 .canvas1 {
   height: 500px;

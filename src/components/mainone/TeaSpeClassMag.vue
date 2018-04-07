@@ -60,7 +60,7 @@
                 </tr>
             </tbody>
         </table>
-        <el-dialog title="班级详细信息" :visible.sync="isChaxun">
+        <el-dialog title="班级详细信息" :visible.sync="isChaxun" width="800px">
 
             <div class="tanchu2">
                 <table class="table1">
@@ -90,7 +90,7 @@
                 <button @click="isChaxun=false">关闭</button>
             </div>
         </el-dialog>
-        <el-dialog title="班级修改" :visible.sync="isXiugai">
+        <el-dialog title="班级修改" :visible.sync="isXiugai" width="800px">
 
             <div class="tanchu4">
                 <table>

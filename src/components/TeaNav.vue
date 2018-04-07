@@ -12,7 +12,7 @@
       </div>
       <transition-group name='navUl' tag='ul' :class='{ulbor:index1===active}'>
         <template v-if='index1===active'>
-          <li @click="toMain(index1,index2)" v-for='(item2,index2) in item1.navArray' :key='index2' tag="li">
+          <li @click="toMain(index1,index2)" :class="{liActive:index2===liActive}" v-for='(item2,index2) in item1.navArray' :key='index2' tag="li">
             {{item2.liName}}
           </li>
         </template>
@@ -73,7 +73,8 @@
   padding: 10px;
   color: #2995fc;
 }
-.nav li:hover {
+.nav li:hover,
+.liActive {
   background: #e6f4fd;
 }
 .nav1 {
@@ -88,7 +89,8 @@ export default {
   name: "TeaSpeNav",
   data() {
     return {
-      active: 0
+      active: 0,
+      liActive: 0
     };
   },
   props: {
@@ -108,7 +110,7 @@ export default {
     toMain(m, n) {
       let arr = this.nav[m].navArray;
       let name = arr[n].goto.name;
-
+      this.liActive = n;
       this.$router.push({
         name: name,
         params: { n }

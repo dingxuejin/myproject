@@ -135,27 +135,28 @@
 </template>
 <script>
 export default {
-  name: "TeaTestChengjijieguo",
+  name: "TeaTestChengjijieguoNlcp",
   data() {
     return {
-      isXuanze:true,
+      isXuanze: true,
       breadcrumb: [
         { name: "首页", to: "/" },
         { name: "亿测吧", to: "/teaspe" },
-        { name: "成绩结果分析", to: "" }
+        { name: "练考赛进度与成绩", to: "" },
+        { name: "练考赛成绩统计", to: "" },
+        { name: "专项能力测评", to: "" }
       ],
       tabs: [
-        { name: "练考赛进度查询", to: "/teatestjindu" },
-        { name: "练考赛成绩查询", to: "/teatestchengji" },
-        { name: "练考赛成绩统计", to: "/teatestchengjitongji" },
-        { name: "成绩结果分析", to: "/teatestchengjijieguo" }
+        { name: "专项能力测评", to: "/teatestchengjijieguonlcp" },
+        { name: "真题演练", to: "/teatestchengjijieguoztyl" },
+        { name: "竞赛平台", to: "/teatestchengjijieguojspt" }
       ]
     };
   },
   mounted() {
     let tabs = this.tabs;
     let breadcrumb = this.breadcrumb;
-    let n = 3;
+    let n = 0;
     this.$emit("getData", { tabs, breadcrumb, n });
   }
 };

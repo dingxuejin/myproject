@@ -48,8 +48,12 @@ import TeaTestJingsai from '@/components/maintwo/TeaTestJingsai'
 import TeaTestXtyy from '@/components/maintwo/TeaTestXtyy'
 import TeaTestZtyl from '@/components/maintwo/TeaTestZtyl'
 import TeaTestChengji from '@/components/maintwo/TeaTestChengji'
-import TeaTestChengjijieguo from '@/components/maintwo/TeaTestChengjijieguo'
-import TeaTestChengjitongji from '@/components/maintwo/TeaTestChengjitongji'
+import TeaTestChengjijieguoNlcp from '@/components/maintwo/TeaTestChengjijieguoNlcp'
+import TeaTestChengjijieguoZtyl from '@/components/maintwo/TeaTestChengjijieguoZtyl'
+import TeaTestChengjijieguoJspt from '@/components/maintwo/TeaTestChengjijieguoJspt'
+import TeaTestChengjitongjiNlcp from '@/components/maintwo/TeaTestChengjitongjiNlcp'
+import TeaTestChengjitongjiZtyl from '@/components/maintwo/TeaTestChengjitongjiZtyl'
+import TeaTestChengjitongjiJspt from '@/components/maintwo/TeaTestChengjitongjiJspt'
 import TeaTestJindu from '@/components/maintwo/TeaTestJindu'
 import TeaTestZxnl from '@/components/maintwo/TeaTestZxnl'
 
@@ -115,8 +119,12 @@ export default new Router({
         {
           path: '/maintwo', name: 'TeaMainTwo', component: TeaMainTwo, children:[
           
-            { path: '/teatestchengjitongji', name: 'TeaTestChengjitongji', component: TeaTestChengjitongji },
-            { path: '/teatestchengjijieguo', name: 'TeaTestChengjijieguo', component: TeaTestChengjijieguo },
+            { path: '/TeaTestChengjitongjinlcp', name: 'TeaTestChengjitongjiNlcp', component: TeaTestChengjitongjiNlcp },
+            { path: '/teatestchengjitongjiztyl', name: 'TeaTestChengjitongjiZtyl', component: TeaTestChengjitongjiZtyl },
+            { path: '/teatestchengjitongjijspt', name: 'TeaTestChengjitongjiJspt', component: TeaTestChengjitongjiJspt },
+            { path: '/teatestchengjijieguojspt', name: 'TeaTestChengjijieguoJspt', component: TeaTestChengjijieguoJspt },
+            { path: '/teatestchengjijieguoztyl', name: 'TeaTestChengjijieguoZtyl', component: TeaTestChengjijieguoZtyl },
+            { path: '/teatestchengjijieguonlcp', name: 'TeaTestChengjijieguoNlcp', component: TeaTestChengjijieguoNlcp },
             { path: '/teatestjindu', name: 'TeaTestJindu', component: TeaTestJindu },
             { path: '/teatestchengji', name: 'TeaTestChengji', component: TeaTestChengji },
            

@@ -61,7 +61,7 @@
                 </tr>
             </tbody>
         </table>
-        <el-dialog title="修改学生信息" :visible.sync="isXiugai">
+        <el-dialog title="修改学生信息" :visible.sync="isXiugai" width="800px">
 
             <div class="tanchu1">
                 <table>
@@ -120,7 +120,7 @@
                     <tr>
                         <td>备注:</td>
                         <td>
-                            <el-input  type="textarea" rows="4" autosize='{ minRows:4, maxRows: 6 }'></el-input>
+                            <el-input  type="textarea" rows="6" ></el-input>
                         </td>
 
                     </tr>

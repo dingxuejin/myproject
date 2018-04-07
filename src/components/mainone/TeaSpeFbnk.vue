@@ -1,5 +1,5 @@
 <template>
-<!-- 课内习题添加 -->
+    <!-- 课内习题添加 -->
     <div>
         <div class="flex-between ">
             <div class="flex-start fbnk1">
@@ -8,7 +8,7 @@
                         <span class="nowrap">课程名称:</span>
                     </div>
                     <div>
-                        <el-input placeholder="请输入内容"  clearable>
+                        <el-input placeholder="请输入内容" clearable>
                         </el-input>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
                         <span class="nowrap">课程章节名称:</span>
                     </div>
                     <div>
-                        <el-input placeholder="请输入内容"  clearable>
+                        <el-input placeholder="请输入内容" clearable>
                         </el-input>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
             </div>
             <div class="right btn-lan nowrap">
                 <button>查询</button>
-                <button>新增</button>
+                <button @click="visible=true">新增</button>
                 <button>导入题目</button>
             </div>
         </div>
@@ -78,48 +78,54 @@
                 </tr>
             </tbody>
         </table>
+        <my-dialog width="1200px" :visible="visible" @changeVisible="visible=false">
+
+        </my-dialog>
     </div>
 </template>
 <script>
+import MyDialog from "../public/MyDialog";
 export default {
-    name: "TeaSpeFbnk",
-    data(){
-        return{
-               breadcrumb: [
+  name: "TeaSpeFbnk",
+  data() {
+    return {
+      visible: false,
+      breadcrumb: [
         { name: "首页", to: "/" },
         { name: "口语平台", to: "/teaspe" },
         { name: "课内习题添加", to: "" }
       ]
-        }
-    },
-    mounted(){
-         this.$emit("getData", this.breadcrumb);
-    }
+    };
+  },
+  mounted() {
+    this.$emit("getData", this.breadcrumb);
+  },
+  components: { MyDialog }
 };
 </script>
 <style scoped>
 .fbnk1 {
-    margin: 10px;
+  margin: 10px;
 }
 .fbnk1 > div {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 .fbnk1 > div > div {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 .right button {
-    width: 120px;
-    height: 42px;
-    color: #fff;
-    border: none;
+  width: 120px;
+  height: 42px;
+  color: #fff;
+  border: none;
 }
 
 td button {
-    width: 90px;
-    height: 36px;
-    color: #fff;
-    border: none;
-    box-sizing: border-box;
+  width: 90px;
+  height: 36px;
+  color: #fff;
+  border: none;
+  box-sizing: border-box;
 }
 </style>
 
