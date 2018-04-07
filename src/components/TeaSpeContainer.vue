@@ -62,46 +62,29 @@ export default {
           to: "/teaspeting",
           navArray: [
             {
-              liName: "听一听",
+              liName: "课程模块设置",
               goto: {
                 name: "TeaSpeTing"
               }
-            },
-            {
-              liName: "说一说",
-              goto: {
-                name: "TeaSpeShuo"
-              }
-            },
-            {
-              liName: "能力测评设置",
-              goto: {
-                name: "TeaSpeNlcp"
-              }
-            },
-            {
-              liName: "成绩权重设置",
-              goto: {
-                name: "TeaSpeCjqz"
-              }
             }
+       
           ]
         },
         {
           navIcon: require("../assets/nav/kechengchengji.png"),
           navTitle: "课程成绩与分析",
-          to: "/teaspekcjd",
+          to: "/teaspekcjdTing",
           navArray: [
             {
               liName: "课程进度查询",
               goto: {
-                name: "TeaSpeKcjd"
+                name: "TeaSpeKcjdTing"
               }
             },
             {
               liName: "课程成绩查询",
               goto: {
-                name: "TeaSpeKccj"
+                name: "TeaSpeKccjcxTing"
               }
             },
             {

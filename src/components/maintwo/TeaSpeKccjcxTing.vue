@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="kccj">
     <!-- 课程成绩查询页面 -->
     <div class="flex-between">
 
@@ -32,11 +32,7 @@
       </div>
       <div class="btn-lan nowrap flex-end">
         <button>查询</button>
-        <button>重新计算</button>
-        <button>保存</button>
-        <button>开放成绩端成绩</button>
         <button>导出EXCEL</button>
-        <button>查看报表</button>
       </div>
 
     </div>
@@ -49,38 +45,48 @@
             <th rowspan="2">学生姓名</th>
             <th rowspan="2">学号</th>
             <th rowspan="2">总分</th>
-            <th colspan="3">课业成绩</th>
-            <th colspan="2">附加成绩(10%)</th>
-            <th rowspan="2">学生端成绩</th>
+            <th>机场</th>
+            <th>交通</th>
+            <th> 餐厅</th>
+            <th>酒店</th>
+            <th>观光</th>
+            <th>求职</th>
+            <th>电话应对</th>
+            <th>拜访</th>
+            <th>客诉处理</th>
+            <th rowspan="2">操作</th>
           </tr>
           <tr>
-            <th>听一听(60%)</th>
-            <th>说一说(40%)</th>
-            <th>能力测评(0%)</th>
-            <th>课堂表现(30%)</th>
-            <th>作业(70%)</th>
+            <th>(10%)</th>
+            <th>(10%)</th>
+            <th>(10%)</th>
+            <th>(10%)</th>
+            <th>(10%)</th>
+            <th>(10%)</th>
+            <th>(10%)</th>
+            <th>(10%)</th>
+            <th>(10%)</th>
+
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>1</td>
             <td>张珊</td>
-            <td>123456</td>
-            <td>100</td>
-            <td>50</td>
-            <td>30</td>
-            <td>5</td>
-            <td>
-              5
-
-            </td>
-            <td>
-              10
-
-            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td class="btn-lv">
               <button>
-                关闭
+                查看明细
               </button>
             </td>
           </tr>
@@ -88,34 +94,38 @@
 
       </table>
     </div>
+    <el-dialog :visible.sync="isMx"></el-dialog>
   </div>
 </template>
 <script>
 export default {
-  name: "TeaSpeKccj",
+  name: "TeaSpeKccjcxTing",
   data() {
     return {
+      isMx: true,
       breadcrumb: [
         { name: "首页", to: "/" },
         { name: "口语平台", to: "/teaspe" },
         { name: "课程成绩查询", to: "" }
       ],
       tabs: [
-        { name: "课程进度查询", to: "/teaspekcjd" },
-        { name: "课程成绩查询", to: "/teaspekccj" },
-        { name: "课程结果分析", to: "/teaspekcjg" }
+        { name: "听一听", to: "/teaspekccjcxting" },
+        { name: "说一说", to: "/teaspekccjcxshuo" },
+        { name: "能力测评", to: "/teaspekccjcxnlcp" },
+        { name: "课程成绩", to: "/teaspekccjcxkccj" }
       ]
     };
   },
   mounted() {
     let tabs = this.tabs;
     let breadcrumb = this.breadcrumb;
-    let n = 1;
+    let n = 0;
     this.$emit("getData", { tabs, breadcrumb, n });
   }
 };
 </script>
 <style scoped>
+
 .table0 table td {
   min-width: 100px;
 }
@@ -123,8 +133,8 @@ export default {
 .rv1 > div > div {
   margin: 0 5px;
 }
-.rv1{
-  width:600px;
+.rv1 {
+  width: 600px;
 }
 </style>
 

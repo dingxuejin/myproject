@@ -116,7 +116,7 @@ export default {
       breadcrumb: [
         { name: "首页", to: "/" },
         { name: "口语平台", to: "/teaspe" },
-         { name: "口语平台", to: "/teaspe" },
+        //  { name: "课内知识添加管理", to: "/teaspeaddknle" },
         { name: "课内知识添加", to: "" }
       ],
       options: [

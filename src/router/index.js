@@ -18,9 +18,13 @@ import TeaSpeTing from '@/components/maintwo/TeaSpeTing'
 import TeaSpeShuo from '@/components/maintwo/TeaSpeShuo'
 import TeaSpeNlcp from '@/components/maintwo/TeaSpeNlcp'
 import TeaSpeCjqz from '@/components/maintwo/TeaSpeCjqz'
-import TeaSpeKcjd from '@/components/maintwo/TeaSpeKcjd'
-import TeaSpeKcjdMx from '@/components/maintwo/TeaSpeKcjdMx'
-import TeaSpeKccj from '@/components/maintwo/TeaSpeKccj'
+import TeaSpeKcjdTing from '@/components/maintwo/TeaSpeKcjdting'
+import TeaSpeKcjdShuo from '@/components/maintwo/TeaSpeKcjdshuo'
+import TeaSpeKcjdNlcp from '@/components/maintwo/TeaSpeKcjdnlcp'
+import TeaSpeKccjcxKccj from '@/components/maintwo/TeaSpeKccjcxKccj'
+import TeaSpeKccjcxNlcp from '@/components/maintwo/TeaSpeKccjcxNlcp'
+import TeaSpeKccjcxShuo from '@/components/maintwo/TeaSpeKccjcxShuo'
+import TeaSpeKccjcxTing from '@/components/maintwo/TeaSpeKccjcxTing'
 import TeaSpeKcjg from '@/components/maintwo/TeaSpeKcjg'
 import TeaSpeRadio from '@/components/mainone/TeaSpeRadio'
 import TeaSpeRVMag from '@/components/mainone/TeaSpeRVMag'
@@ -146,9 +150,13 @@ export default new Router({
             { path: '/teaspeshuo', name: 'TeaSpeShuo', component: TeaSpeShuo },
             { path: '/teaspenlcp', name: 'TeaSpeNlcp', component: TeaSpeNlcp },
             { path: '/teaspecjqz', name: 'TeaSpeCjqz', component: TeaSpeCjqz },
-            { path: '/teaspekcjd', name: 'TeaSpeKcjd', component: TeaSpeKcjd },
-            { path: '/teaspekcjdmx', name: 'TeaSpeKcjdMx', component: TeaSpeKcjdMx },
-            { path: '/teaspekccj', name: 'TeaSpeKccj', component: TeaSpeKccj },
+            { path: '/teaspekcjdting', name: 'TeaSpeKcjdTing', component: TeaSpeKcjdTing },
+            { path: '/teaspekcjdshuo', name: 'TeaSpeKcjdShuo', component: TeaSpeKcjdShuo },
+            { path: '/teaspekcjdnlcp', name: 'TeaSpeKcjdNlcp', component: TeaSpeKcjdNlcp },
+            { path: '/teaspekccjcxkccj', name: 'TeaSpeKccjcxKccj', component: TeaSpeKccjcxKccj },
+            { path: '/teaspekccjcxshuo', name: 'TeaSpeKccjcxShuo', component: TeaSpeKccjcxShuo },
+            { path: '/teaspekccjcxting', name: 'TeaSpeKccjcxTing', component: TeaSpeKccjcxTing },
+            { path: '/teaspekccjcxnlcp', name: 'TeaSpeKccjcxNlcp', component: TeaSpeKccjcxNlcp },
             { path: '/teaspekcjg', name: 'TeaSpeKcjg', component: TeaSpeKcjg },
             { path: '/teaspetongzhi', name: 'TeaSpeTongzhi', component: TeaSpeTongzhi },
             { path: '/teaspeliuyan', name: 'TeaSpeLiuyan', component: TeaSpeLiuyan },
