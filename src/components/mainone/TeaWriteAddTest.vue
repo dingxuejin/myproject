@@ -92,7 +92,7 @@
             <el-radio v-model="radio" label="1">启用</el-radio>
             <el-radio v-model="radio" label="2">停用</el-radio>
 
-            <div>
+            <div id="tanchu">
                 <table class="table1">
                     <tr>
                         <td style="text-align:right; width:30%">题目：</td>
@@ -358,11 +358,11 @@ span {
     margin-left: 10px;
 }
 
-.table1 {
+#tanchu .table1 {
     border: none;
 }
 
-.table1 td {
+#tanchu .table1 td {
     border: none;
 }
 </style>
