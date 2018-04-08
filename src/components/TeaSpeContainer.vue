@@ -31,7 +31,7 @@ export default {
     return {
       nav: [
         {
-          navIcon: require("../assets/nav/banjiguanli.png"),
+          navIcon: require("../assets/nav/shouye.png"),
           navTitle: "首页",
           to: "/teaspe",
           navArray: []

@@ -34,7 +34,7 @@ export default {
     nav() {
       let nav = [
         {
-          navIcon: require("../assets/nav/banjiguanli.png"),
+          navIcon: require("../assets/nav/shouye.png"),
           navTitle: this.$store.getters.getLanage.sy,
           to: "/teatest",
           navArray: []

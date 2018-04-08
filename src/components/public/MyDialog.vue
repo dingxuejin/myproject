@@ -60,6 +60,7 @@ export default {
   max-height: 90%;
 }
 .myDialog2 {
+  z-index: 9;
   position: absolute;
   right: 15px;
   top: 0;
