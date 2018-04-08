@@ -157,7 +157,7 @@
 
         </el-row>
       </div>
-      <div class="btn-lan kssz2" >
+      <div class="btn-lan kssz2">
         <button>保存</button>
         <button @click="isShezhi=false">关闭</button>
       </div>
@@ -194,12 +194,14 @@ export default {
       breadcrumb: [
         { name: "首页", to: "/" },
         { name: "亿测吧", to: "/teaspe" },
-        { name: "真题演练设置", to: "" }
+        { name: "练考赛进度与成绩", to: "" },
+        { name: "练考赛进度查询", to: "" },
+        { name: "真题演练", to: "" }
       ],
       tabs: [
-        { name: "专线能力设置", to: "/teatestzxnl" },
-        { name: "真题演练设置", to: "/teatestztyl" },
-        { name: "竞赛设置", to: "/teatestjingsai" }
+        { name: "专项能力测评", to: "/teatestjingdunlcp" },
+        { name: "真题演练", to: "/teatestjingduztyl" },
+        { name: "竞赛平台", to: "/teatestjingdujingsai" }
       ]
     };
   },
@@ -237,10 +239,10 @@ export default {
   margin: 0 auto;
 }
 .kssz2 {
-  padding:20px;
-  border-top:1px solid #E7E6E3;
+  padding: 20px;
+  border-top: 1px solid #e7e6e3;
 }
-.kssz3{
-  padding:10px;
+.kssz3 {
+  padding: 10px;
 }
 </style>

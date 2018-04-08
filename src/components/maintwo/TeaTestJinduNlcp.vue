@@ -130,24 +130,25 @@
 </template>
 <script>
 export default {
-  name: "TeaTestJingdu",
+  name: "TeaTestJingduNlcp",
   data() {
     return {
       isHfzd: false,
-        breadcrumb :[
-          { name: "首页", to: "/" },
-          { name: "亿测吧", to: "/teaspe" },
-          { name: "练考赛进度查询", to: "" }
-        ] ,
-        tabs: [
-          { name: "练考赛进度查询", to: "/teatestjindu" },
-          { name: "练考赛成绩查询", to: "/teatestchengji" },
-          { name: "练考赛成绩统计", to: "/teatestchengjitongji" },
-          { name: "成绩结果分析", to: "/teatestchengjijieguo" }
-        ]
-    }
+      breadcrumb: [
+        { name: "首页", to: "/" },
+        { name: "亿测吧", to: "/teaspe" },
+        { name: "练考赛进度与成绩", to: "" },
+        { name: "练考赛进度查询", to: "" },
+        { name: "专项能力测评练", to: "" }
+      ],
+      tabs: [
+        { name: "专项能力测评", to: "/teatestjingdunlcp" },
+        { name: "真题演练", to: "/teatestjingduztyl" },
+        { name: "竞赛平台", to: "/teatestjingdujingsai" }
+      ]
+    };
   },
-  computed:{},
+  computed: {},
   mounted() {
     let tabs = this.tabs;
     let breadcrumb = this.breadcrumb;

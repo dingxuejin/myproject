@@ -28,16 +28,21 @@ import TeaNav from "./TeaNav.vue";
 export default {
   name: "TeaTestContainer",
   data() {
-    return {
-     
-    };
+    return {};
   },
-  computed:{
-    nav(){
-      let nav=  [
+  computed: {
+    nav() {
+      let nav = [
+        {
+          navIcon: require("../assets/nav/shouye.png"),
+          navTitle: this.$store.getters.getLanage.sy,
+          to: "/teatest",
+          navArray: []
+        },
         {
           navIcon: require("../assets/nav/banjiguanli.png"),
-          navTitle:this.$store.getters.getLanage.bjgl,
+          navTitle: this.$store.getters.getLanage.bjgl,
+          to: "/teatestclassmag",
           navArray: [
             {
               liName: this.$store.getters.getLanage.bjgl,
@@ -46,7 +51,7 @@ export default {
               }
             },
             {
-              liName:this.$store.getters.getLanage.xsgl,
+              liName: this.$store.getters.getLanage.xsgl,
               goto: {
                 name: "TeaTestStuMag"
               }
@@ -57,53 +62,36 @@ export default {
         {
           navIcon: require("../assets/nav/liankaosai.png"),
           navTitle: this.$store.getters.getLanage.lkssz,
-          navArray: [
-            {
-              liName: this.$store.getters.getLanage.zxnlsz,
-              goto: {
-                name: "TeaTestZxnl"
-              }
-            },
-            {
-              liName: this.$store.getters.getLanage.ztylsz,
-              goto: {
-                name: "TeaTestZtyl"
-              }
-            },
-            {
-              liName:this.$store.getters.getLanage.jssz,
-              goto: {
-                name: "TeaTestJingsai"
-              }
-            }
-          ]
+          to: "/teatestzxnl",
+          navArray: []
         },
         {
           navIcon: require("../assets/nav/jindu.png"),
           navTitle: this.$store.getters.getLanage.lksjdycj,
+          to: "/teatestjingdunlcp",
           navArray: [
             {
-              liName:this.$store.getters.getLanage.lksjdcx,
+              liName: this.$store.getters.getLanage.lksjdcx,
               goto: {
-                name: "TeaTestJindu"
+                name: "TeaTestJinduNlcp"
               }
             },
             {
               liName: this.$store.getters.getLanage.lkscjcx,
               goto: {
-                name: "TeaTestChengji"
+                name: "TeaTestChengjiNlcp"
               }
             },
             {
               liName: this.$store.getters.getLanage.lkscjtj,
               goto: {
-                name: "TeaTestChengjitongji"
+                name: "TeaTestChengjitongjiNlcp"
               }
             },
             {
               liName: this.$store.getters.getLanage.cjjgfx,
               goto: {
-                name: "TeaTestChengjijieguo"
+                name: "TeaTestChengjijieguoNlcp"
               }
             }
           ]
@@ -111,6 +99,7 @@ export default {
         {
           navIcon: require("../assets/nav/guanli.png"),
           navTitle: this.$store.getters.getLanage.glzx,
+          to: "/teatesthdxx",
           navArray: [
             {
               liName: this.$store.getters.getLanage.hdxxgl,
@@ -119,7 +108,7 @@ export default {
               }
             },
             {
-              liName:this.$store.getters.getLanage.xtyysz,
+              liName: this.$store.getters.getLanage.xtyysz,
               goto: {
                 name: "TeaTestXtyy"
               }
@@ -129,6 +118,7 @@ export default {
         {
           navIcon: require("../assets/nav/yunxingtiku.png"),
           navTitle: this.$store.getters.getLanage.yxtkgl,
+          to: "/teatestxuanze",
           navArray: [
             {
               liName: this.$store.getters.getLanage.xzt,
@@ -143,13 +133,13 @@ export default {
               }
             },
             {
-              liName:this.$store.getters.getLanage.fyt,
+              liName: this.$store.getters.getLanage.fyt,
               goto: {
                 name: "TeaTestFanyi"
               }
             },
             {
-              liName:this.$store.getters.getLanage.tkt,
+              liName: this.$store.getters.getLanage.tkt,
               goto: {
                 name: "TeaTestTiankong"
               }
@@ -158,7 +148,8 @@ export default {
         },
         {
           navIcon: require("../assets/nav/juanzu.png"),
-          navTitle:this.$store.getters.getLanage.zjgl,
+          navTitle: this.$store.getters.getLanage.zjgl,
+          to: "/teatestjuanzu",
           navArray: [
             {
               liName: this.$store.getters.getLanage.zjgl,
@@ -168,13 +159,11 @@ export default {
             }
           ]
         }
-      ]
-      return nav
+      ];
+      return nav;
     }
   },
-  mounted(){
-    
-  },
+  mounted() {},
   components: { TeaHeader, TeaNav }
 };
 </script>

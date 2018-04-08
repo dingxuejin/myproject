@@ -61,7 +61,7 @@
                 </tr>
             </tbody>
         </table>
-        <el-dialog title="修改学生信息" :visible.sync="isXiugai">
+        <el-dialog title="修改学生信息" :visible.sync="isXiugai" width="800px">
 
             <div class="tanchu1">
                 <table>

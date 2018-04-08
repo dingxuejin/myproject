@@ -18,9 +18,13 @@ import TeaSpeTing from '@/components/maintwo/TeaSpeTing'
 import TeaSpeShuo from '@/components/maintwo/TeaSpeShuo'
 import TeaSpeNlcp from '@/components/maintwo/TeaSpeNlcp'
 import TeaSpeCjqz from '@/components/maintwo/TeaSpeCjqz'
-import TeaSpeKcjd from '@/components/maintwo/TeaSpeKcjd'
-import TeaSpeKcjdMx from '@/components/maintwo/TeaSpeKcjdMx'
-import TeaSpeKccj from '@/components/maintwo/TeaSpeKccj'
+import TeaSpeKcjdTing from '@/components/maintwo/TeaSpeKcjdting'
+import TeaSpeKcjdShuo from '@/components/maintwo/TeaSpeKcjdshuo'
+import TeaSpeKcjdNlcp from '@/components/maintwo/TeaSpeKcjdnlcp'
+import TeaSpeKccjcxKccj from '@/components/maintwo/TeaSpeKccjcxKccj'
+import TeaSpeKccjcxNlcp from '@/components/maintwo/TeaSpeKccjcxNlcp'
+import TeaSpeKccjcxShuo from '@/components/maintwo/TeaSpeKccjcxShuo'
+import TeaSpeKccjcxTing from '@/components/maintwo/TeaSpeKccjcxTing'
 import TeaSpeKcjg from '@/components/maintwo/TeaSpeKcjg'
 import TeaSpeRadio from '@/components/mainone/TeaSpeRadio'
 import TeaSpeRVMag from '@/components/mainone/TeaSpeRVMag'
@@ -43,10 +47,18 @@ import TeaTestHdxx from '@/components/maintwo/TeaTestHdxx'
 import TeaTestJingsai from '@/components/maintwo/TeaTestJingsai'
 import TeaTestXtyy from '@/components/maintwo/TeaTestXtyy'
 import TeaTestZtyl from '@/components/maintwo/TeaTestZtyl'
-import TeaTestChengji from '@/components/maintwo/TeaTestChengji'
-import TeaTestChengjijieguo from '@/components/maintwo/TeaTestChengjijieguo'
-import TeaTestChengjitongji from '@/components/maintwo/TeaTestChengjitongji'
-import TeaTestJindu from '@/components/maintwo/TeaTestJindu'
+import TeaTestChengjiNlcp from '@/components/maintwo/TeaTestChengjiNlcp'
+import TeaTestChengjiZtyl from '@/components/maintwo/TeaTestChengjiZtyl'
+import TeaTestChengjiJingsai from '@/components/maintwo/TeaTestChengjiJingsai'
+import TeaTestChengjijieguoNlcp from '@/components/maintwo/TeaTestChengjijieguoNlcp'
+import TeaTestChengjijieguoZtyl from '@/components/maintwo/TeaTestChengjijieguoZtyl'
+import TeaTestChengjijieguoJspt from '@/components/maintwo/TeaTestChengjijieguoJspt'
+import TeaTestChengjitongjiNlcp from '@/components/maintwo/TeaTestChengjitongjiNlcp'
+import TeaTestChengjitongjiZtyl from '@/components/maintwo/TeaTestChengjitongjiZtyl'
+import TeaTestChengjitongjiJspt from '@/components/maintwo/TeaTestChengjitongjiJspt'
+import TeaTestJinduNlcp from '@/components/maintwo/TeaTestJinduNlcp'
+import TeaTestJinduZtyl from '@/components/maintwo/TeaTestJinduZtyl'
+import TeaTestJinduJingsai from '@/components/maintwo/TeaTestJinduJingsai'
 import TeaTestZxnl from '@/components/maintwo/TeaTestZxnl'
 
 // 写作部分 start
@@ -89,14 +101,14 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-     // 亿测吧部分
-     {
-      path: '/teatestcontainer', name: 'TeaTestContainer', component: TeaTestContainer,children:[
-  
+    // 亿测吧部分
+    {
+      path: '/teatestcontainer', name: 'TeaTestContainer', component: TeaTestContainer, children: [
+
         { path: '/teatest', name: 'TeaTestMain', component: TeaTestMain },
         { path: '/teatestxtyy', name: 'TeaTestXtyy', component: TeaTestXtyy },
         {
-          path: '/mainone', name: 'TeaMainOne', component: TeaMainOne, children:[
+          path: '/mainone', name: 'TeaMainOne', component: TeaMainOne, children: [
             { path: '/teatestclassmag', name: 'TeaTestClassMag', component: TeaTestClassMag },
             { path: '/teatesthdxx', name: 'TeaTestHdxx', component: TeaTestHdxx },
             { path: '/teatestfanyi', name: 'TeaTestFanyi', component: TeaTestFanyi },
@@ -104,27 +116,35 @@ export default new Router({
             { path: '/teatesttiankong', name: 'TeaTestTiankong', component: TeaTestTiankong },
             { path: '/teatestxuanze', name: 'TeaTestXuanze', component: TeaTestXuanze },
             { path: '/teatestjuanzu', name: 'TeaTestJuanzu', component: TeaTestJuanzu },
-           
+
             { path: '/teateststumag', name: 'TeaTestStuMag', component: TeaTestStuMag }
-          ] 
+          ]
         },
         {
-          path: '/maintwo', name: 'TeaMainTwo', component: TeaMainTwo, children:[
-          
-            { path: '/teatestchengjitongji', name: 'TeaTestChengjitongji', component: TeaTestChengjitongji },
-            { path: '/teatestchengjijieguo', name: 'TeaTestChengjijieguo', component: TeaTestChengjijieguo },
-            { path: '/teatestjindu', name: 'TeaTestJindu', component: TeaTestJindu },
-            { path: '/teatestchengji', name: 'TeaTestChengji', component: TeaTestChengji },
-           
+          path: '/maintwo', name: 'TeaMainTwo', component: TeaMainTwo, children: [
+
+            { path: '/TeaTestChengjitongjinlcp', name: 'TeaTestChengjitongjiNlcp', component: TeaTestChengjitongjiNlcp },
+            { path: '/teatestchengjitongjiztyl', name: 'TeaTestChengjitongjiZtyl', component: TeaTestChengjitongjiZtyl },
+            { path: '/teatestchengjitongjijspt', name: 'TeaTestChengjitongjiJspt', component: TeaTestChengjitongjiJspt },
+            { path: '/teatestchengjijieguojspt', name: 'TeaTestChengjijieguoJspt', component: TeaTestChengjijieguoJspt },
+            { path: '/teatestchengjijieguoztyl', name: 'TeaTestChengjijieguoZtyl', component: TeaTestChengjijieguoZtyl },
+            { path: '/teatestchengjijieguonlcp', name: 'TeaTestChengjijieguoNlcp', component: TeaTestChengjijieguoNlcp },
+            { path: '/teatestjingdunlcp', name: 'TeaTestJinduNlcp', component: TeaTestJinduNlcp },
+            { path: '/teatestjingduztyl', name: 'TeaTestJinduZtyl', component: TeaTestJinduZtyl },
+            { path: '/teatestjingdujingsai', name: 'TeaTestJinduJingsai', component: TeaTestJinduJingsai },
+            { path: '/teatestchengjinlcp', name: 'TeaTestChengjiNlcp', component: TeaTestChengjiNlcp },
+            { path: '/teatestchengjijingsai', name: 'TeaTestChengjiJingsai', component: TeaTestChengjiJingsai },
+            { path: '/teatestchengjiztyl', name: 'TeaTestChengjiZtyl', component: TeaTestChengjiZtyl },
+
             { path: '/teatestzxnl', name: 'TeaTestZxnl', component: TeaTestZxnl },
             { path: '/teatestztyl', name: 'TeaTestZtyl', component: TeaTestZtyl },
             { path: '/teatestjingsai', name: 'TeaTestJingsai', component: TeaTestJingsai }
-          ] 
+          ]
         }
       ]
     },
     // 口语平台部分
- 
+
     {
       path: '/teaspecontainer', name: 'TeaSpeContainer', component: TeaSpeContainer, children: [
         { path: '/teaspe', name: 'TeaSpeMain', component: TeaSpeMain },
@@ -146,9 +166,13 @@ export default new Router({
             { path: '/teaspeshuo', name: 'TeaSpeShuo', component: TeaSpeShuo },
             { path: '/teaspenlcp', name: 'TeaSpeNlcp', component: TeaSpeNlcp },
             { path: '/teaspecjqz', name: 'TeaSpeCjqz', component: TeaSpeCjqz },
-            { path: '/teaspekcjd', name: 'TeaSpeKcjd', component: TeaSpeKcjd },
-            { path: '/teaspekcjdmx', name: 'TeaSpeKcjdMx', component: TeaSpeKcjdMx },
-            { path: '/teaspekccj', name: 'TeaSpeKccj', component: TeaSpeKccj },
+            { path: '/teaspekcjdting', name: 'TeaSpeKcjdTing', component: TeaSpeKcjdTing },
+            { path: '/teaspekcjdshuo', name: 'TeaSpeKcjdShuo', component: TeaSpeKcjdShuo },
+            { path: '/teaspekcjdnlcp', name: 'TeaSpeKcjdNlcp', component: TeaSpeKcjdNlcp },
+            { path: '/teaspekccjcxkccj', name: 'TeaSpeKccjcxKccj', component: TeaSpeKccjcxKccj },
+            { path: '/teaspekccjcxshuo', name: 'TeaSpeKccjcxShuo', component: TeaSpeKccjcxShuo },
+            { path: '/teaspekccjcxting', name: 'TeaSpeKccjcxTing', component: TeaSpeKccjcxTing },
+            { path: '/teaspekccjcxnlcp', name: 'TeaSpeKccjcxNlcp', component: TeaSpeKccjcxNlcp },
             { path: '/teaspekcjg', name: 'TeaSpeKcjg', component: TeaSpeKcjg },
             { path: '/teaspetongzhi', name: 'TeaSpeTongzhi', component: TeaSpeTongzhi },
             { path: '/teaspeliuyan', name: 'TeaSpeLiuyan', component: TeaSpeLiuyan },

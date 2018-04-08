@@ -92,7 +92,7 @@
 </template>
 <script>
 export default {
-  name: "TeaSpeKccj",
+  name: "TeaSpeKccjcxKccj",
   data() {
     return {
       breadcrumb: [
@@ -101,16 +101,17 @@ export default {
         { name: "课程成绩查询", to: "" }
       ],
       tabs: [
-        { name: "课程进度查询", to: "/teaspekcjd" },
-        { name: "课程成绩查询", to: "/teaspekccj" },
-        { name: "课程结果分析", to: "/teaspekcjg" }
+        { name: "听一听", to: "/teaspekccjcxting" },
+        { name: "说一说", to: "/teaspekccjcxshuo" },
+        { name: "能力测评", to: "/teaspekccjcxnlcp" },
+        { name: "课程成绩", to: "/teaspekccjcxkccj" }
       ]
     };
   },
   mounted() {
     let tabs = this.tabs;
     let breadcrumb = this.breadcrumb;
-    let n = 1;
+    let n = 3;
     this.$emit("getData", { tabs, breadcrumb, n });
   }
 };
