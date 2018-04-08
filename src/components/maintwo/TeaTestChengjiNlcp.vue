@@ -141,7 +141,7 @@ export default {
 };
 </script>
 <style scoped>
-.zxnl1 > div,
+
 .zxnl1 > div > div {
   margin: 5px;
 }
