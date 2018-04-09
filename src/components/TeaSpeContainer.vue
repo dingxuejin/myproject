@@ -25,6 +25,7 @@
 <script>
 import TeaHeader from "./TeaHeader.vue";
 import TeaNav from "./TeaNav.vue";
+
 export default {
   name: "TeaSpeContainer",
   data() {
@@ -184,6 +185,22 @@ export default {
         }
       ]
     };
+  },
+  created() {
+    let data = this.$qs.stringify({ fatherId: -1 });
+    this.$axios
+      .post("busjapsys/adm/menu/menu/menuList", data)
+      .then(function(res) {
+        console.log(res.data.results.menuList);
+        let menuList=res.data.results.menuList;
+        let menu=menuList.sort(function(a,b){
+          return b.menuNum-a.menuNum
+        })
+        console.log(menu);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   },
   components: { TeaHeader, TeaNav }
 };

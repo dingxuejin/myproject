@@ -12,7 +12,7 @@ import echarts from 'echarts'
 import '../theme/index.css'
 import '../static/normalize.css'
 import VueQuillEditor from 'vue-quill-editor'
-
+import qs from 'qs';
 
  
 // require styles
@@ -22,17 +22,12 @@ import 'quill/dist/quill.bubble.css'
 
 Vue.use(VueQuillEditor, /* { default global options } */)
 
- 
-
-
-
-
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios=axios
-axios.defaults.baseURL='http://hh.fruitsshop.cn'
-
+Vue.prototype.$qs=qs
+axios.defaults.baseURL='http://42.51.44.208:8888/busjapedu/'
 
 
 
