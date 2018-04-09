@@ -13,7 +13,7 @@
             </div>
             <div class="right flex-end btn-lan">
                 <button>查询</button>
-                <button>新增</button>
+                <button @click="add()">新增</button>
                 <button>删除</button>
             </div>
         </div>
@@ -30,34 +30,19 @@
             </thead>
 
             <tbody>
-                <tr>
+                <tr v-for="(item,index) in allIds" :key="index">
                     <td>
-
                         <el-checkbox></el-checkbox>
-
                     </td>
-                    <td>1</td>
-                    <td>class01</td>
-                    <td>2017级商务日语一班</td>
+                    <td>{{index+1}}</td>
+                    <td>{{item.className}}</td>
+                    <td>{{item.remark}}</td>
                     <td class="btn-lv">
-                        <button class="edit" @click="isXiugai=true">修改</button>
+                        <button class="edit" @click="edit(item.id)">修改</button>
                         <button class="check" @click="isChaxun=true">查看</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>
 
-                        <el-checkbox></el-checkbox>
-
-                    </td>
-                    <td>2</td>
-                    <td>class02</td>
-                    <td>2017级商务日语一班</td>
-                    <td class="btn-lv">
-                        <button class="edit" @click="isXiugai=true">修改</button>
-                        <button class="check" @click="isChaxun=true">查看</button>
-                    </td>
-                </tr>
             </tbody>
         </table>
         <el-dialog title="班级详细信息" :visible.sync="isChaxun" width="800px">
@@ -108,7 +93,7 @@
                             <span>备注</span>
                         </td>
                         <td>
-                            <el-input  type="textarea" rows="6"></el-input>
+                            <el-input type="textarea" rows="6"></el-input>
                         </td>
                     </tr>
                 </table>
@@ -128,60 +113,109 @@
 
 <script>
 export default {
-  name: "TeaSpeClassMag",
-  data() {
-    return {
-      breadcrumb: [
-        { name: "首页", to: "/" },
-        { name: "口语平台", to: "/teaspe" },
-        { name: "班级管理", to: "" }
-      ],
-      isXiugai: false,
-      isChaxun: false
-    };
-  },
-  updated() {},
-  mounted() {
-    this.$emit("getData", this.breadcrumb);
-  }
+    name: "TeaSpeClassMag",
+    data() {
+        return {
+            allIds: [{ id: 1 }, { id: 5 }, { id: 2 }],
+            breadcrumb: [
+                { name: "首页", to: "/" },
+                { name: "口语平台", to: "/teaspe" },
+                { name: "班级管理", to: "" }
+            ],
+            isXiugai: false,
+            isChaxun: false
+        };
+    },
+    methods: {
+        // 教师添加班级
+        add() {
+            this.$axios
+                .post(
+                    "busjapsys/tea/classes/class/addClass",
+                    this.$qs.stringify({
+                        className: "商蓬网络",
+                        remark: "add测试",
+                        teacherId: 9527,
+                        isUsed: 1,
+                        createdUserId: 9527
+                    })
+                )
+                .then(function(res) {
+                    console.log(res);
+                });
+        },
+
+        // 教师修改班级
+        edit(e) {
+            this.$axios
+                .post(
+                    "busjapsys/tea/classes/class/editClass",
+                    this.$qs.stringify({
+                        className: "商蓬网络",
+                        remark: "edit测试",
+                        teacherId: 9527,
+                        isUsed: 1,
+                        createdUserId: 9527,
+                        id: e
+                    })
+                )
+                .then(function(res) {
+                    console.log(res);
+                });
+            this.isXiugai = true;
+        }
+    },
+    updated() {},
+    mounted() {
+        this.$emit("getData", this.breadcrumb);
+    },
+    created() {
+        let that = this;
+        //网页加载时查出班级详情信息
+        this.$axios
+            .post("busjapsys/tea/classes/class/classList")
+            .then(function(res) {
+                console.log("找到了", res);
+                that.allIds = res.data.results.classList;
+            });
+    }
 };
 </script>
 <style scoped>
-
 .left > div {
-  margin:0 5px;
+    margin: 0 5px;
 }
 .tanchu2,
 .tanchu4 {
-  padding: 20px;
+    padding: 20px;
 }
 
 .tanchu2 td {
-  padding: 0 10px;
-  text-align: left;
+    padding: 0 10px;
+    text-align: left;
 }
 .tanchu2 tr > td:first-child {
-  text-align: center;
+    text-align: center;
 }
 .tanchu3 {
-  border-top: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
 }
 .tanchu3 button {
-  margin: 20px 10px;
+    margin: 20px 10px;
 }
 .tanchu4 table {
-  width: 100%;
-  border: none;
+    width: 100%;
+    border: none;
 }
 .tanchu4 tr > td:first-child {
-  text-align: center;
+    text-align: center;
 }
 .tanchu4 td {
-  border: none;
-  padding: 10px 0;
+    border: none;
+    padding: 10px 0;
 }
 .danger {
-  color: #f56c6c;
+    color: #f56c6c;
 }
 </style>
 
