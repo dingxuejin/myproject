@@ -5,14 +5,14 @@ import App from './App'
 import router from './router'
 import store from './store'
 
-import axios from 'axios'
+import axios from './axios/api'
 import i18n from './i18n'
 import ElementUI from 'element-ui'
 import echarts from 'echarts'
 import '../theme/index.css'
 import '../static/normalize.css'
 import VueQuillEditor from 'vue-quill-editor'
-import qs from 'qs';
+
 
  
 // require styles
@@ -26,8 +26,8 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios=axios
-Vue.prototype.$qs=qs
-axios.defaults.baseURL='http://42.51.44.208:8888/busjapedu/'
+
+
 
 
 

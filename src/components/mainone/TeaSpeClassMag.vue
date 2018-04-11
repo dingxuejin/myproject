@@ -139,8 +139,8 @@ export default {
             this.$axios
                 .post("busjapsys/tea/classes/class/classList")
                 .then(function(res) {
-                    console.log("找到了", res);
                     let allIds = res.data.results.classList;
+                    console.log("找到了", allIds);
                     allIds = allIds.map(val => {
                         val.value = false;
                         return val;
@@ -154,22 +154,19 @@ export default {
             this.$axios
                 .post(
                     "busjapsys/tea/classes/class/addClass",
-                    this.$qs.stringify({
+                    {
                         className: "商蓬网络",
                         remark: "add测试",
                         teacherId: 9527,
                         isUsed: 1,
                         createdUserId: 9527
-                    })
+                    }
                 )
                 .then(res => {
                     this.queryAll();
                 })
                 .then(res => {
-                    this.$message({
-                        message: "班级新增成功",
-                        type: "success"
-                    });
+                
                 });
         },
 
@@ -178,7 +175,7 @@ export default {
             this.n = n;
             this.banji = this.allIds[n].className;
             this.beizhu = this.allIds[n].remark;
-            let data = this.$qs.stringify({ id: e });
+            let data = { id: e };
             this.$axios
                 .post("busjapsys/tea/classes/class/toViewClass", data)
                 .then(res => {
@@ -192,20 +189,17 @@ export default {
             this.$axios
                 .post(
                     "busjapsys/tea/classes/class/editClass",
-                    this.$qs.stringify({
+                    {
                         className: this.banji,
                         remark: this.beizhu,
                         teacherId: a,
                         id: b
-                    })
+                    }
                 )
                 .then(res => {
                     this.allIds[this.n].className = this.banji;
                     this.allIds[this.n].remark = this.beizhu;
-                    this.$message({
-                        message: "班级修改成功",
-                        type: "success"
-                    });
+                 
                 });
         },
 
@@ -213,7 +207,7 @@ export default {
         chakan(e) {
             this.isChaxun = true;
             console.log(e);
-            let data = this.$qs.stringify({ id: e });
+            let data = { id: e };
             this.$axios
                 .post("busjapsys/tea/classes/class/toViewClass", data)
                 .then(res => {
@@ -237,7 +231,7 @@ export default {
             });
 
             // 将newIds数组中的id用,拼接起来
-            let data = this.$qs.stringify({ ids: newIds.join(",") });
+            let data = { ids: newIds.join(",") };
 
             this.$axios
                 .post("busjapsys/tea/classes/class/deleteClasss", data)
@@ -245,10 +239,6 @@ export default {
                     this.queryAll();
                 })
                 .then(res => {
-                    this.$message({
-                        message: "班级删除成功",
-                        type: "success"
-                    });
                 });
         }
     },
