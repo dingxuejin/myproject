@@ -14,7 +14,7 @@
             <div class="right flex-end btn-lan">
                 <button>查询</button>
                 <button @click="add()">新增</button>
-                <button>删除</button>
+                <button @click="shanchu()">删除</button>
             </div>
         </div>
 
@@ -32,14 +32,14 @@
             <tbody>
                 <tr v-for="(item,index) in allIds" :key="index">
                     <td>
-                        <el-checkbox></el-checkbox>
+                        <el-checkbox v-model='item.value'></el-checkbox>
                     </td>
                     <td>{{index+1}}</td>
                     <td>{{item.className}}</td>
                     <td>{{item.remark}}</td>
                     <td class="btn-lv">
-                        <button class="edit" @click="edit(item.id)">修改</button>
-                        <button class="check" @click="isChaxun=true">查看</button>
+                        <button class="edit" @click="isXiugai=true, query(item.xueid,index)">修改</button>
+                        <button class="check" @click="chakan(item.xueid)">查看</button>
                     </td>
                 </tr>
 
@@ -52,11 +52,11 @@
                     <tbody>
                         <tr>
                             <td class="nowrap">班级名称</td>
-                            <td>class1</td>
+                            <td>{{chakanData.class_name}}</td>
                         </tr>
                         <tr>
-                            <td class="nowrap">使用知识</td>
-                            <td>启用</td>
+                            <td class="nowrap">使用标识</td>
+                            <td>{{chakanData.is_used==="1"?"启用":"禁用"}}</td>
                         </tr>
                         <tr>
                             <td class="nowrap">
@@ -65,7 +65,7 @@
                                 </p>
 
                             </td>
-                            <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum laboriosam totam dolor consequuntur tempora autem quos sapiente eos fuga suscipit laborum, est expedita sint fugit consectetur asperiores consequatur iste animi?</td>
+                            <td>{{chakanData.remark}}</td>
                         </tr>
                     </tbody>
 
@@ -85,7 +85,7 @@
                             <span class="danger">*</span>
                         </td>
                         <td>
-                            <el-input placeholder="请输入班级名称"></el-input>
+                            <el-input placeholder="请输入班级名称" v-model="banji"></el-input>
                         </td>
                     </tr>
                     <tr>
@@ -93,14 +93,14 @@
                             <span>备注</span>
                         </td>
                         <td>
-                            <el-input type="textarea" rows="6"></el-input>
+                            <el-input type="textarea" rows="6" v-model="beizhu"></el-input>
                         </td>
                     </tr>
                 </table>
             </div>
             <div class=" tanchu3 flex-center">
                 <div class="btn-lan">
-                    <button @click="isXiugai=false">保存</button>
+                    <button @click="edit(chakanData.teacher_id, chakanData.xueid), isXiugai=false">保存</button>
                 </div>
                 <div class="btn-hui">
                     <button @click="isXiugai=false">关闭</button>
@@ -116,17 +116,39 @@ export default {
     name: "TeaSpeClassMag",
     data() {
         return {
+            banji: "",
+            beizhu: "",
             allIds: [{ id: 1 }, { id: 5 }, { id: 2 }],
+
+            // 所有要被删除的班级id
+            Ids: [],
             breadcrumb: [
                 { name: "首页", to: "/" },
                 { name: "口语平台", to: "/teaspe" },
                 { name: "班级管理", to: "" }
             ],
+            chakanData: {},
             isXiugai: false,
             isChaxun: false
         };
     },
     methods: {
+        //网页加载时查出班级详情信息
+        queryAll() {
+            let that = this;
+            this.$axios
+                .post("busjapsys/tea/classes/class/classList")
+                .then(function(res) {
+                    console.log("找到了", res);
+                    let allIds = res.data.results.classList;
+                    allIds = allIds.map(val => {
+                        val.value = false;
+                        return val;
+                    });
+                    that.allIds = allIds;
+                });
+        },
+
         // 教师添加班级
         add() {
             this.$axios
@@ -140,29 +162,94 @@ export default {
                         createdUserId: 9527
                     })
                 )
-                .then(function(res) {
-                    console.log(res);
+                .then(res => {
+                    this.queryAll();
+                })
+                .then(res => {
+                    this.$message({
+                        message: "班级新增成功",
+                        type: "success"
+                    });
+                });
+        },
+
+        // 修改数据前查看数据（检查确认用）
+        query(e, n) {
+            this.n = n;
+            this.banji = this.allIds[n].className;
+            this.beizhu = this.allIds[n].remark;
+            let data = this.$qs.stringify({ id: e });
+            this.$axios
+                .post("busjapsys/tea/classes/class/toViewClass", data)
+                .then(res => {
+                    this.chakanData = JSON.parse(res.data.results.classinfo);
+                    console.log(this.chakanData);
                 });
         },
 
         // 教师修改班级
-        edit(e) {
+        edit(a, b) {
             this.$axios
                 .post(
                     "busjapsys/tea/classes/class/editClass",
                     this.$qs.stringify({
-                        className: "商蓬网络",
-                        remark: "edit测试",
-                        teacherId: 9527,
-                        isUsed: 1,
-                        createdUserId: 9527,
-                        id: e
+                        className: this.banji,
+                        remark: this.beizhu,
+                        teacherId: a,
+                        id: b
                     })
                 )
-                .then(function(res) {
-                    console.log(res);
+                .then(res => {
+                    this.allIds[this.n].className = this.banji;
+                    this.allIds[this.n].remark = this.beizhu;
+                    this.$message({
+                        message: "班级修改成功",
+                        type: "success"
+                    });
                 });
-            this.isXiugai = true;
+        },
+
+        // 查看按钮 查出数据
+        chakan(e) {
+            this.isChaxun = true;
+            console.log(e);
+            let data = this.$qs.stringify({ id: e });
+            this.$axios
+                .post("busjapsys/tea/classes/class/toViewClass", data)
+                .then(res => {
+                    this.chakanData = JSON.parse(res.data.results.classinfo);
+                    console.log(this.chakanData);
+                });
+        },
+
+        // 删除班级
+        shanchu() {
+            let allIds = this.allIds;
+
+            // 过滤得到所有被勾选的班级
+            let newAllIds = allIds.filter(val => {
+                return val.value === true;
+            });
+
+            // 拿到被勾选班级的id
+            let newIds = newAllIds.map(val => {
+                return val.xueid;
+            });
+
+            // 将newIds数组中的id用,拼接起来
+            let data = this.$qs.stringify({ ids: newIds.join(",") });
+
+            this.$axios
+                .post("busjapsys/tea/classes/class/deleteClasss", data)
+                .then(res => {
+                    this.queryAll();
+                })
+                .then(res => {
+                    this.$message({
+                        message: "班级删除成功",
+                        type: "success"
+                    });
+                });
         }
     },
     updated() {},
@@ -170,14 +257,7 @@ export default {
         this.$emit("getData", this.breadcrumb);
     },
     created() {
-        let that = this;
-        //网页加载时查出班级详情信息
-        this.$axios
-            .post("busjapsys/tea/classes/class/classList")
-            .then(function(res) {
-                console.log("找到了", res);
-                that.allIds = res.data.results.classList;
-            });
+        this.queryAll();
     }
 };
 </script>
