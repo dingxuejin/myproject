@@ -1,26 +1,26 @@
 <template>
-  <div id="teaspe">
-    <el-container>
-      <el-header height='90px'>
-        <tea-header></tea-header>
-      </el-header>
-      <el-container>
-        <el-aside width="230px">
-          <div class="aside1">
-            <tea-nav :nav='nav'></tea-nav>
-            <div class="aside2">
-              <div class="aside3">
+    <div id="teaspe">
+        <el-container>
+            <el-header height='90px'>
+                <tea-header></tea-header>
+            </el-header>
+            <el-container>
+                <el-aside width="230px">
+                    <div class="aside1">
+                        <tea-nav :nav='nav'></tea-nav>
+                        <div class="aside2">
+                            <div class="aside3">
 
-              </div>
-            </div>
-          </div>
-        </el-aside>
-        <el-main>
-          <router-view/>
-        </el-main>
-      </el-container>
-    </el-container>
-  </div>
+                            </div>
+                        </div>
+                    </div>
+                </el-aside>
+                <el-main>
+                    <router-view/>
+                </el-main>
+            </el-container>
+        </el-container>
+    </div>
 </template>
 <script>
 import TeaHeader from "./TeaHeader.vue";
@@ -189,17 +189,17 @@ export default {
     },
     created() {
         let that = this;
-        let data = this.$qs.stringify({ fatherId: -1 });
+        let data = { fatherId: -1, menuLevel: 1 };
         this.$axios
-            .post("busjapsys/adm/menu/menu/menuList", data)
+            .post("busjapsys/tea/menu/menu/menuList", data)
             .then(function(res) {
                 // console.log(res.data.results.menuList);
                 let menuList = res.data.results.menuList;
-                let menu = menuList.sort(function(a, b) {
-                    return b.menuNum - a.menuNum;
-                });
-                console.log(menu);
-                that.nav = menu;
+                // let menu = menuList.sort(function(a, b) {
+                //     return b.menuNum - a.menuNum;
+                // });
+                // console.log("导航", menu);
+                that.nav = menuList;
             })
             .catch(function(error) {
                 console.log(error);
@@ -213,10 +213,6 @@ export default {
         //     .catch(function(aaa) {
         //         console.log(aaa);
         //     });
-
-        
-
-      
     },
     components: { TeaHeader, TeaNav }
 };

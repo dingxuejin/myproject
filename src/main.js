@@ -12,7 +12,7 @@ import echarts from 'echarts'
 import '../theme/index.css'
 import '../static/normalize.css'
 import VueQuillEditor from 'vue-quill-editor'
-import qs from 'qs';
+
 
  
 // require styles
@@ -26,8 +26,13 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios=axios
+<<<<<<< HEAD
 Vue.prototype.$qs=qs
 // axios.defaults.baseURL='http://42.51.44.208:8888/busjapedu/'
+=======
+
+
+>>>>>>> 5038b4f02c0a39e3c9b20e944f920857c73ac1a3
 
 
 

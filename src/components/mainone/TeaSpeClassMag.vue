@@ -148,6 +148,7 @@ export default {
           that.allIds = allIds;
         });
     },
+<<<<<<< HEAD
 
     // 教师添加班级
     add() {
@@ -214,6 +215,91 @@ export default {
       this.isChaxun = true;
       console.log(e);
       let data = { id: e };
+=======
+    methods: {
+        //网页加载时查出班级详情信息
+        queryAll() {
+            let that = this;
+            this.$axios
+                .post("busjapsys/tea/classes/class/classList")
+                .then(function(res) {
+                    let allIds = res.data.results.classList;
+                    console.log("找到了", allIds);
+                    allIds = allIds.map(val => {
+                        val.value = false;
+                        return val;
+                    });
+                    that.allIds = allIds;
+                });
+        },
+
+        // 教师添加班级
+        add() {
+            this.$axios
+                .post(
+                    "busjapsys/tea/classes/class/addClass",
+                    {
+                        className: "商蓬网络",
+                        remark: "add测试",
+                        teacherId: 9527,
+                        isUsed: 1,
+                        createdUserId: 9527
+                    }
+                )
+                .then(res => {
+                    this.queryAll();
+                })
+                .then(res => {
+                
+                });
+        },
+
+        // 修改数据前查看数据（检查确认用）
+        query(e, n) {
+            this.n = n;
+            this.banji = this.allIds[n].className;
+            this.beizhu = this.allIds[n].remark;
+            let data = { id: e };
+            this.$axios
+                .post("busjapsys/tea/classes/class/toViewClass", data)
+                .then(res => {
+                    this.chakanData = JSON.parse(res.data.results.classinfo);
+                    console.log(this.chakanData);
+                });
+        },
+
+        // 教师修改班级
+        edit(a, b) {
+            this.$axios
+                .post(
+                    "busjapsys/tea/classes/class/editClass",
+                    {
+                        className: this.banji,
+                        remark: this.beizhu,
+                        teacherId: a,
+                        id: b
+                    }
+                )
+                .then(res => {
+                    this.allIds[this.n].className = this.banji;
+                    this.allIds[this.n].remark = this.beizhu;
+                 
+                });
+        },
+
+        // 查看按钮 查出数据
+        chakan(e) {
+            this.isChaxun = true;
+            console.log(e);
+            let data = { id: e };
+            this.$axios
+                .post("busjapsys/tea/classes/class/toViewClass", data)
+                .then(res => {
+                    this.chakanData = JSON.parse(res.data.results.classinfo);
+                    console.log(this.chakanData);
+                });
+        },
+>>>>>>> 5038b4f02c0a39e3c9b20e944f920857c73ac1a3
 
    
       this.$axios
@@ -238,6 +324,7 @@ export default {
         return val.value === true;
       });
 
+<<<<<<< HEAD
       // 拿到被勾选班级的id
       let newIds = newAllIds.map(val => {
         return val.xueid;
@@ -257,6 +344,26 @@ export default {
             type: "success"
           });
         });
+=======
+            // 将newIds数组中的id用,拼接起来
+            let data = { ids: newIds.join(",") };
+
+            this.$axios
+                .post("busjapsys/tea/classes/class/deleteClasss", data)
+                .then(res => {
+                    this.queryAll();
+                })
+                .then(res => {
+                });
+        }
+    },
+    updated() {},
+    mounted() {
+        this.$emit("getData", this.breadcrumb);
+    },
+    created() {
+        this.queryAll();
+>>>>>>> 5038b4f02c0a39e3c9b20e944f920857c73ac1a3
     }
   },
   updated() {},

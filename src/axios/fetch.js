@@ -39,7 +39,11 @@ export function fetch(options) {
                 loading.close();
                 Message.success({
                     showClose: true,
+<<<<<<< HEAD
                     message: "数据获取成功",
+=======
+                    message: "操作成功",
+>>>>>>> 5038b4f02c0a39e3c9b20e944f920857c73ac1a3
                     type: "success"
                 });
                 resolve(response);//把请求到的数据发到引用请求的地方
@@ -48,7 +52,11 @@ export function fetch(options) {
                 loading.close();
                 Message.warning({
                     showClose: true,
+<<<<<<< HEAD
                     message: "数据获取失败",
+=======
+                    message: "操作失败",
+>>>>>>> 5038b4f02c0a39e3c9b20e944f920857c73ac1a3
                     type: "error"
                 });
                 console.log(options.url + '请求异常信息：' + error);
