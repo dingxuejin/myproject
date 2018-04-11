@@ -113,109 +113,25 @@
 
 <script>
 export default {
-  name: "TeaSpeClassMag",
-  data() {
-    return {
-      banji: "",
-      beizhu: "",
-      allIds: [{ id: 1 }, { id: 5 }, { id: 2 }],
+    name: "TeaSpeClassMag",
+    data() {
+        return {
+            banji: "",
+            beizhu: "",
+            allIds: [{ id: 1 }, { id: 5 }, { id: 2 }],
 
-      // 所有要被删除的班级id
-      Ids: [],
-      breadcrumb: [
-        { name: "首页", to: "/" },
-        { name: "口语平台", to: "/teaspe" },
-        { name: "班级管理", to: "" }
-      ],
-      chakanData: {},
-      isXiugai: false,
-      isChaxun: false
-    };
-  },
-  methods: {
-    //网页加载时查出班级详情信息
-    queryAll() {
-      let that = this;
-      this.$axios
-        .post("busjapsys/tea/classes/class/classList")
-        .then(function(res) {
-          console.log("找到了", res);
-          let allIds = res.data.results.classList;
-          allIds = allIds.map(val => {
-            val.value = false;
-            return val;
-          });
-          that.allIds = allIds;
-        });
+            // 所有要被删除的班级id
+            Ids: [],
+            breadcrumb: [
+                { name: "首页", to: "/" },
+                { name: "口语平台", to: "/teaspe" },
+                { name: "班级管理", to: "" }
+            ],
+            chakanData: {},
+            isXiugai: false,
+            isChaxun: false
+        };
     },
-<<<<<<< HEAD
-
-    // 教师添加班级
-    add() {
-      this.$axios
-        .post(
-          "busjapsys/tea/classes/class/addClass",
-         {
-            className: "商蓬网络",
-            remark: "add测试",
-            teacherId: 9527,
-            isUsed: 1,
-            createdUserId: 9527
-          }
-        )
-        .then(res => {
-          this.queryAll();
-        })
-        .then(res => {
-          this.$message({
-            message: "班级新增成功",
-            type: "success"
-          });
-        });
-    },
-
-    // 修改数据前查看数据（检查确认用）
-    query(e, n) {
-      this.n = n;
-      this.banji = this.allIds[n].className;
-      this.beizhu = this.allIds[n].remark;
-     
-      this.$axios
-        .post("busjapsys/tea/classes/class/toViewClass", data)
-        .then(res => {
-          this.chakanData = JSON.parse(res.data.results.classinfo);
-          console.log(this.chakanData);
-        });
-    },
-
-    // 教师修改班级
-    edit(a, b) {
-      this.$axios
-        .post(
-          "busjapsys/tea/classes/class/editClass",
-         {
-            className: this.banji,
-            remark: this.beizhu,
-            teacherId: a,
-            id: b
-          }
-        )
-        .then(res => {
-          this.allIds[this.n].className = this.banji;
-          this.allIds[this.n].remark = this.beizhu;
-          this.$message({
-            message: "班级修改成功",
-            type: "success"
-          });
-        });
-    },
-
-    // 查看按钮 查出数据
-    chakan(e) {
-      this.isChaxun = true;
-      console.log(e);
-      let data = { id: e };
-=======
     methods: {
         //网页加载时查出班级详情信息
         queryAll() {
@@ -299,52 +215,21 @@ export default {
                     console.log(this.chakanData);
                 });
         },
->>>>>>> 5038b4f02c0a39e3c9b20e944f920857c73ac1a3
 
-   
-      this.$axios
-        .post("busjapsys/tea/classes/class/toViewClass", data)
-        .catch(err => {
-        
-          console.log(err);
-        })
-        .then(res => {
-         
-          this.chakanData = JSON.parse(res.data.results.classinfo);
-          console.log(this.chakanData);
-        });
-    },
+        // 删除班级
+        shanchu() {
+            let allIds = this.allIds;
 
-    // 删除班级
-    shanchu() {
-      let allIds = this.allIds;
+            // 过滤得到所有被勾选的班级
+            let newAllIds = allIds.filter(val => {
+                return val.value === true;
+            });
 
-      // 过滤得到所有被勾选的班级
-      let newAllIds = allIds.filter(val => {
-        return val.value === true;
-      });
+            // 拿到被勾选班级的id
+            let newIds = newAllIds.map(val => {
+                return val.xueid;
+            });
 
-<<<<<<< HEAD
-      // 拿到被勾选班级的id
-      let newIds = newAllIds.map(val => {
-        return val.xueid;
-      });
-
-      // 将newIds数组中的id用,拼接起来
-      let data = this.$qs.stringify({ ids: newIds.join(",") });
-
-      this.$axios
-        .post("busjapsys/tea/classes/class/deleteClasss", data)
-        .then(res => {
-          this.queryAll();
-        })
-        .then(res => {
-          this.$message({
-            message: "班级删除成功",
-            type: "success"
-          });
-        });
-=======
             // 将newIds数组中的id用,拼接起来
             let data = { ids: newIds.join(",") };
 
@@ -363,53 +248,44 @@ export default {
     },
     created() {
         this.queryAll();
->>>>>>> 5038b4f02c0a39e3c9b20e944f920857c73ac1a3
     }
-  },
-  updated() {},
-  mounted() {
-    this.$emit("getData", this.breadcrumb);
-  },
-  created() {
-    this.queryAll();
-  }
 };
 </script>
 <style scoped>
 .left > div {
-  margin: 0 5px;
+    margin: 0 5px;
 }
 .tanchu2,
 .tanchu4 {
-  padding: 20px;
+    padding: 20px;
 }
 
 .tanchu2 td {
-  padding: 0 10px;
-  text-align: left;
+    padding: 0 10px;
+    text-align: left;
 }
 .tanchu2 tr > td:first-child {
-  text-align: center;
+    text-align: center;
 }
 .tanchu3 {
-  border-top: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
 }
 .tanchu3 button {
-  margin: 20px 10px;
+    margin: 20px 10px;
 }
 .tanchu4 table {
-  width: 100%;
-  border: none;
+    width: 100%;
+    border: none;
 }
 .tanchu4 tr > td:first-child {
-  text-align: center;
+    text-align: center;
 }
 .tanchu4 td {
-  border: none;
-  padding: 10px 0;
+    border: none;
+    padding: 10px 0;
 }
 .danger {
-  color: #f56c6c;
+    color: #f56c6c;
 }
 </style>
 
