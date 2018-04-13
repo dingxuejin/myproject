@@ -13,9 +13,9 @@
                 <button>查询</button>
                 <button @click="add()">新增</button>
                 <button>导入新增</button>
-                <button>删除</button>
+                <button @click="shanchu()">删除</button>
                 <button>密码重置</button>
-                <button>学生信息导出</button>
+                <button @click="daochu()">学生信息导出</button>
             </div>
         </div>
 
@@ -35,12 +35,12 @@
             <tbody>
                 <tr v-for="(items, index) in allIds" :key="index">
                     <td>
-                        <el-checkbox></el-checkbox>
+                        <el-checkbox v-model='items.value'></el-checkbox>
                     </td>
                     <td>{{index+1}}</td>
                     <td>{{items.stnumber}}</td>
                     <td>{{items.realname}}</td>
-                    <td>{{items.class_id}}</td>
+                    <td>{{items.class_name}}</td>
                     <td>{{items.sex}}</td>
                     <td class="btn-lv">
                         <button @click="isXiugai=true, query(items.xueid, index)">修改</button>
@@ -79,7 +79,7 @@
                         <td>所属班级:</td>
                         <td>
                             <el-select v-model="banji">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item">
                                 </el-option>
                             </el-select>
                             <span>*</span>
@@ -90,7 +90,7 @@
                         <td>性别:</td>
                         <td>
                             <el-select v-model="sex">
-                                <el-option v-for="item in options1" :key="item.value1" :label="item.label1" :value="item.value1">
+                                <el-option v-for="item in options1" :key="item.value1" :label="item.label1" :value="item.label1">
                                 </el-option>
                             </el-select>
                         </td>
@@ -136,11 +136,15 @@ export default {
     name: "TeaSpeStuMag",
     data() {
         return {
-            xueid: -1,
-            xuehao: "",
+            xueid: -1000,
+            xuehao: -989898,
             name: "",
             nameen: "",
-            banji: "111",
+            banji: {
+                value: -1,
+                label: ""
+            },
+            banjiid: -888,
             sex: "",
             tel: "",
             email: "",
@@ -197,6 +201,10 @@ export default {
             let that = this;
             this.$axios.post("busjapsys/tea/user/user/userList").then(res => {
                 let allIds = res.data.results.userList;
+                allIds = allIds.map(val => {
+                    val.value = false;
+                    return val;
+                });
                 console.log("allIds", allIds);
                 that.allIds = allIds;
             });
@@ -235,20 +243,31 @@ export default {
             this.$axios
                 .post("busjapsys/tea/user/user/toViewUser", data)
                 .then(res => {
-                    console.log("111", res);
+                    console.log("chakandata", res.data.results);
                     this.chakanData = res.data.results.userinfo;
+                });
+            this.$axios
+                .post("busjapsys/tea/classes/class/classList")
+                .then(res => {
+                    console.log("classlist", res.data.results.classList);
+                    let sb = res.data.results.classList;
+                    this.options = sb.map(function(val, index, arr) {
+                        let item = { value: val.xueid, label: val.className };
+                        return item;
+                    });
                 });
         },
 
         edit() {
             let that = this;
+            console.log(this.banji.value);
             this.$axios
                 .post("busjapsys/tea/user/user/editUser", {
                     realname: this.name,
                     stnumber: this.xuehao,
                     email: this.email,
                     sex: this.sex,
-                    classId: this.banji,
+                    classId: this.banji.value,
                     tel: this.tel,
                     realNameEn: this.nameen,
                     remark: this.remark,
@@ -256,12 +275,43 @@ export default {
                     id: that.xueid
                 })
                 .then(res => {
+                    console.log(this.banji);
                     this.allIds[this.n].realname = this.name;
-                    this.allIds[this.n].class_id = this.banji;
+                    this.allIds[this.n].class_id = this.banji.value;
+                    this.allIds[this.n].class_name = this.banji.label;
                     this.allIds[this.n].sex = this.sex;
                     this.allIds[this.n].stnumber = this.xuehao;
                     that.isXiugai = false;
                 });
+        },
+
+        shanchu() {
+            let allIds = this.allIds;
+
+            // 过滤得到所有被勾选的班级
+            let newAllIds = allIds.filter(val => {
+                return val.value === true;
+            });
+
+            // 拿到被勾选班级的id
+            let newIds = newAllIds.map(val => {
+                return val.xueid;
+            });
+
+            // 将newIds数组中的id用,拼接起来
+            let data = { ids: newIds.join(",") };
+            this.$axios
+                .post("busjapsys/tea/user/user/deleteUsers", data)
+                .then(res => {
+                    this.queryAll();
+                })
+                .then(res => {});
+        },
+
+        daochu() {
+            this.$axios.get("busjapsys/tea/user/user/export", {
+                userType: 1
+            });
         }
     },
     created() {
