@@ -13,7 +13,7 @@ import '../theme/index.css'
 import '../static/normalize.css'
 import VueQuillEditor from 'vue-quill-editor'
 
-
+import setTableData from './components/public/setTableData.js'
  
 // require styles
 import 'quill/dist/quill.core.css'
@@ -26,6 +26,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios=axios
+Vue.prototype.$setTableData=setTableData
 
 
 

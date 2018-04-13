@@ -14,22 +14,22 @@
                 <img src="../assets/main/teaspe2.png" alt="" srcset="">
             </div>
         </div>
-        <div class="flex-center" >
-            <div class="main1" @click="isKan=true">
+        <div class="flex-center">
+            <div class="main1" @click="getData('看一看',1)">
                 <img src="../assets/main/teaspekan.png" alt="">
                 <div class="main2">
                     <div class="main4">看一看</div>
                     <div class="main5">40个知识点</div>
                 </div>
             </div>
-            <div class="main1" @click="isTing=true">
+            <div class="main1" @click="getData('听一听',2)">
                 <img src="../assets/main/teaspeting.png" alt="">
                 <div class="main2">
                     <div class="main4">听一听</div>
                     <div class="main5">40个内容</div>
                 </div>
             </div>
-            <div class="main1" @click="isShuo=true">
+            <div class="main1"  @click="getData('说一说',3)">
                 <img src="../assets/main/teaspeshuo.png" alt="">
                 <div class="main2">
                     <div class="main4">说一说</div>
@@ -47,187 +47,13 @@
         <div class="main3">
             <img src="../assets/main/teaspeliucheng.png" alt="">
         </div>
-        <el-dialog :visible.sync="isTing" title="听一听">
+      
+        <el-dialog :visible.sync="isShow" :title="dialogTitle" width="1200px">
             <div style="margin:20px;">
                 <table class="table1">
                     <thead>
                         <tr>
-                            <th>场景</th>
-                            <th>关卡名称</th>
-                            <th>内容预览</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="3">机场</td>
-                            <td>入国手续</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>安检与登机</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>免税店</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">交通</td>
-                            <td>电车出行</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>新干线出行</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">酒店</td>
-                            <td>预约</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>入住</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>退房</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">餐厅</td>
-                            <td>预约</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                         
-                            <td>用餐</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>结算</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">观光</td>
-                            <td>观光</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>规划旅游</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">求职活动</td>
-                            <td>就职相关</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>面试</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">电话应对</td>
-                            <td>打电话</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>接电话</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">职场日常</td>
-                            <td>着装礼仪</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                        
-                            <td>会议</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            
-                            <td>报相联</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">业务处理</td>
-                            <td>商务拜访</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>客诉处理</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                         
-                            <td>展会</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </el-dialog>
-        <el-dialog :visible.sync="isShuo" title="说一说">
-            <div style="margin:20px;">
-                <table class="table1">
-                    <thead>
-                        <tr>
+                            <th></th>
                             <th></th>
                             <th>场景</th>
                             <th>关卡名称</th>
@@ -235,342 +61,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td rowspan="23">影子跟读</td>
-                            <td rowspan="3">机场</td>
-                            <td>入国手续</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>安检与登机</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>免税店</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">交通</td>
-                            <td>电车出行</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>新干线出行</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">酒店</td>
-                            <td>预约</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>入住</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>退房</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">餐厅</td>
-                            <td>预约</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                         
-                            <td>用餐</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>结算</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">观光</td>
-                            <td>观光</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>规划旅游</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">求职活动</td>
-                            <td>就职相关</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>面试</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">电话应对</td>
-                            <td>打电话</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>接电话</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">职场日常</td>
-                            <td>着装礼仪</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                        
-                            <td>会议</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            
-                            <td>报相联</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">业务处理</td>
-                            <td>商务拜访</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>客诉处理</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                         
-                            <td>展会</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </el-dialog>
-        <el-dialog :visible.sync="isKan" title="看一看">
-            <div style="margin:20px;">
-                <table class="table1">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>场景</th>
-                            <th>关卡名称</th>
-                            <th>内容预览</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="23">词汇</td>
-                            <td rowspan="3">机场</td>
-                            <td>入国手续</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>安检与登机</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>免税店</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">交通</td>
-                            <td>电车出行</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>新干线出行</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">酒店</td>
-                            <td>预约</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>入住</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>退房</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">餐厅</td>
-                            <td>预约</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                         
-                            <td>用餐</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>结算</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">观光</td>
-                            <td>观光</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>规划旅游</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">求职活动</td>
-                            <td>就职相关</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>面试</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">电话应对</td>
-                            <td>打电话</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                            <td>接电话</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">职场日常</td>
-                            <td>着装礼仪</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                        
-                            <td>会议</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            
-                            <td>报相联</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">业务处理</td>
-                            <td>商务拜访</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                          
-                            <td>客诉处理</td>
-                            <td class="btn-lv">
-                                <button>预览</button>
-                            </td>
-                        </tr>
-                        <tr>
-                         
-                            <td>展会</td>
+
+                        <tr v-for='(item,index) in tab[0]' :key="index">
+                            <template v-for="(item1,index1) in tab">
+                                <td :key="index1" v-if="item1[index].count!==0" :rowspan="item1[index].count">
+                                    {{item1[index].menu[getLanguage]}}
+                                </td>
+
+                            </template>
                             <td class="btn-lv">
                                 <button>预览</button>
                             </td>
@@ -630,15 +128,35 @@
     </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "TeaSpeMain",
-  data(){
-      return{
-          isTing:false,
-          isShuo:false,
-          isKan:false,
-          isNlcp:false
-      }
+  data() {
+    return {
+      tab: [],
+      dialogTitle:'',
+      isShow: false,
+      isNlcp: false
+    };
+  },
+  computed: {
+    ...mapGetters(["getLanguage"])
+  },
+  methods: {
+    getData(title,n) {
+      let that = this;
+      let menuNo=this.active;
+      this.dialogTitle=title;
+      this.$axios
+        .get("busjapspe/tea/module/menu/menuList", { menuNo: n })
+        .then(res => {
+          this.isShow = true;
+          let tab = res.data.results;
+          console.log(tab);
+          this.tab = this.$setTableData(tab);
+           console.log(this.tab);
+        });
+    }
   }
 };
 </script>

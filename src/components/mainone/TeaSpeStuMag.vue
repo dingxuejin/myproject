@@ -121,10 +121,10 @@
             </div>
             <div class=" tanchu3 flex-center">
                 <div class="btn-lan">
-                    <button @click="edit()">保存</button>
+                    <button style='width:105px;height:40px;' @click="edit()">保存</button>
                 </div>
                 <div class="btn-hui">
-                    <button @click="isXiugai=false">关闭</button>
+                    <button @click="isXiugai=false" style='width:105px;height:40px;'>关闭</button>
                 </div>
 
             </div>

@@ -12,7 +12,7 @@ export function fetch(options) {
     return new Promise((resolve, reject) => {
         const instance = axios.create({  //instance创建一个axios实例，可以自定义配置，可在 axios文档中查看详情
             //所有的请求都会带上这些配置，比如全局都要用的身份信息等。
-            headers:options.headers,
+            headers: options.headers,
 
             url: options.url,
 
@@ -21,6 +21,7 @@ export function fetch(options) {
 
             // `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
             // 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL
+            // baseURL: '/api/',
             baseURL: '/api/',
 
             // `transformRequest` 允许在向服务器发送前，修改请求数据
@@ -46,12 +47,28 @@ export function fetch(options) {
             })
             .catch(error => {
                 loading.close();
-                Message.warning({
-                    showClose: true,
-                    message: "操作失败",
-                    type: "error"
-                });
-                console.log(options.url + '请求异常信息：' + error);
+
+
+                if (error.response) {
+                    // 请求已发出，但服务器响应的状态码不在 2xx 范围内
+                    console.error(error.response.data);
+                    console.error(error.response.status);
+                    console.error(error.response.headers);
+                    Message.warning({
+                        showClose: true,
+                        message: "操作失败",
+                        type: "error"
+                    });
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.error('Error', error.message);
+                    Message.warning({
+                        showClose: true,
+                        message: error.data.message,
+                        type: "error"
+                    });
+                }
+                console.error(error.config);
                 reject(error);
             });
     });
