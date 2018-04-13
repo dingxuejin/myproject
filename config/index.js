@@ -15,9 +15,9 @@ module.exports = {
         target: 'http://42.51.44.208:8888/busjapedu/',
         changeOrigin: true,
         pathRewrite: {
-        '^/api': '/'
+          '^/api': '/'
         }
-        }
+      }
     },
 
     // Various Dev Server settings

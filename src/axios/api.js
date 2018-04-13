@@ -7,9 +7,8 @@ ax.get = function (url, data = null) {
         headers: { 'Content-Type': 'application/json' },
         url: url,
         method: 'get',//请求方法
-        params: {
-            data //传过去的参数
-        }
+        params: data //传过去的参数
+        
     })
 }
 ax.post = function (url, data = null) {
