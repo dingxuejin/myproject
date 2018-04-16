@@ -27,74 +27,72 @@ import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
 import TeaHeader from "./TeaHeader.vue";
 import TeaNav from "./TeaNav.vue";
-import { mapActions } from "vuex";
-import { mapGetters } from "vuex";
+
 export default {
-  name: "TeaTestContainer",
-  data() {
-    return {
-      nav: []
-   
-    };
-  },
-  computed: {
-     ...mapGetters(["getTeaSpeMeunList"])
-  },
-  methods:{
-     ...mapActions(['getMeun'])
-  },
-   created() {
-    let url = "busjapsys/tea/menu/menu/menuList";
-    let data={menuType:1}
-    this.getMeun({ url,data});
-  },
-  mounted() {},
-  components: { TeaHeader, TeaNav }
+    name: "TeaTestContainer",
+    data() {
+        return {
+            nav: []
+        };
+    },
+    computed: {
+        ...mapGetters(["getTeaSpeMeunList"])
+    },
+    methods: {
+        ...mapActions(["getMeun"])
+    },
+    created() {
+        let url = "busjapsys/tea/menu/menu/menuList";
+        let data = { menuType: 1 };
+        this.getMeun({ url, data });
+    },
+    mounted() {},
+    components: { TeaHeader, TeaNav }
 };
 </script>
 <style>
 @import "../../static/teaspetable.css";
 @import "../../static/button.css";
 #teatest .el-dialog__header {
-  background-image: url(../assets/header/pg.png);
-  background-size: 100% 100%;
-  height: 55px;
+    background-image: url(../assets/header/pg.png);
+    background-size: 100% 100%;
+    height: 55px;
 }
 #teatest .el-dialog__headerbtn .el-dialog__close {
-  color: #fff;
+    color: #fff;
 }
 .el-container {
-  background: url(../assets/rongqi/teatestbg.png);
-  background-size: 100% 100%;
+    background: url(../assets/rongqi/teatestbg.png);
+    background-size: 100% 100%;
 }
 .el-aside {
-  text-align: center;
-  min-height: 985px;
-  padding: 10px;
+    text-align: center;
+    min-height: 985px;
+    padding: 10px;
 }
 
 .el-main {
-  color: #333;
-  text-align: center;
-  min-height: 985px;
+    color: #333;
+    text-align: center;
+    min-height: 985px;
 }
 .aside1 {
-  position: relative;
-  border: #4affff solid 1px;
-  box-sizing: border-box;
-  height: 100%;
-  border-radius: 10px;
-  background: #fff;
+    position: relative;
+    border: #4affff solid 1px;
+    box-sizing: border-box;
+    height: 100%;
+    border-radius: 10px;
+    background: #fff;
 }
 
 .aside2,
 .aside3 {
-  border-bottom: #4affff solid 1px;
-  position: absolute;
-  bottom: 5px;
-  width: 100%;
-  height: 20px;
-  box-sizing: border-box;
-  border-radius: 10px;
+    border-bottom: #4affff solid 1px;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    height: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 </style>
