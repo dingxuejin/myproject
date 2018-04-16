@@ -23,6 +23,8 @@
   </div>
 </template>
 <script>
+import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
 import TeaHeader from "./TeaHeader.vue";
 import TeaNav from "./TeaNav.vue";
 import { mapActions } from "vuex";
@@ -31,18 +33,19 @@ export default {
   name: "TeaTestContainer",
   data() {
     return {
-       nav: []
+      nav: []
+   
     };
   },
-   computed: {
-    ...mapGetters(["getTeaSpeMeunList"])
+  computed: {
+     ...mapGetters(["getTeaSpeMeunList"])
   },
-  methods: {
-    ...mapActions(['getMeun'])
+  methods:{
+     ...mapActions(['getMeun'])
   },
-  created() {
+   created() {
     let url = "busjapsys/tea/menu/menu/menuList";
-    let data={menuType:2}
+    let data={menuType:1}
     this.getMeun({ url,data});
   },
   mounted() {},

@@ -116,7 +116,6 @@ export default new Router({
             { path: '/teatesttiankong', name: 'TeaTestTiankong', component: TeaTestTiankong },
             { path: '/teatestxuanze', name: 'TeaTestXuanze', component: TeaTestXuanze },
             { path: '/teatestjuanzu', name: 'TeaTestJuanzu', component: TeaTestJuanzu },
-
             { path: '/teateststumag', name: 'TeaTestStuMag', component: TeaTestStuMag }
           ]
         },
