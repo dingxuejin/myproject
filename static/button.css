@@ -1,8 +1,8 @@
 .btn-hui button{
     background-image: url(./images/button/huibutton.png);
     background-size: 100% 100%;
-    min-width:90px;
-    min-height: 35px;
+    min-width:105px;
+    min-height: 40px;
     padding:5px 10px;
     color:#fff;
     margin: 5px;

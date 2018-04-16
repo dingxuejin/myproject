@@ -247,12 +247,12 @@ export default {
                     this.chakanData = res.data.results.userinfo;
                 });
             this.$axios
-                .post("busjapsys/tea/classes/class/classList")
+                .post("busjapsys/tea/user/user/userList")
                 .then(res => {
-                    console.log("classlist", res.data.results.classList);
-                    let sb = res.data.results.classList;
+                    console.log("classlist", res.data.results.userList);
+                    let sb =  res.data.results.userList;
                     this.options = sb.map(function(val, index, arr) {
-                        let item = { value: val.xueid, label: val.className };
+                        let item = { value: val.xueid, label: val.class_name };
                         return item;
                     });
                 });
@@ -299,6 +299,7 @@ export default {
             });
 
             // 将newIds数组中的id用,拼接起来
+            
             let data = { ids: newIds.join(",") };
             this.$axios
                 .post("busjapsys/tea/user/user/deleteUsers", data)

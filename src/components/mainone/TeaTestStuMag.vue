@@ -35,7 +35,7 @@
             <tbody>
                 <tr v-for="(items, index) in allIds" :key="index">
                     <td>
-                        <el-checkbox></el-checkbox>
+                        <el-checkbox v-model='items.value'></el-checkbox>
                     </td>
                     <td>{{index+1}}</td>
                     <td>{{items.stnumber}}</td>
@@ -248,6 +248,7 @@ export default {
                 .then(res => {
                     console.log("classlist", res.data.results.classList);
                     let sb = res.data.results.classList;
+
                     this.options = sb.map(function(val, index, arr) {
                         let item = { value: val.xueid, label: val.className };
                         return item;
@@ -259,7 +260,7 @@ export default {
             let that = this;
             console.log(this.banji.value);
             this.$axios
-                .post("busjapsys/tea/classes/class/editUser", {
+                .post("busjapsys/tea/user/user/editUser", {
                     realname: this.name,
                     stnumber: this.xuehao,
                     email: this.email,
@@ -298,12 +299,12 @@ export default {
             // 将newIds数组中的id用,拼接起来
             let data = { ids: newIds.join(",") };
             this.$axios
-                .post("busjapsys/tea/classes/class/deleteClass", data)
+                .post("busjapsys/tea/user/user/deleteUsers", data)
                 .then(res => {
                     this.queryAll();
                 })
                 .then(res => {});
-        },
+        }
 
         // daochu() {
         //     this.$axios.get("busjapsys/tea/user/user/export", {

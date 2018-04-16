@@ -25,143 +25,25 @@
 <script>
 import TeaHeader from "./TeaHeader.vue";
 import TeaNav from "./TeaNav.vue";
+import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "TeaTestContainer",
   data() {
-    return {};
+    return {
+       nav: []
+    };
   },
-  computed: {
-    nav() {
-      let nav = [
-        {
-          navIcon: require("../assets/nav/shouye.png"),
-          navTitle: this.$store.getters.getLanage.sy,
-          to: "/teatest",
-          navArray: []
-        },
-        {
-          navIcon: require("../assets/nav/banjiguanli.png"),
-          navTitle: this.$store.getters.getLanage.bjgl,
-          to: "/teatestclassmag",
-          navArray: [
-            {
-              liName: this.$store.getters.getLanage.bjgl,
-              goto: {
-                name: "TeaTestClassMag"
-              }
-            },
-            {
-              liName: this.$store.getters.getLanage.xsgl,
-              goto: {
-                name: "TeaTestStuMag"
-              }
-            }
-          ]
-        },
-
-        {
-          navIcon: require("../assets/nav/liankaosai.png"),
-          navTitle: this.$store.getters.getLanage.lkssz,
-          to: "/teatestzxnl",
-          navArray: []
-        },
-        {
-          navIcon: require("../assets/nav/jindu.png"),
-          navTitle: this.$store.getters.getLanage.lksjdycj,
-          to: "/teatestjingdunlcp",
-          navArray: [
-            {
-              liName: this.$store.getters.getLanage.lksjdcx,
-              goto: {
-                name: "TeaTestJinduNlcp"
-              }
-            },
-            {
-              liName: this.$store.getters.getLanage.lkscjcx,
-              goto: {
-                name: "TeaTestChengjiNlcp"
-              }
-            },
-            {
-              liName: this.$store.getters.getLanage.lkscjtj,
-              goto: {
-                name: "TeaTestChengjitongjiNlcp"
-              }
-            },
-            {
-              liName: this.$store.getters.getLanage.cjjgfx,
-              goto: {
-                name: "TeaTestChengjijieguoNlcp"
-              }
-            }
-          ]
-        },
-        {
-          navIcon: require("../assets/nav/guanli.png"),
-          navTitle: this.$store.getters.getLanage.glzx,
-          to: "/teatesthdxx",
-          navArray: [
-            {
-              liName: this.$store.getters.getLanage.hdxxgl,
-              goto: {
-                name: "TeaTestHdxx"
-              }
-            },
-            {
-              liName: this.$store.getters.getLanage.xtyysz,
-              goto: {
-                name: "TeaTestXtyy"
-              }
-            }
-          ]
-        },
-        {
-          navIcon: require("../assets/nav/yunxingtiku.png"),
-          navTitle: this.$store.getters.getLanage.yxtkgl,
-          to: "/teatestxuanze",
-          navArray: [
-            {
-              liName: this.$store.getters.getLanage.xzt,
-              goto: {
-                name: "TeaTestXuanze"
-              }
-            },
-            {
-              liName: this.$store.getters.getLanage.pdt,
-              goto: {
-                name: "TeaTestPanduan"
-              }
-            },
-            {
-              liName: this.$store.getters.getLanage.fyt,
-              goto: {
-                name: "TeaTestFanyi"
-              }
-            },
-            {
-              liName: this.$store.getters.getLanage.tkt,
-              goto: {
-                name: "TeaTestTiankong"
-              }
-            }
-          ]
-        },
-        {
-          navIcon: require("../assets/nav/juanzu.png"),
-          navTitle: this.$store.getters.getLanage.zjgl,
-          to: "/teatestjuanzu",
-          navArray: [
-            {
-              liName: this.$store.getters.getLanage.zjgl,
-              goto: {
-                name: "TeaTestJuanzu"
-              }
-            }
-          ]
-        }
-      ];
-      return nav;
-    }
+   computed: {
+    ...mapGetters(["getTeaSpeMeunList"])
+  },
+  methods: {
+    ...mapActions(['getMeun'])
+  },
+  created() {
+    let url = "busjapsys/tea/menu/menu/menuList";
+    let data={menuType:2}
+    this.getMeun({ url,data});
   },
   mounted() {},
   components: { TeaHeader, TeaNav }

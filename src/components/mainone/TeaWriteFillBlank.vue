@@ -7,7 +7,7 @@
                 <div class="left">
                     <span>课程名称：</span>
                     <input type="text" name="search" placeholder=" 支持模糊查询">
-                    
+
                     <span>课程章节名称：</span>
                     <input type="text" name="search" placeholder=" 支持模糊查询">
                 </div>
@@ -67,77 +67,84 @@
             </table>
         </div>
         <!-- table end -->
-        <el-dialog :visible.sync="dialogVisible" width="65%" :before-close="handleClose">
-            <span>课程名称：</span>
-            <el-select v-model="value1" placeholder="请选择">
-                <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-            </el-select>
+        <my-dialog width="1300px" :visible="dialogVisible" @changeVisible="visible=false">
+            <!-- <el-dialog :visible.sync="dialogVisible" width="65%" :before-close="handleClose"> -->
+            <div style="padding:20px;">
+                <div style="padding-right:40px;">
+                    <span>课程名称：</span>
+                    <el-select v-model="value1" placeholder="请选择">
+                        <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
 
-            <span>课程章节名称：</span>
-            <el-select v-model="value2" placeholder="请选择">
-                <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-            </el-select>
+                    <span>课程章节名称：</span>
+                    <el-select v-model="value2" placeholder="请选择">
+                        <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
 
-            <span>题目类型：</span>
-            <el-select v-model="value3" placeholder="请选择">
-                <el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-            </el-select>
+                    <span>题目类型：</span>
+                    <el-select v-model="value3" placeholder="请选择">
+                        <el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
 
-            <span>使用标识：</span>
-            <el-radio v-model="radio" label="1">启用</el-radio>
-            <el-radio v-model="radio" label="2">停用</el-radio>
+                    <span>使用标识：</span>
+                    <el-radio v-model="radio" label="1">启用</el-radio>
+                    <el-radio v-model="radio" label="2">停用</el-radio>
 
-            <div>
-                <table class="table1">
-                    <tr>
-                        <td style="text-align:right; width:30%">翻译内容：</td>
-                        <td>
-                            <div class="input">
-                                <el-input placeholder="题目内容" v-model="input1" clearable></el-input>
-                            </div>
-                        </td>
-                    </tr>
+                </div>
 
-                    <tr>
-                        <td style="text-align:right">翻译：</td>
-                        <td style="text-align:left">
-                            <textarea name="" id="" cols="30" rows="10" style="resize:none; width:60%; box-sizing:border-box"></textarea>
-                        </td>
-                    </tr>
+                <div>
+                    <table class="table1">
+                        <tr>
+                            <td style="text-align:right; width:30%">翻译内容：</td>
+                            <td>
+                                <div class="input">
+                                    <el-input placeholder="题目内容" v-model="input1" clearable></el-input>
+                                </div>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td style="text-align:right">正确答案：</td>
-                        <td style="text-align:left">
-                            <textarea name="" id="" cols="30" rows="10" style="resize:none; width:60%; box-sizing:border-box"></textarea>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td style="text-align:right">翻译：</td>
+                            <td style="text-align:left">
+                                <textarea name="" id="" cols="30" rows="10" style="resize:none; width:60%; box-sizing:border-box"></textarea>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td style="text-align:right">答案解析：</td>
-                        <td style="text-align:left">
-                            <textarea name="" id="" cols="30" rows="10" style="resize:none; width:60%; box-sizing:border-box"></textarea>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td style="text-align:right">正确答案：</td>
+                            <td style="text-align:left">
+                                <textarea name="" id="" cols="30" rows="10" style="resize:none; width:60%; box-sizing:border-box"></textarea>
+                            </td>
+                        </tr>
 
-                </table>
+                        <tr>
+                            <td style="text-align:right">答案解析：</td>
+                            <td style="text-align:left">
+                                <textarea name="" id="" cols="30" rows="10" style="resize:none; width:60%; box-sizing:border-box"></textarea>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
             </div>
 
-            <span slot="footer" class="dialog-footer">
-                <div class="button flex-center">
-                    <el-button @click="dialogVisible = false" class="button1">保存</el-button>
-                    <el-button class="button1">重置</el-button>
-                    <el-button @click="dialogVisible = false" class="button1">关闭</el-button>
-                </div>
-            </span>
-        </el-dialog>
+            <div class="button flex-center">
+                <el-button @click="dialogVisible = false" class="button1">保存</el-button>
+                <el-button class="button1">重置</el-button>
+                <el-button @click="dialogVisible = false" class="button1">关闭</el-button>
+            </div>
+
+        </my-dialog>
 
     </div>
 </template>
 
 <script>
+import MyDialog from "../public/MyDialog";
 export default {
     data() {
         return {
@@ -238,7 +245,8 @@ export default {
                 })
                 .catch(_ => {});
         }
-    }
+    },
+    components: { MyDialog }
 };
 </script>
 
@@ -295,6 +303,7 @@ span {
 }
 
 .button1 {
+    margin: 40px 0;
     width: 120px;
     height: 42px;
     color: #fff;

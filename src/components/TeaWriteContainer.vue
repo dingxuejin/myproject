@@ -193,6 +193,17 @@ export default {
   background-size: 100% 100%;
 } */
 @import '../../static/table.css';
+@import "../../static/button.css";
+.el-dialog__header {
+  background-image: url(../assets/header/pg.png);
+  background-size: 100% 100%;
+  height: 55px;
+}
+.el-dialog__headerbtn .el-dialog__close {
+  color: #fff;
+}
+
+
 .el-container {
     background: url(../assets/rongqi/bg.png);
     background-size: 100% 100%;
