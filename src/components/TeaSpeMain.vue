@@ -150,6 +150,7 @@ export default {
       this.$axios
         .get("busjapspe/tea/module/menu/menuList", { menuNo: n })
         .then(res => {
+            console.trace();
           this.isShow = true;
           let tab = res.data.results;
           console.log(tab);

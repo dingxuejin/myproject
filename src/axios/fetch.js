@@ -40,7 +40,7 @@ export function fetch(options) {
                 loading.close();
                 Message.success({
                     showClose: true,
-                    message: "操作成功",
+                    message: response.data.message,
                     type: "success"
                 });
                 resolve(response);//把请求到的数据发到引用请求的地方

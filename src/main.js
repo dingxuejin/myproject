@@ -34,9 +34,6 @@ Vue.prototype.$setTableData=setTableData
 
 /* eslint-disable no-new */
 new Vue({
-  mounted(){
-    console.log(store.state.locale)
-  },
   el: '#app',
   router,
   store,

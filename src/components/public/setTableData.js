@@ -1,70 +1,59 @@
 function forData(data) {
     let tdNum = [];
-    // 循环data
-    data.map((val1, i1) => {
-        // 如果data的val存在list
-        if (val1.list) {
-            // 继续循环list里的值
-            let tdNumChild = val1.list.map((val2, i2) => {
-                let list, count,mymenu;
-                if (val2.list) {
-                    list = val2.list;
-                    count = val2.count;
-                    mymenu = {
-                        menu: JSON.parse(val2.menu),
-                        count,
-                        list
-                    }
-                } else {
-                    list = [];
-                    count = 1;
-                    mymenu = {
-                        menu: val2,
-                        count,
-                        list
-                    }
-                }
-                return mymenu;
-            });
-            // 将新数组重新加入tdNum
-            tdNum = tdNum.concat(tdNumChild);
-        }
-    });
-    console.log(tdNum);
-    let num = [];
-    // 循环tdNum
-    tdNum.map((val, i, arr) => {
-        let count = val.count;
-        let newArr = [];
-        newArr.length = count - 1;
-        let newEl = {
-            menu: JSON.stringify({ menuName: null, menuJpName: null }),
-            count: 0
-        };
-        newArr.fill(newEl);
-        // 将val与新的空数组加入到num中
-        num = num.concat(val, newArr);
-    });
-
-    return num;
-};
-function getData(data) {
-    let firstData = forData(data);
-    let totalData = [];
-    totalData.push(firstData);
-    // 假定表格数据最多有8列
-    for (let i = 0; i < 8; i++) {
-        // 如果数组第i个存在值
-        if (totalData[i].length > 0) {
-            // 调用forData
-            firstData = forData(totalData[i]);
-            // 将转换的firstData插进totalData
-            totalData.push(firstData);
-        } else {
-            break;
-        }
+    tdNum.push(data.slice(0));
+    for (let i = 0; i <= 5; i++) {
+        let arrChild = []
+        tdNum[i].map((val) => {
+            if (val.list) {
+                arrChild = arrChild.concat(val.list)
+            }
+        })
+        arrChild = arrChild.map((val) => {
+            if (!val.count) {
+                val.count = 1;
+            }
+            val.menu = JSON.parse(val.menu)
+            return val;
+        })
+        tdNum.push(arrChild);
     }
-    totalData.length--;
-    return totalData;
+    tdNum = tdNum.filter((val) => {
+        return val.length > 0
+    })
+    tdNum = tdNum.slice(1);
+    return tdNum;
+
+};
+// data为数组类型
+function getData(data) {
+    let newData = forData(data);
+    let results = newData.map(val => {
+        let newArr = [];
+        val.map(val => {
+            let count = val.count;
+            let length = count - 1;
+
+            let newChild = [];
+            newChild.length = length;
+            newChild.fill({
+                count: 0,
+                menu: {}
+            });
+            newArr = newArr.concat(val);
+            newArr = newArr.concat(newChild);
+        })
+        return newArr;
+
+    })
+    let opo={};
+    results.map(val => {
+       
+        let menuLevel = val[0].menu.menuLevel;
+        opo[menuLevel] = val;
+       
+
+    })
+    return opo;
 }
+
 export default getData
