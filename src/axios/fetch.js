@@ -29,9 +29,9 @@ export function fetch(options) {
             // 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream
             transformRequest: [function (data) {
                 // 对 data 进行任意转换处理
-
                 return qs.stringify(data);
             }],
+          
 
             timeout: 20 * 1000 // 30秒超时
         });

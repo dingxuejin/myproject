@@ -1,24 +1,24 @@
 <template>
-    <div class='nav'>
-        <div v-for='(item1,index1)  in  nav' :key='index1'>
-            <div class='flex-between nav1' v-on:click='active = index1;'>
-                <div class='flex-start'>
-                    <img :src='item1.navIcon' alt='' class="icon">
-                    <span>{{JSON.parse(item1.onemenu)[getLanguage]}}</span>
-                </div>
-                <div>
-                    <img src='../assets/nav/xialasanjiaoxing.png' alt='' :class="{sanjiao:index1===active}">
-                </div>
-            </div>
-            <transition-group name='navUl' tag='ul' :class='{ulbor:index1===active}'>
-                <template v-if='index1===active'>
-                    <li @click="toMain(index2)" :class="{liActive:index2===liActive}" v-for='(item2,index2) in item1.twomenus' :key='index2' tag="li">
-                        {{item2[getLanguage]}}
-                    </li>
-                </template>
-            </transition-group>
+  <div class='nav'>
+    <div v-for='(item1,index1)  in  nav' :key='index1'>
+      <div class='flex-between nav1' v-on:click='active = index1;'>
+        <div class='flex-start'>
+          <img :src='item1.navIcon' alt='' class="icon">
+          <span>{{JSON.parse(item1.onemenu)[getLanguage]}}</span>
         </div>
+        <div>
+          <img src='../assets/nav/xialasanjiaoxing.png' alt='' :class="{sanjiao:index1===active}">
+        </div>
+      </div>
+      <transition-group name='navUl' tag='ul' :class='{ulbor:index1===active}'>
+        <template v-if='index1===active'>
+          <li @click="toMain(index2)" :class="{liActive:index2===liActive}" v-for='(item2,index2) in item1.twomenus' :key='index2' tag="li">
+            {{item2[getLanguage]}}
+          </li>
+        </template>
+      </transition-group>
     </div>
+  </div>
 </template>
 <script>
 import { mapGetters } from "vuex";
@@ -42,11 +42,13 @@ export default {
     ...mapGetters(["getLanguage"])
   },
   mounted() {
-    console.log(1, this.nav);
+  
   },
-
+  created() {
+    this.setClassList();
+  },
   methods: {
-    ...mapActions(['setLanguage']),
+    ...mapActions(["setLanguage", "setClassList"]),
     toMain(n) {
       this.liActive = n;
       //   this.$router.push({

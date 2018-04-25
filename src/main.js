@@ -11,6 +11,7 @@ import ElementUI from 'element-ui'
 import echarts from 'echarts'
 import '../theme/index.css'
 import '../static/normalize.css'
+import '../static/dxjPublic.css'
 import VueQuillEditor from 'vue-quill-editor'
 
 import setTableData from './components/public/setTableData.js'

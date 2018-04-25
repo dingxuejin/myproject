@@ -9,7 +9,7 @@
           </div>
           <div class="ting1">
             <el-select v-model="valClass" @change="getList()">
-              <el-option v-for="item in classList" :key="item.value" :label="item.label" :value="item.value">
+              <el-option v-for="item in getClassList" :key="item.value" :label="item.label" :value="item.value">
               </el-option>
             </el-select>
           </div>
@@ -75,7 +75,7 @@
         </tbody>
         <tbody v-else>
           <tr v-for="(item,index) in tableData[2]" :key="index">
-            <td :rowspan="tableData[1][index].count" v-if="tableData[1]&&tableData[1][index].count!==0">{{tableData[1][index].menu.menuName}}</td>
+            <!-- <td :rowspan="tableData[1][index].count" v-if="tableData[1]&&tableData[1][index].count!==0">{{tableData[1][index].menu.menuName}}</td> -->
             <td :rowspan="tableData[2][index].count" v-if="tableData[2]&&tableData[2][index].count!==0">{{tableData[2][index].menu.menuName}}</td>
             <td :rowspan="tableData[3][index].count" v-if="tableData[3]&&tableData[3][index].count!==0">{{tableData[3][index].menu.menuName}}</td>
             <td colspan="2" v-if="tableData[4]&&tableData[4][index].count!==0">
@@ -108,9 +108,9 @@
               </div>
             </td>
             <td v-if="tableData[4]&&tableData[4][index].count!==0">
-              <div>
-                <el-select v-model="tableData[4][index].setDetail.resultRatio">
-                  <el-option v-for="item in resultRatio" :key="item.value" :label="item.label" :value="item">
+              <div style="padding:0 10px;">
+                <el-select  v-model="tableData[4][index].setDetail.resultRatio">
+                  <el-option v-for="item in getQuanzhong" :key="item" :label="item" :value="item">
                   </el-option>
                 </el-select>
               </div>
@@ -122,37 +122,15 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 import getData from "../public/setTableData";
 export default {
   name: "TeaSpeTing",
   data() {
     return {
-      resultRatio: [
-        { value: 0, label: "0%" },
-        { value: 5, label: "5%" },
-        { value: 10, label: "10%" },
-        { value: 15, label: "15%" },
-        { value: 20, label: "20%" },
-        { value: 25, label: "25%" },
-        { value: 30, label: "30%" },
-        { value: 35, label: "35%" },
-        { value: 40, label: "40%" },
-        { value: 45, label: "45%" },
-        { value: 50, label: "50%" },
-        { value: 55, label: "55%" },
-        { value: 60, label: "60%" },
-        { value: 65, label: "65%" },
-        { value: 70, label: "70%" },
-        { value: 75, label: "75%" },
-        { value: 80, label: "80%" },
-        { value: 85, label: "85%" },
-        { value: 90, label: "90%" },
-        { value: 95, label: "95%" },
-        { value: 100, label: "100%" }
-      ],
+     
       valClass: "请选择班级",
       tableData: [],
-      classList: [{ value: null, label: "加载失败" }],
       breadcrumb: [
         { name: "首页", to: "/" },
         { name: "口语平台", to: "/teaspe" },
@@ -167,96 +145,147 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(['getUser','getClassList','getQuanzhong']),
     isTableData() {
-      if (this.tableData) {
-        return false;
-      } else {
+      if (this.tableData.length === 0) {
         return true;
+      } else {
+        return false;
       }
     }
   },
   methods: {
-    setAllAnswerOpened( str) {
+    setAllAnswerOpened(str) {
       let tableData = this.tableData;
       tableData[4].map((val, i, arr) => {
         arr[i].set.answerOpened = str;
       });
     },
-    setAllTaskOpened( str) {
+    setAllTaskOpened(str) {
       let tableData = this.tableData;
       tableData[4].map((val, i, arr) => {
         arr[i].set.taskOpened = str;
       });
     },
-    setAllVal( str) {
+    setAllVal(str) {
       let tableData = this.tableData;
       tableData[4].map((val, i, arr) => {
         arr[i].value = str;
       });
     },
+    // 保存事件
     setTableData() {
+      // 判断总分觉得是否提交
+      let isToHttp = true;
       let tableData = this.tableData;
-      let settableData = tableData[4].map((val) => {
-        if (val.value === true) {
-          let setData = {
-            xueid: val.menu.xueid,
-            taskOpened: val.set.taskOpened,
-            answerOpened: val.set.answerOpened
-          };
-          return setData;
+      if (tableData[4]) {
+        let newData = tableData[3]
+          .filter(val => {
+            return val.count !== 0;
+          })
+          .map(val => {
+            let zongfen = 0;
+            val.list.map(val => {
+              zongfen += parseFloat(val.setDetail.resultRatio);
+            });
+            // 判断总分是否满足100%
+            if (zongfen <100) {
+              isToHttp = false;
+            }
+          });
+        let settableData = tableData[4].map(val => {
+          if (val.value === true) {
+            let setData = {
+              xueid: val.set.xueid,
+              teaId: val.set.teaId,
+              classId: val.set.classId,
+              taskOpened: val.set.taskOpened,
+              answerOpened: val.set.answerOpened,
+              subtitleOpened: val.set.subtitleOpened,
+              menuNo: val.set.menuNo,
+              updatedUserId: this.getUser.userid
+            };
+            return setData;
+          }
+        });
+       
+        let resultRatio = tableData[4].map(val => {
+          if (val.value === true) {
+            let setData = {
+              xueid: val.setDetail.xueid,
+              scoreSetId: val.setDetail.scoreSetId,
+              menuNo: val.setDetail.menuNo,
+              resultRatio: val.setDetail.resultRatio,
+              updatedUserId: this.getUser.userid
+            };
+            return setData;
+          }
+        });
+        settableData = settableData.filter(val => {
+          return val !== undefined;
+        });
+        resultRatio = resultRatio.filter(val => {
+          return val !== undefined;
+        });
+        if (isToHttp) {
+          if (settableData.length > 0 && resultRatio.length > 0) {
+           
+            resultRatio.map(val=>{
+              val.resultRatio=val.resultRatio.replace('%','')
+            })
+             console.log(resultRatio);
+            this.$axios
+              .post("busjapspe/tea/set/set/editSet", {
+                set: JSON.stringify(settableData),
+                setDetail: JSON.stringify(resultRatio)
+              })
+              .then(res => {
+                console.log(res);
+              });
+          } else {
+            this.$message({
+              message: "请在要修改的关卡前打钩",
+              type: "warning"
+            });
+          }
+        } else {
+          this.$message({
+            message: "模块的总分必须满足100%",
+            type: "warning"
+          });
         }
-      });
-      let resultRatio = tableData[4].map((val) => {
-        if (val.value === true) {
-          let setData = {
-            xueid:val.menu.xueid,
-            resultRatio: val.setDetail.resultRatio
-          };
-          return setData;
-        }
-      });
-      settableData = settableData.filter(val => {
-        return val !== undefined;
-      });
-      resultRatio = resultRatio.filter(val => {
-        return val !== undefined;
-      });
-      console.log(settableData);
-      console.log(resultRatio);
+      } else {
+        this.$message({
+          message: "请先获取数据！",
+          type: "warning"
+        });
+      }
     },
     getList() {
       this.$axios
         .get("/busjapspe/tea/set/set/setList", {
           // 听一听menuNo.2
           menuNo: 2,
-          teaId: 1,
+          teaId: this.getUser.userid,
           classId: this.valClass
         })
         .then(res => {
           let data = getData(res.data.results);
-
           data[4].map(val => {
             val.value = false;
             val.set = JSON.parse(val.set);
             val.setDetail = JSON.parse(val.setDetail);
           });
+          data[4].map(val=>{
+            val.setDetail.resultRatio=val.setDetail.resultRatio+'%'
+          })
           this.tableData = data;
           console.log(data);
         });
     }
   },
   created() {
-    this.$axios.get("busjapsys/tea/classes/class/classList").then(res => {
-      let classList = res.data.results.classList;
-      classList = classList.map((val, i) => {
-        let itemList = {
-          value: val.xueid,
-          label: val.className
-        };
-        return itemList;
-      });
-      this.classList = classList;
-    });
+
   },
   mounted() {
     let tabs = this.tabs;
@@ -270,11 +299,5 @@ export default {
 .ting1 {
   margin: 0 10px;
 }
-.tishi {
-  height: 300px;
-  font-size: 30px;
-  font-weight: 600;
-}
+
 </style>
-
-
