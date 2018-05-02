@@ -155,18 +155,21 @@ export default {
     }
   },
   methods: {
+    // 设置答案全开放
     setAllAnswerOpened(str) {
       let tableData = this.tableData;
       tableData[4].map((val, i, arr) => {
         arr[i].set.answerOpened = str;
       });
     },
+    // 设置关卡启用全开放
     setAllTaskOpened(str) {
       let tableData = this.tableData;
       tableData[4].map((val, i, arr) => {
         arr[i].set.taskOpened = str;
       });
     },
+    // 设置关卡名称全选择
     setAllVal(str) {
       let tableData = this.tableData;
       tableData[4].map((val, i, arr) => {
@@ -261,6 +264,7 @@ export default {
         });
       }
     },
+    // 获取表格列表数据
     getList() {
       this.$axios
         .get("/busjapspe/tea/set/set/setList", {

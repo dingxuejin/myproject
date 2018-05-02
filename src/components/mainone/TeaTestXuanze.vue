@@ -307,7 +307,7 @@
               <el-col :span="7" class="textleft">
                 <div class="flex-between" style="border:1px solid #D9D9D9; width:350px;border-radius:5px;">
                   <input placeholder="未选择任何文件" readonly='true' type="text" style="height:90%;margin:0 5px;width:200px;border:none;" v-model="item.value">
-                  <el-upload :ref="item.ref" action="https://" :on-change="handleChange" :auto-upload="false">
+                  <el-upload ref="upload" action="https://42.51.44.208:8888/upload/upload" :on-change="handleChange" :auto-upload="false">
                     <el-button slot="trigger" type="primary" @click="changeVal(index)">选取文件</el-button>
 
                   </el-upload>
@@ -323,7 +323,7 @@
               </el-col>
               <el-col :span="2">
                 <div class="btn-lan">
-                  <button>新增</button>
+                  <button @click="submitUpload()">新增</button>
                 </div>
 
               </el-col>
@@ -510,7 +510,8 @@ export default {
       this.changeIndex = i;
     },
     submitUpload() {
-      this.$refs.upload.submit();
+      console.log(this.$refs.upload[0].submit)
+      this.$refs.upload[0].submit();
     },
     daoruChange(file, fileList) {
       this.daoruVal = file.name;
