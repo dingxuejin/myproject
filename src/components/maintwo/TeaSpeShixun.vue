@@ -13,15 +13,15 @@
         </div>
         <div class="flex-start">
           <div>
-            <span>学生姓名</span>
+            <span>作业内容</span>
           </div>
           <div>
-            <el-select></el-select>
+            <el-input></el-input>
           </div>
         </div>
         <div class="flex-start">
           <div>
-            <span>作业任务</span>
+            <span>发布时间</span>
           </div>
           <div>
             <el-select></el-select>
@@ -62,8 +62,26 @@
             <td>实训作业.xls</td>
 
             <td class="btn-lv">
-              <button>发布</button>
+              <button>下载</button>
               <button>取消发布</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <el-checkbox></el-checkbox>
+            </td>
+
+            <td>日语一班</td>
+            <td>实训报告1</td>
+            <td>
+              <span>2017-05-12</span>
+              <span>12:12:32</span>
+            </td>
+            <td>实训作业.xls</td>
+
+            <td class="btn-lv">
+              <button>下载</button>
+              <button>发布</button>
             </td>
           </tr>
         </tbody>

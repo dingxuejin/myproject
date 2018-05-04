@@ -8,7 +8,7 @@
             </div>
             <div class="flex-end btn-lan">
                 <button>查询</button>
-                <button>新增</button>
+                <button @click="uploadfile=true">新增</button>
                 <button>查看</button>
             </div>
         </div>
@@ -71,13 +71,29 @@
                 </tr>
             </tbody>
         </table>
+        <el-dialog title="文件上传" :visible.sync="uploadfile" width="900px">
+            <div style="margin:20px auto; width:320px;text-align:left;">
+                <el-upload ref="upload" :action="getUpfileUrl+'busjapsys/tea/prepdata/teaPrepdata/addPrepdata'" :data="{teacherId:1,sign:1,createdUserId:1}" name='file' :auto-upload="false" :before-upload='beforeUpload'>
+
+                    <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+                    <el-button style="margin-left: 30px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+
+                    <div slot="tip" class="el-upload__tip">XXXXXX</div>
+                </el-upload>
+            </div>
+
+        </el-dialog>
+
     </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "TeaSpeSource",
+
   data() {
     return {
+      uploadfile: false,
       breadcrumb: [
         { name: "首页", to: "/" },
         { name: "口语平台", to: "/teaspe" },
@@ -85,7 +101,37 @@ export default {
       ]
     };
   },
-    mounted() {
+  computed: {
+    ...mapGetters(["getUpfileUrl"])
+  },
+  methods: {
+    //   文件上传之前
+    beforeUpload(file) {
+      let isGoUpload = true;
+      let index = file.name.lastIndexOf(".");
+      let fileName = file.name.slice(0, index);
+      let fileType = file.name.slice(index + 1);
+      console.log(fileName, fileType);
+      this.$axios
+        .post("busjapsys/tea/prepdata/teaPrepdata/checkName", {
+          prepdataName: fileName,
+          fileType: fileType,
+          teacherId: 1
+        })
+        .then(res => {
+          console.log(res.data.results);
+          isGoUpload=false;
+           return isGoUpload;
+        });
+       
+    },
+    //   文件上传
+    submitUpload() {
+      console.log(this.$refs.upload);
+      this.$refs.upload.submit();
+    }
+  },
+  mounted() {
     this.$emit("getData", this.breadcrumb);
   }
 };
