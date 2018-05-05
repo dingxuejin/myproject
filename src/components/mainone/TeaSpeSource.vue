@@ -31,42 +31,23 @@
             </thead>
 
             <tbody>
-                <tr>
+                <tr v-for="(items, index) in infoList" :key="index">
                     <td>
                         <el-checkbox></el-checkbox>
                     </td>
-                    <td>1</td>
-                    <td>商务日语资源一</td>
-                    <td>628.0KB</td>
-                    <td>2017-07-04 13:57:17</td>
-                    <td>td01</td>
-                    <td>td01</td>
-                    <td>否</td>
-                    <td>正常文件</td>
+                    <td>{{index+1}}</td>
+                    <td>{{items.prepdataName}}</td>
+                    <td>{{items.prepdataSize}}</td>
+                    <td>{{items.createTime}}</td>
+                    <td>{{items.teacherId}}</td>
+                    <td>{{items.teacherId}}</td>
+                    <td>{{items.sign==0?"否":"是"}}</td>
+                    <td>{{items.fileType}}</td>
                     <td class="btn-lv">
                         <button>下载</button>
                     </td>
                     <td class="btn-lv">
                         <button>发布</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <el-checkbox></el-checkbox>
-                    </td>
-                    <td>2</td>
-                    <td>商务日语资源二</td>
-                    <td>720KB</td>
-                    <td>2017-07-06 15:54:20</td>
-                    <td>td02</td>
-                    <td>td02</td>
-                    <td>是</td>
-                    <td>正常文件</td>
-                    <td class="btn-lv">
-                        <button>下载</button>
-                    </td>
-                    <td class="btn-lv">
-                        <button>取消发布</button>
                     </td>
                 </tr>
             </tbody>
@@ -89,57 +70,73 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "TeaSpeSource",
+    name: "TeaSpeSource",
 
-  data() {
-    return {
-      uploadfile: false,
-      breadcrumb: [
-        { name: "首页", to: "/" },
-        { name: "口语平台", to: "/teaspe" },
-        { name: "教学资源", to: "" }
-      ]
-    };
-  },
-  computed: {
-    ...mapGetters(["getUpfileUrl"])
-  },
-  methods: {
-    //   文件上传之前
-    beforeUpload(file) {
-      let isGoUpload = true;
-      let index = file.name.lastIndexOf(".");
-      let fileName = file.name.slice(0, index);
-      let fileType = file.name.slice(index + 1);
-      console.log(fileName, fileType);
-      this.$axios
-        .post("busjapsys/tea/prepdata/teaPrepdata/checkName", {
-          prepdataName: fileName,
-          fileType: fileType,
-          teacherId: 1
-        })
-        .then(res => {
-          console.log(res.data.results);
-          isGoUpload=false;
-           return isGoUpload;
-        });
-       
+    data() {
+        return {
+            uploadfile: false,
+            breadcrumb: [
+                { name: "首页", to: "/" },
+                { name: "口语平台", to: "/teaspe" },
+                { name: "教学资源", to: "" }
+            ],
+            infoList: []
+        };
     },
-    //   文件上传
-    submitUpload() {
-      console.log(this.$refs.upload);
-      this.$refs.upload.submit();
+    computed: {
+        ...mapGetters(["getUpfileUrl"])
+    },
+    methods: {
+        //   文件上传之前
+        beforeUpload(file) {
+            let isGoUpload = true;
+            let index = file.name.lastIndexOf(".");
+            let fileName = file.name.slice(0, index);
+            let fileType = file.name.slice(index + 1);
+            console.log(fileName, fileType);
+            this.$axios
+                .post("busjapsys/tea/prepdata/teaPrepdata/checkName", {
+                    prepdataName: fileName,
+                    fileType: fileType,
+                    teacherId: 1
+                })
+                .then(res => {
+                    console.log(res.data.results);
+                    isGoUpload = false;
+                    return isGoUpload;
+                });
+        },
+        //   文件上传
+        submitUpload() {
+            // console.log(this.$refs.upload);
+            this.$refs.upload.submit();
+            // 提交成功后拉取列表信息
+            this.queryList();
+        },
+        // 页面创建时拉取教师资源列表
+        queryList() {
+            this.$axios
+                .post("busjapsys/tea/prepdata/teaPrepdata/prepdataList", {
+                    teacherId: 1
+                })
+                .then(res => {
+                    this.infoList = res.data.results.teaPrepdataList;
+                    // console.log("拉取到信息了", this.infoList);
+                });
+        }
+    },
+    mounted() {
+        this.$emit("getData", this.breadcrumb);
+    },
+    created() {
+        this.queryList();
     }
-  },
-  mounted() {
-    this.$emit("getData", this.breadcrumb);
-  }
 };
 </script>
 <style scoped>
 .source1 > div,
 .source1 > div > div {
-  margin: 5px;
+    margin: 5px;
 }
 </style>
 

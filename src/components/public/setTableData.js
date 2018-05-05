@@ -45,12 +45,12 @@ function getData(data) {
         return newArr;
 
     })
-    let opo={};
+    let opo = {};
     results.map(val => {
-       
+
         let menuLevel = val[0].menu.menuLevel;
         opo[menuLevel] = val;
-       
+
 
     })
     return opo;
