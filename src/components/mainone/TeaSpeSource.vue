@@ -73,12 +73,19 @@
         </table>
         <el-dialog title="文件上传" :visible.sync="uploadfile" width="900px">
             <div style="margin:20px auto; width:320px;text-align:left;">
-                <el-upload ref="upload" :action="getUpfileUrl+'busjapsys/tea/prepdata/teaPrepdata/addPrepdata'" :data="{teacherId:1,sign:1,createdUserId:1}" name='file' :auto-upload="false" :before-upload='beforeUpload'>
+                <el-upload ref="upload" :action="getUpfileUrl+'busjapsys/tea/prepdata/teaPrepdata/addPrepdata'" :data="{teacherId:getUser.userid,sign:sign,createdUserId:getUser.userid}" name='file' :auto-upload="false" :before-upload='beforeUpload'>
 
                     <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
                     <el-button style="margin-left: 30px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
 
-                    <div slot="tip" class="el-upload__tip">XXXXXX</div>
+                    <div slot="tip" class="el-upload__tip">
+                        <span>是否发布</span>
+                        <el-select v-model="sign">
+                            <el-option v-for=" item in option" :key="item" :label="item.label" :value="item.value">
+
+                            </el-option>
+                        </el-select>
+                    </div>
                 </el-upload>
             </div>
 
@@ -93,6 +100,8 @@ export default {
 
   data() {
     return {
+      sign: 0,
+      option: [{ value: 0, label: "不发布" }, { value: 1, label: "发布" }],
       uploadfile: false,
       breadcrumb: [
         { name: "首页", to: "/" },
@@ -102,32 +111,45 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getUpfileUrl"])
+    ...mapGetters(["getUpfileUrl", "getUser"])
   },
   methods: {
     //   文件上传之前
     beforeUpload(file) {
+      let that = this;
       let isGoUpload = true;
       let index = file.name.lastIndexOf(".");
       let fileName = file.name.slice(0, index);
       let fileType = file.name.slice(index + 1);
-      console.log(fileName, fileType);
-      this.$axios
-        .post("busjapsys/tea/prepdata/teaPrepdata/checkName", {
-          prepdataName: fileName,
-          fileType: fileType,
-          teacherId: 1
-        })
-        .then(res => {
-          console.log(res.data.results);
-          isGoUpload=false;
-           return isGoUpload;
-        });
-       
+      return new Promise((resolve, reject) => {
+        this.$axios
+          .post("busjapsys/tea/prepdata/teaPrepdata/checkName", {
+            prepdataName: fileName,
+            fileType: fileType,
+            teacherId: that.getUser.userid
+          })
+          .then(res => {
+            if (res.data.results !== 0) {
+              this.$confirm("已存在相同名字的文件, 是否继续?", "提示", {
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                type: "warning",
+                center: true
+              })
+                .then(() => {
+                  resolve();
+                })
+                .catch(() => {
+                  reject();
+                });
+            } else {
+              resolve();
+            }
+          });
+      });
     },
     //   文件上传
     submitUpload() {
-      console.log(this.$refs.upload);
       this.$refs.upload.submit();
     }
   },
