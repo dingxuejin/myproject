@@ -36,25 +36,26 @@
                         <el-checkbox></el-checkbox>
                     </td>
                     <td>{{index+1}}</td>
-                    <td>{{items.prepdataName}}</td>
-                    <td>{{items.prepdataSize}}</td>
-                    <td>{{items.createTime}}</td>
-                    <td>{{items.teacherId}}</td>
-                    <td>{{items.teacherId}}</td>
+                    <td>{{items.prepdata_name}}</td>
+                    <td>{{items.prepdata_size}}</td>
+                    <td>{{items.create_time}}</td>
+                    <td>{{items.uploader}}</td>
+                    <td>{{items.modifyer?items.modifyer:items.uploader}}</td>
                     <td>{{items.sign==0?"否":"是"}}</td>
-                    <td>{{items.fileType}}</td>
-                    <td class="btn-lv">
-                        <button>下载</button>
+                    <td>{{items.file_type}}</td>
+                    <td>
+                        <!-- <button @click="download(items.prepdata_name, items.file_type)">下载</button> -->
+                        <a class="download" :href="getUpfileUrl+'busjapsys/tea/prepdata/teaPrepdata/download ?filename='+items.prepdata_name+'.'+items.file_type+'&&teaId='+getUser.userid" :download="items.prepdata_name+'.'+items.file_type">下载</a>
                     </td>
                     <td class="btn-lv">
-                        <button>发布</button>
+                        <button @click="isSign(items.xueid,items.sign)">{{items.sign==0?"发布":"取消发布"}}</button>
                     </td>
                 </tr>
             </tbody>
         </table>
         <el-dialog title="文件上传" :visible.sync="uploadfile" width="900px">
             <div style="margin:20px auto; width:320px;text-align:left;">
-                <el-upload ref="upload" :action="getUpfileUrl+'busjapsys/tea/prepdata/teaPrepdata/addPrepdata'" :data="{teacherId:getUser.userid,sign:sign,createdUserId:getUser.userid}" name='file' :auto-upload="false" :before-upload='beforeUpload'>
+                <el-upload ref="upload" :action="getUpfileUrl+'busjapsys/tea/prepdata/teaPrepdata/addPrepdata'" :on-success="queryList" :data="{teacherId:getUser.userid,sign:sign,createdUserId:getUser.userid}" name='file' :auto-upload="false" :before-upload='beforeUpload'>
 
                     <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
                     <el-button style="margin-left: 30px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
@@ -62,7 +63,7 @@
                     <div slot="tip" class="el-upload__tip">
                         <span>是否发布</span>
                         <el-select v-model="sign">
-                            <el-option v-for=" item in option" :key="item" :label="item.label" :value="item.value">
+                            <el-option v-for=" (item,index ) in option" :key="index" :label="item.label" :value="item.value">
 
                             </el-option>
                         </el-select>
@@ -81,8 +82,12 @@ export default {
 
     data() {
         return {
-             sign: 0,
-      option: [{ value: 0, label: "不发布" }, { value: 1, label: "发布" }],
+            toSign: 0,
+            sign: 0,
+            option: [
+                { value: 0, label: "不发布" },
+                { value: 1, label: "发布" }
+            ],
             uploadfile: false,
             breadcrumb: [
                 { name: "首页", to: "/" },
@@ -92,66 +97,116 @@ export default {
             infoList: []
         };
     },
+
     computed: {
-        ...mapGetters(["getUpfileUrl","getUser"])
+        ...mapGetters(["getUpfileUrl", "getUser"])
     },
+
     methods: {
         //   文件上传之前
-       beforeUpload(file) {
-      let that = this;
-      let isGoUpload = true;
-      let index = file.name.lastIndexOf(".");
-      let fileName = file.name.slice(0, index);
-      let fileType = file.name.slice(index + 1);
-      return new Promise((resolve, reject) => {
-        this.$axios
-          .post("busjapsys/tea/prepdata/teaPrepdata/checkName", {
-            prepdataName: fileName,
-            fileType: fileType,
-            teacherId: that.getUser.userid
-          })
-          .then(res => {
-            if (res.data.results !== 0) {
-              this.$confirm("已存在相同名字的文件, 是否继续?", "提示", {
-                confirmButtonText: "确定",
-                cancelButtonText: "取消",
-                type: "warning",
-                center: true
-              })
-                .then(() => {
-                  resolve();
-                })
-                .catch(() => {
-                  reject();
-                });
-            } else {
-              resolve();
-            }
-          });
-      });
-    },
+        beforeUpload(file) {
+            let that = this;
+            let isGoUpload = true;
+            let index = file.name.lastIndexOf(".");
+            let fileName = file.name.slice(0, index);
+            let fileType = file.name.slice(index + 1);
+            return new Promise((resolve, reject) => {
+                this.$axios
+                    .post("busjapsys/tea/prepdata/teaPrepdata/checkName", {
+                        prepdataName: fileName,
+                        fileType: fileType,
+                        teacherId: that.getUser.userid
+                    })
+                    .then(res => {
+                        if (res.data.results !== 0) {
+                            this.$confirm(
+                                "已存在相同名字的文件, 是否继续?",
+                                "提示",
+                                {
+                                    confirmButtonText: "确定",
+                                    cancelButtonText: "取消",
+                                    type: "warning",
+                                    center: true
+                                }
+                            )
+                                .then(() => {
+                                    resolve();
+                                })
+                                .catch(() => {
+                                    reject();
+                                });
+                        } else {
+                            resolve();
+                        }
+                    });
+            });
+        },
         //   文件上传
         submitUpload() {
             // console.log(this.$refs.upload);
+
             this.$refs.upload.submit();
-            // 提交成功后拉取列表信息
-            this.queryList();
         },
         // 页面创建时拉取教师资源列表
         queryList() {
+            let that = this;
             this.$axios
                 .post("busjapsys/tea/prepdata/teaPrepdata/prepdataList", {
-                    teacherId: 1
+                    teacherId: that.getUser.userid
                 })
                 .then(res => {
                     this.infoList = res.data.results.teaPrepdataList;
-                    // console.log("拉取到信息了", this.infoList);
+                    console.log("拉取到信息了", this.infoList);
                 });
-        }
+        },
+
+        isSign(xueid, sign) {
+            let that = this;
+            console.log(sign);
+            if (sign == 0) {
+                this.signYes(xueid);
+            } else if (sign == 1) {
+                this.signNo(xueid);
+            } else {
+                this.signNo(xueid);
+            }
+        },
+
+        // 发布
+        signYes(xueid) {
+            this.$axios
+                .post("busjapsys/tea/prepdata/teaPrepdata/sign", {
+                    id: xueid,
+                    sign: 1
+                })
+                .then(res => {
+                    this.queryList();
+                });
+        },
+
+        // 取消发布
+        signNo(xueid) {
+            this.$axios
+                .post("busjapsys/tea/prepdata/teaPrepdata/sign", {
+                    id: xueid,
+                    sign: 0
+                })
+                .then(ren => {
+                    this.queryList();
+                });
+        },
+
+        // 下载
+        // download(prepdata_name, file_type) {
+        //     let that = this;
+        //     window.open(`${that.getUpfileUrl} busjapsys/tea/prepdata/teaPrepdata/download ?filename=${prepdata_name}.${file_type}&&teaId=${that.getUser.userid}`)  
+        // }
     },
+
     mounted() {
         this.$emit("getData", this.breadcrumb);
     },
+
     created() {
         this.queryList();
     }
@@ -161,6 +216,17 @@ export default {
 .source1 > div,
 .source1 > div > div {
     margin: 5px;
+}
+.download{
+    width:90px;
+    height: 35px;
+    display: block;
+    background: #0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    line-height: 35px;
+    margin: 0 auto;
+    color: #fff;
 }
 </style>
 
