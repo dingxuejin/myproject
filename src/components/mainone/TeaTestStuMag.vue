@@ -14,8 +14,9 @@
                 <button @click="add()">新增</button>
                 <button>导入新增</button>
                 <button @click="shanchu()">删除</button>
-                <button>密码重置</button>
-                <button>学生信息导出</button>
+                <button @click="resetPwd()">密码重置</button>
+                <!-- <button @click="daochu()">学生信息导出</button> -->
+                <a class="download" :href="getUpfileUrl+'busjapsys/tea/user/user/export?teacherId='+getUser.userid">学生信息导出</a>
             </div>
         </div>
 
@@ -133,9 +134,10 @@
 
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
     name: "TeaTestStuMag",
-    data() {
+    data: function() {
         return {
             xueid: -1000,
             xuehao: -989898,
@@ -193,18 +195,30 @@ export default {
             ]
         };
     },
+    computed: {
+        ...mapGetters(["getUpfileUrl", "getUser"])
+    },
     methods: {
         queryAll() {
             let that = this;
-            this.$axios.post("busjapsys/tea/user/user/userList").then(res => {
-                let allIds = res.data.results.userList;
-                allIds = allIds.map(val => {
-                    val.value = false;
-                    return val;
+            this.$axios
+                .post("busjapsys/tea/user/user/userList", {
+                    teacherId: that.getUser.userid
+                })
+                .then(res => {
+                    let allIds = res.data.results.userList;
+                    console.log("res", res.data);
+                    if (allIds && allIds.length > 0) {
+                        allIds = allIds.map(val => {
+                            val.value = false;
+                            return val;
+                        });
+                        console.log("allIds", allIds);
+                        that.allIds = allIds;
+                    } else {
+                        that.allIds = [];
+                    }
                 });
-                console.log("allIds", allIds);
-                that.allIds = allIds;
-            });
         },
 
         add() {
@@ -214,10 +228,9 @@ export default {
                     realname: "丁学进",
                     stnumber: "007",
                     userpassword: "dingxuejin",
-                    usertype: 1,
+                    // usertype: 0,
                     sex: "男",
-                    classId: "9527",
-                    lessId: 1,
+                    classId: "1",
                     isvalIdate: 1,
                     tel: 110,
                     realNameEn: "ding",
@@ -226,6 +239,7 @@ export default {
                     createdUserId: 1
                 })
                 .then(res => {
+                    console.log("？？？");
                     this.queryAll();
                 });
         },
@@ -237,6 +251,7 @@ export default {
             this.name = this.allIds[n].username;
             console.log(this.allIds[n]);
             let data = { id: e };
+            let that = this;
             this.$axios
                 .post("busjapsys/tea/classes/class/toViewClass", data)
                 .then(res => {
@@ -244,7 +259,9 @@ export default {
                     this.chakanData = res.data.results.userinfo;
                 });
             this.$axios
-                .post("busjapsys/tea/classes/class/classList")
+                .post("busjapsys/tea/classes/class/classList", {
+                    teacherId: that.getUser.userid
+                })
                 .then(res => {
                     console.log("classlist", res.data.results.classList);
                     let sb = res.data.results.classList;
@@ -302,15 +319,31 @@ export default {
                 .post("busjapsys/tea/user/user/deleteUsers", data)
                 .then(res => {
                     this.queryAll();
-                })
-                .then(res => {});
-        }
+                });
+        },
 
-        // daochu() {
-        //     this.$axios.get("busjapsys/tea/user/user/export", {
-        //         userType: 1
-        //     });
-        // }
+        resetPwd() {
+            let allIds = this.allIds;
+
+            // 过滤得到所有被勾选的班级
+            let newAllIds = allIds.filter(val => {
+                return val.value === true;
+            });
+
+            // 拿到被勾选班级的id
+            let newIds = newAllIds.map(val => {
+                return val.xueid;
+            });
+
+            // 将newIds数组中的id用,拼接起来
+            let data = { ids: newIds.join(",") };
+            console.log("data", data)
+            this.$axios
+                .post("busjapsys/tea/user/user/resetpass", data)
+                .then(res => {
+                    this.queryAll();
+                });
+        }
     },
     mounted() {
         this.$emit("getData", this.breadcrumb);
@@ -347,5 +380,19 @@ export default {
 }
 .tanchu1 tr > td:last-child {
     text-align: left;
+}
+.download {
+    /* width: 105px; */
+    /* height: 40px; */
+    display: block;
+    padding: 0px 10px;
+    background: url("../../../static/images/button/blueactive.png");
+    background-size: 100% 100%;
+    font-size: 18px;
+    border-radius: 5px;
+    overflow: hidden;
+    line-height: 40px;
+    margin: 0 auto;
+    color: #fff;
 }
 </style>

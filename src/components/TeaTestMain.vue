@@ -41,7 +41,7 @@
         <div class="main3">
             <img src="../assets/main/teatestliucheng.png" alt="">
         </div>
-      
+
         <el-dialog :visible.sync="isJssz" title="竞赛设置" width='900px'>
             <div style="margin:20px;">
                 <div class="flex-center jinsai1">
@@ -69,50 +69,50 @@
 
                         </div>
                     </div>
-                   
+
                 </div>
-                 <div>
-                        <table class="table1">
-                           <thead>
-                               <tr>
-                                   <th>NO</th>
-                                   <th>模块名称</th>
-                                   <th>级别</th>
-                                   <th>试卷名称</th>
-                                   <th>操作</th>
-                               </tr>
-                           </thead>
-                           <tbody>
-                               <tr>
-                                   <td>1</td>
-                                   <td>J-test</td>
-                                   <td>A-D</td>
-                                   <td>试卷一</td>
-                                   <td class="btn-lv">
-                                       <button>预览</button>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>2</td>
-                                   <td>能力考</td>
-                                   <td>N1</td>
-                                   <td>试卷一</td>
-                                   <td class="btn-lv">
-                                       <button>预览</button>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>3</td>
-                                   <td>商务礼仪</td>
-                                   <td>2级</td>
-                                   <td>试卷五</td>
-                                   <td class="btn-lv">
-                                       <button>预览</button>
-                                   </td>
-                               </tr>
-                           </tbody>
-                        </table>
-                    </div>
+                <div>
+                    <table class="table1">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>模块名称</th>
+                                <th>级别</th>
+                                <th>试卷名称</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>J-test</td>
+                                <td>A-D</td>
+                                <td>试卷一</td>
+                                <td class="btn-lv">
+                                    <button>预览</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>能力考</td>
+                                <td>N1</td>
+                                <td>试卷一</td>
+                                <td class="btn-lv">
+                                    <button>预览</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>商务礼仪</td>
+                                <td>2级</td>
+                                <td>试卷五</td>
+                                <td class="btn-lv">
+                                    <button>预览</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </el-dialog>
         <el-dialog :visible.sync="isZtyl" title="真题演练">
@@ -142,50 +142,50 @@
 
                         </div>
                     </div>
-                   
+
                 </div>
-                 <div>
-                        <table class="table1">
-                           <thead>
-                               <tr>
-                                   <th>NO</th>
-                                   <th>模块名称</th>
-                                   <th>级别</th>
-                                   <th>试卷名称</th>
-                                   <th>操作</th>
-                               </tr>
-                           </thead>
-                           <tbody>
-                               <tr>
-                                   <td>1</td>
-                                   <td>J-test</td>
-                                   <td>A-D</td>
-                                   <td>试卷一</td>
-                                   <td class="btn-lv">
-                                       <button>预览</button>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>2</td>
-                                   <td>能力考</td>
-                                   <td>N1</td>
-                                   <td>试卷一</td>
-                                   <td class="btn-lv">
-                                       <button>预览</button>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>3</td>
-                                   <td>商务礼仪</td>
-                                   <td>2级</td>
-                                   <td>试卷五</td>
-                                   <td class="btn-lv">
-                                       <button>预览</button>
-                                   </td>
-                               </tr>
-                           </tbody>
-                        </table>
-                    </div>
+                <div>
+                    <table class="table1">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>模块名称</th>
+                                <th>级别</th>
+                                <th>试卷名称</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>J-test</td>
+                                <td>A-D</td>
+                                <td>试卷一</td>
+                                <td class="btn-lv">
+                                    <button>预览</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>能力考</td>
+                                <td>N1</td>
+                                <td>试卷一</td>
+                                <td class="btn-lv">
+                                    <button>预览</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>商务礼仪</td>
+                                <td>2级</td>
+                                <td>试卷五</td>
+                                <td class="btn-lv">
+                                    <button>预览</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </el-dialog>
         <el-dialog :visible.sync="isZxnlxl" title="专项能力训练" width="1200px">
@@ -215,126 +215,142 @@
 
                         </div>
                     </div>
-                   
+
                 </div>
-                 <div>
-                        <table class="table1">
-                           <thead>
-                               <tr>
-                                   <th>NO</th>
-                                   <th>模块名称</th>
-                                   <th>级别</th>
-                                   <th>试卷名称</th>
-                                   <th>操作</th>
-                               </tr>
-                           </thead>
-                           <tbody>
-                               <tr>
-                                   <td>1</td>
-                                   <td>J-test</td>
-                                   <td>A-D</td>
-                                   <td>试卷一</td>
-                                   <td class="btn-lv">
-                                       <button>预览</button>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>2</td>
-                                   <td>能力考</td>
-                                   <td>N1</td>
-                                   <td>试卷一</td>
-                                   <td class="btn-lv">
-                                       <button>预览</button>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>3</td>
-                                   <td>商务礼仪</td>
-                                   <td>2级</td>
-                                   <td>试卷五</td>
-                                   <td class="btn-lv">
-                                       <button>预览</button>
-                                   </td>
-                               </tr>
-                           </tbody>
-                        </table>
-                    </div>
+                <div>
+                    <table class="table1">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>模块名称</th>
+                                <th>级别</th>
+                                <th>试卷名称</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>J-test</td>
+                                <td>A-D</td>
+                                <td>试卷一</td>
+                                <td class="btn-lv">
+                                    <button>预览</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>能力考</td>
+                                <td>N1</td>
+                                <td>试卷一</td>
+                                <td class="btn-lv">
+                                    <button>预览</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>商务礼仪</td>
+                                <td>2级</td>
+                                <td>试卷五</td>
+                                <td class="btn-lv">
+                                    <button>预览</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </el-dialog>
-      
+
     </div>
 </template>
 <script>
 export default {
-  name: "TeaTestMain",
-  data() {
-    return {
-      isZxnlxl: false,
-      isZtyl: false,
-      isJssz: false
-    };
-  }
+    name: "TeaTestMain",
+    data() {
+        return {
+            isZxnlxl: false,
+            isZtyl: false,
+            isJssz: false
+        };
+    },
+    methods: {
+        navi() {
+            this.$axios
+                .post("busjapsys/tea/menu/menu/menuList", {
+                    menuType: 2
+                })
+                .then(res => {
+                    console.log("导航信息", res);
+                });
+        }
+    },
+    created() {
+        this.navi();
+    }
 };
 </script>
+    
 <style scoped>
 #mainOne1 {
-  height: 930px;
-  min-width: 800px;
+    height: 930px;
+    min-width: 800px;
 }
 .mainOne2 {
-  height: 50px;
-  min-width: 500px;
+    height: 50px;
+    min-width: 500px;
 }
 .main0 {
-  height: 150px;
-  margin-top: 50px;
+    height: 150px;
+    margin-top: 50px;
 }
 .main0 > div {
-  margin: 10px auto;
+    margin: 10px auto;
 }
 .main1 {
-  margin: 10px;
-  width: 260px;
-  height: 305px;
-  position: relative;
+    margin: 10px;
+    width: 260px;
+    height: 305px;
+    position: relative;
 }
 .main1 > img {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 .main2 {
-  margin: 0;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
 }
 .main3 {
-  width: 1080px;
-  height: 140px;
-  margin: 100px auto 0;
+    width: 1080px;
+    height: 140px;
+    margin: 100px auto 0;
 }
 .main3 > img {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 .main4 {
-  font-size: 26px;
-  color: #fff;
-  width: 100%;
-  line-height: 35px;
+    font-size: 26px;
+    color: #fff;
+    width: 100%;
+    line-height: 35px;
 }
 .main5 {
-  font-size: 10px;
-  color: #fff;
-  width: 100%;
-  line-height: 16px;
+    font-size: 10px;
+    color: #fff;
+    width: 100%;
+    line-height: 16px;
 }
-.jinsai1>div{
-margin: 0 25px;
+.jinsai1 > div {
+    margin: 0 25px;
 }
-.jinsai1>div>div,.jinsai1>div>div>div{
+.jinsai1 > div > div,
+.jinsai1 > div > div > div {
     margin: 0 5px;
 }
 </style>

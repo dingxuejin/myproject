@@ -110,6 +110,7 @@
 
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
     name: "TeaTestClassMag",
     data() {
@@ -128,27 +129,34 @@ export default {
             ]
         };
     },
+    computed: {
+        ...mapGetters(["getUpfileUrl", "getUser"])
+    },
     methods: {
         queryAll() {
+            let that = this;
             this.$axios
-                .post("busjapsys/tea/classes/class/classList")
+                .post("busjapsys/tea/classes/class/classList", {
+                    teacherId: that.getUser.userid
+                })
                 .then(res => {
-                    this.allIds = res.data.results.classList;
-                    console.log("queryall", this.allIds);
                     this.allIds = this.allIds.map(val => {
                         val.value = false;
                         return val;
                     });
+                    this.allIds = res.data.results.classList;
+                    console.log("queryall", this.allIds);
                 });
         },
 
         add() {
+            let that = this;
             this.$axios
                 .post("busjapsys/tea/classes/class/addClass", {
                     className: "班级名称",
                     remark: "备注",
                     schoolId: 9527,
-                    teacherId: 9527,
+                    teacherId: that.getUser.userid,
                     isUsed: 1,
                     createdUserId: 1
                 })

@@ -1,7 +1,7 @@
 
 const requestUrl = {
     state: {
-        upfileUrl: '/api/'
+        upfileUrl: 'http://42.51.44.208:8888/busjapedu/'
     },
     getters: {
         getUpfileUrl(state) {
