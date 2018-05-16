@@ -228,7 +228,6 @@ export default {
                     realname: "丁学进",
                     stnumber: "007",
                     userpassword: "dingxuejin",
-                    // usertype: 0,
                     sex: "男",
                     classId: "1",
                     isvalIdate: 1,
