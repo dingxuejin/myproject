@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // 公用部分
+
+import Index from '@/components/index'
 import TeaMainOne from '@/components/TeaMainOne'
 import TeaMainTwo from '@/components/TeaMainTwo'
 
@@ -101,8 +103,10 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    { path: '/', name: 'Index', component: Index },
     // 亿测吧部分
     {
+
       path: '/teatestcontainer', name: 'TeaTestContainer', component: TeaTestContainer, children: [
 
         { path: '/teatest', name: 'TeaTestMain', component: TeaTestMain },

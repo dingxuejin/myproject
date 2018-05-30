@@ -523,6 +523,7 @@ export default {
 
     onEditorBlur(quill) {
       console.log("editor blur!", quill);
+      console.log("111", this.content1);
     },
     onEditorFocus(quill) {
       console.log("editor focus!", quill);
