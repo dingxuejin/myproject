@@ -24,101 +24,99 @@
 import { mapGetters } from "vuex";
 import { mapActions } from "vuex";
 export default {
-  name: "TeaSpeNav",
-  data() {
-    return {
-      active: -1,
-      liActive: -1
-    };
-  },
-  props: {
-    nav: {
-      type: Array,
-      required: true
-    }
-  },
+    name: "TeaSpeNav",
+    data() {
+        return {
+            active: -1,
+            liActive: -1
+        };
+    },
+    props: {
+        nav: {
+            type: Array,
+            required: true
+        }
+    },
 
-  computed: {
-    ...mapGetters(["getLanguage"])
-  },
-  mounted() {
-  
-  },
-  created() {
-    this.setClassList();
-  },
-  methods: {
-    ...mapActions(["setLanguage", "setClassList"]),
-    toMain(n) {
-      this.liActive = n;
-      //   this.$router.push({
-      //     name: name,
-      //     params: { n }
-      //   });
+    computed: {
+        ...mapGetters(["getLanguage"])
+    },
+    mounted() {},
+    created() {
+        this.setClassList();
+    },
+    methods: {
+        ...mapActions(["setLanguage", "setClassList"]),
+        toMain(n) {
+            this.liActive = n;
+            //   this.$router.push({
+            //     name: name,
+            //     params: { n }
+            //   });
+        }
     }
-  }
 };
 </script>
 <style scoped>
 @keyframes enter {
-  0% {
-    height: 0px;
-    padding: 0px;
-    opacity: 0;
-  }
+    0% {
+        height: 0px;
+        padding: 0px;
+        opacity: 0;
+    }
 
-  100% {
-    height: 38px;
-    padding: 10px;
-    opacity: 1;
-  }
+    100% {
+        height: 38px;
+        padding: 10px;
+        opacity: 1;
+    }
 }
 .icon {
-  width: 22px;
-  height: 22px;
+    width: 22px;
+    height: 22px;
 }
 .nav {
-  border-radius: 10px;
+    border-radius: 10px;
 }
 .navUl-enter-active {
-  animation: enter 0.3s linear;
+    animation: enter 0.3s linear;
 }
 .navUl-leave-active {
-  animation: enter 0.3s linear reverse;
+    animation: enter 0.3s linear reverse;
 }
 
 .nav span {
-  color: #fff;
+    color: #fff;
 }
 .nav ul {
-  padding: 0;
-  margin: 0;
-  border: transparent solid 1px;
-  border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    border: transparent solid 1px;
+    border-radius: 10px;
 }
 .nav .ulbor {
-  border: #4affff solid 1px;
+    border: #4affff solid 1px;
 }
 .nav .sanjiao {
-  transform: rotateX(180deg);
+    transform: rotateX(180deg);
 }
 .nav li {
-  height: 38px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 10px;
-  color: #2995fc;
+    height: 38px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+    color: #2995fc;
 }
 .nav li:hover,
 .liActive {
-  background: #e6f4fd;
+    background: #e6f4fd;
 }
 .nav1 {
-  background: #009efd;
-  padding: 0 20px;
-  border-radius: 10px;
-  height: 50px;
+    background: #009efd;
+    padding: 0 20px;
+    border-radius: 10px;
+    height: 50px;
 }
 </style>
 

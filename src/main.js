@@ -15,7 +15,7 @@ import '../static/dxjPublic.css'
 import VueQuillEditor from 'vue-quill-editor'
 
 import setTableData from './components/public/setTableData.js'
- 
+
 // require styles
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
@@ -26,8 +26,8 @@ Vue.use(VueQuillEditor, /* { default global options } */)
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts
-Vue.prototype.$axios=axios
-Vue.prototype.$setTableData=setTableData
+Vue.prototype.$axios = axios
+Vue.prototype.$setTableData = setTableData
 
 
 
@@ -39,6 +39,6 @@ new Vue({
   router,
   store,
   i18n,
-  components: { App},
+  components: { App },
   template: '<App/>'
 })

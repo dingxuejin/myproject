@@ -104,6 +104,7 @@
     </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
     data() {
         return {
@@ -124,7 +125,9 @@ export default {
     methods: {
         queryAll() {
             this.$axios
-                .post("busjapsys/tea/classes/class/classList")
+                .post("busjapsys/tea/classes/class/classList", {
+                    teacherId: this.getUser.userid
+                })
                 .then(res => {
                     let allIds = res.data.results.classList;
                     console.log("queryall", this.allIds);
@@ -144,7 +147,8 @@ export default {
                     schoolId: 9527,
                     teacherId: 9527,
                     isUsed: 1,
-                    createdUserId: 1
+                    createdUserId: 1,
+                    teacherId: this.getUser.userid
                 })
                 .then(res => {
                     this.queryAll();
@@ -206,6 +210,9 @@ export default {
                 });
         }
     },
+    computed: {
+        ...mapGetters(["getUpfileUrl", "getUser"])
+    },
     created() {
         this.queryAll();
     },
@@ -217,9 +224,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-
 .containerClass {
     min-width: 670px;
     margin: 5px 0px;
